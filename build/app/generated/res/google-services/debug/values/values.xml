@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gcm_defaultSenderId" translatable="false">323524453681</string>
+    <string name="google_api_key" translatable="false">AIzaSyCSLKyewVAt7z9t6kLiZ9aLvCL6MAPxPEU</string>
+    <string name="google_app_id" translatable="false">1:323524453681:android:148923be43884873e1fc10</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCSLKyewVAt7z9t6kLiZ9aLvCL6MAPxPEU</string>
+    <string name="google_storage_bucket" translatable="false">fitness-app-60289.appspot.com</string>
+    <string name="project_id" translatable="false">fitness-app-60289</string>
+</resources>
