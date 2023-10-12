@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
             if (user == null) {
               return const LoginPage();
             } else {
-              return Home();
+              return const Home();
             }
           })
       );
@@ -45,13 +45,17 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Color(0xFFFFDE8D), Color(0xFFFFA427)],
-          ),
-        ),
+        // decoration: BoxDecoration(
+        //   gradient: LinearGradient(
+        //     begin: Alignment.topCenter,
+        //     end: Alignment.bottomCenter,
+        //     colors: [
+        //       Colors.blue.withOpacity(0.8), // Blue background color with 80% opacity
+        //       Colors.blue.withOpacity(0.6), // Yellow color with 70% opacity
+        //     ],
+        //   ),
+        // ),
+        color: const Color(0xFFC1E1C1),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -63,7 +67,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ), // Replace with your logo path
               // const SizedBox(height: 20.0),
               const CircularProgressIndicator(
-                  color: Colors.white
+                  color: Colors.black
               ), // Add a loading indicator if needed
             ],
           ),

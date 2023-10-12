@@ -1,36 +1,18 @@
-import 'package:fitnessapp/services/auth.dart';
+import 'package:fitnessapp/screens/home/diary.dart';
 import 'package:flutter/material.dart';
+import 'dashboard.dart';
 
 class Home extends StatelessWidget {
-  Home({super.key});
-  final AuthService _authService = AuthService();
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.black54,
-        appBar: AppBar(
-          title: const Text(
-            'Fitness App',
-            style: TextStyle(
-              // fontSize: 10.0,
-              fontFamily: "BebasNeue",
-            ),
-          ),
-          backgroundColor: const Color(0xFFFF9800),
-          elevation: 0.0,
-          actions: <Widget>[
-            // Add your action widgets here
-            IconButton(
-              icon: const Icon(Icons.person),
-              onPressed: () async {
-                await _authService.signOut();
-              },
-            ),
-          ],
-        ),
-      ),
+      initialRoute: "/dashboard",
+      routes: {
+        '/dashboard': (context) => const DashboardPage(),
+        '/diary': (context) => const DiaryPage(),
+      },
     );
   }
 }

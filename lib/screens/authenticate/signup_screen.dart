@@ -138,7 +138,7 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
             color: Colors.black54,
           ),
         ),
-        backgroundColor: const Color(0xFFFFDE8D),
+        backgroundColor: const Color(0xFFC1E1C1),
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
@@ -165,8 +165,8 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [Colors.transparent, Colors.black54.withOpacity(0.3)],
-              stops: [0.0, 0.6],
+              colors: [Colors.transparent, Colors.black54.withOpacity(0.1)],
+              stops: [0.0, 0.3],
             ),
           ),
           child: Center(

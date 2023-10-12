@@ -19,7 +19,7 @@ class LoginSignup extends State<LoginPage> {
   String password = "";
   String error = "";
 
-  void signUp() {
+  void signIn() {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
@@ -33,13 +33,14 @@ class LoginSignup extends State<LoginPage> {
     return MaterialApp(
       home: Scaffold(
           body: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Color(0xFFFFDE8D), Color(0xFFFFA427)],
-              ),
-            ),
+            // decoration: const BoxDecoration(
+            //   gradient: LinearGradient(
+            //     begin: Alignment.topCenter,
+            //     end: Alignment.bottomCenter,
+            //     colors: [Color(0xFFFFDE8D), Color(0xFFFFA427)],
+            //   ),
+            // ),
+            color: const Color(0xFFC1E1C1),
             child: Center(
               child: SingleChildScrollView(
                 child: Padding(
@@ -58,7 +59,7 @@ class LoginSignup extends State<LoginPage> {
                           'Elevate Your Fitness Journey',
                           style: TextStyle(
                             fontFamily: "ComingSoon",
-                            color: Colors.black54,
+                            color: Colors.black,
                           ),
                         ),
                         const SizedBox(height: 20.0),
@@ -97,7 +98,7 @@ class LoginSignup extends State<LoginPage> {
                         const SizedBox(height: 20.0),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.black54, // Background color
+                            backgroundColor: Colors.black // Background color
                           ),
                           onPressed: () async {
                             error = "";
@@ -108,8 +109,8 @@ class LoginSignup extends State<LoginPage> {
                                     error = "Your email or password are incorrect";
                                   });
                               } else {
-                                // After successful sign-up, navigate to the splash screen
-                                signUp();
+                                // After successful sign-in, navigate to the splash screen
+                                signIn();
                               }
                             }
                           },
@@ -132,7 +133,7 @@ class LoginSignup extends State<LoginPage> {
                           child: const Text(
                             'Don\'t have an account? Sign Up',
                             style: TextStyle(
-                              color: Colors.black54,
+                              color: Colors.black,
                             ),
                           ),
                         ),

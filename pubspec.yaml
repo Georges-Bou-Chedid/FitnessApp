@@ -43,6 +43,10 @@ dependencies:
   fluttertoast: ^8.2.2
   country_picker: ^2.0.20
   hive: ^2.2.3
+  font_awesome_flutter: 10.5.0
+  intl: 0.18.1
+  fl_chart: 0.64.0
+  percent_indicator: 4.2.3
 
 dev_dependencies:
   flutter_test:
