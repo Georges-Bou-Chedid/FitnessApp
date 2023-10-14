@@ -1,9 +1,12 @@
+import 'dart:math';
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../models/food.dart';
 import '../../widgets/home_appbar.dart';
 import '../../widgets/navdrawer.dart';
+import '../../widgets/piechart.dart';
 
 class DiaryPage extends StatefulWidget {
   const DiaryPage({super.key});
@@ -18,6 +21,8 @@ class _DiaryPageState extends State<DiaryPage> {
   List<FoodEntry> lunchEntries = [];
   List<FoodEntry> dinnerEntries = [];
   DateTime? selectedDate;
+  double totalCalories = 2500; // Replace with your actual values
+  double consumedCalories = 1250; // Replace with your actual values
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime picked = (await showDatePicker(
@@ -40,39 +45,20 @@ class _DiaryPageState extends State<DiaryPage> {
     }
   }
 
+  void updateChart(double newTotalCalories, double newConsumedCalories) {
+    setState(() {
+      totalCalories = newTotalCalories;
+      consumedCalories = newConsumedCalories;
+    });
+  }
+
+  Random random = Random();
+  double min = 1.0;
+  double max = 2500.0;
+
   @override
   Widget build(BuildContext context) {
-    int totalCalories = 3000;
-    int consumedCalories = 1700;
-    int remainingCalories = 0;
-
-    @override
-    void initState() {
-      super.initState();
-      remainingCalories = totalCalories - consumedCalories;
-    }
-
-    List<PieChartSectionData> pieSections = [
-      PieChartSectionData(
-        color: const Color(0xff0293ee),
-        value: consumedCalories.toDouble(),
-        title: 'Consumed',
-        radius: 1,
-        titleStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
-        showTitle: true,
-        titlePositionPercentageOffset: 0.5,
-      ),
-      PieChartSectionData(
-        color: const Color(0xfff8b250),
-        value: remainingCalories.toDouble(),
-        title: 'Remaining',
-        radius: 1,
-        titleStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
-        showTitle: true,
-        titlePositionPercentageOffset: 0.5,
-      ),
-    ];
-
+    double randomDouble = min + random.nextDouble() * (max - min);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: MyAppBar().preferredSize,
@@ -90,59 +76,71 @@ class _DiaryPageState extends State<DiaryPage> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(6.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      const Text(
-                        "Your Diary",
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontFamily: "BebasNeue",
-                          color: Colors.black54,
+                      IconButton(
+                        icon: const Icon(
+                          Icons.calendar_today,
                         ),
+                        onPressed: () => _selectDate(context),
+                      ),
+                      Text(
+                        selectedDate != null ? formatDate(selectedDate!) : "Today",
+                        style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                       ),
                       IconButton(
                         icon: const Icon(
                           Icons.info,
                         ),
                         onPressed: () {
-
+                          updateChart(2500, randomDouble);
                         },
                       ),
                     ]
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    IconButton(
-                      icon: const Icon(
-                        Icons.calendar_today,
+                const SizedBox(
+                  height: 15.0,
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        "Calories Remaining",
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          // fontFamily: "BebasNeue",
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold
+                        ),
                       ),
-                      onPressed: () => _selectDate(context),
-                    ),
-                    Text(
-                      selectedDate != null ? formatDate(selectedDate!) : "Today",
-                      style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                    ),
-                  ],
+                      SizedBox(height: 2.0),
+                      Divider(
+                        color: Colors.grey, // Set the color of the line
+                        height: 20, // Set the height (thickness) of the line
+                        thickness: 2, // Set the thickness of the line
+                      ),
+                    ]
+                  ),
+                ),
+                const SizedBox(height: 30.0),
+                AspectRatio(
+                  aspectRatio: 2.0, // Adjust the aspect ratio as needed
+                  child: CaloriePieChart(
+                    totalCalories: totalCalories,
+                    consumedCalories: consumedCalories,
+                  ),
                 ),
                 const SizedBox(
-                  height: 10.0,
+                  height: 40.0,
                 ),
                 _buildMealSection('Breakfast', breakfastEntries),
                 _buildMealSection('Lunch', lunchEntries),
                 _buildMealSection('Dinner', dinnerEntries),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                AspectRatio(
-                  aspectRatio: 1.3,
-                  child: PieChart(
-                    PieChartData(sections: pieSections),
-                  ),
-                ),
                 const SizedBox(
                   height: 10.0,
                 ),
@@ -159,22 +157,36 @@ Widget _buildMealSection(String title, List<FoodEntry> entries) {
   return Container(
     margin: EdgeInsets.all(8.0),
     child: Card(
-      color: Colors.grey[200],
+      elevation: 4, // Add elevation for a shadow effect
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12.0), // Adjust the radius as needed
+        side: const BorderSide(
+          color: Colors.grey, // Border color
+          width: 2.0, // Border width
+        ),
+      ),
+      color: const Color(0xFFC1E1C1),
       child: Padding(
-        padding: const EdgeInsets.all(0.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
+            const Divider(
+              color: Colors.grey, // Set the color of the line
+              height: 20, // Set the height (thickness) of the line
+              thickness: 2, // Set the thickness of the line
+            ),
+            const SizedBox(height: 8.0),
             if (entries.isEmpty)
-              Center(
+              const Center(
                 child: Text('No food entries yet.'),
               )
             else
@@ -191,7 +203,7 @@ Widget _buildMealSection(String title, List<FoodEntry> entries) {
             SizedBox(height: 8.0),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.orange // Background color
+                  backgroundColor: Colors.grey[800] // Background color
               ),
               onPressed: () {
                 // Show a dialog to add a new food entry
