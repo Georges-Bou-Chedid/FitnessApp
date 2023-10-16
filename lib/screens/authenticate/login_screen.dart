@@ -1,3 +1,4 @@
+import 'package:country_picker/country_picker.dart';
 import 'package:fitnessapp/screens/authenticate/signup_screen.dart';
 import 'package:fitnessapp/services/auth.dart';
 import 'package:flutter/material.dart';
@@ -127,6 +128,13 @@ class LoginSignup extends State<LoginPage> {
                         const SizedBox(height: 8.0),
                         TextButton(
                           onPressed: () {
+                            gender = "";
+                            age = 0;
+                            selectedCountry = Country.parse("LB");
+                            height = 0;
+                            weight = 0;
+                            signUpEmail = "";
+                            signUpPassword = "";
                             appBarTitle = "Personal Info";
                             Navigator.of(context).push(_signUpRoute());
                           },

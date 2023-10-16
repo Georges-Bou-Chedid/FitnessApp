@@ -52,13 +52,21 @@ class _DiaryPageState extends State<DiaryPage> {
     });
   }
 
-  Random random = Random();
-  double min = 1.0;
-  double max = 2500.0;
+  void _showAddEntryDialog() {
+    setState(() {
+      breakfastEntries.add(
+        FoodEntry(
+          name: 'Eggs',
+          quantity: 100, mealTime: 'Breakfast', // Grams
+        ),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    double randomDouble = min + random.nextDouble() * (max - min);
+    bool isHovered = false;
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: MyAppBar().preferredSize,
@@ -75,51 +83,89 @@ class _DiaryPageState extends State<DiaryPage> {
             key: _formKey,
             child: Column(
               children: [
+                const SizedBox(
+                  height: 10.0,
+                ),
                 Padding(
-                  padding: const EdgeInsets.all(6.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       IconButton(
                         icon: const Icon(
-                          Icons.calendar_today,
+                          Icons.calendar_today
                         ),
                         onPressed: () => _selectDate(context),
                       ),
-                      Text(
-                        selectedDate != null ? formatDate(selectedDate!) : "Today",
-                        style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                      ),
-                      IconButton(
-                        icon: const Icon(
-                          Icons.info,
-                        ),
-                        onPressed: () {
-                          updateChart(2500, randomDouble);
+                      InkWell(
+                        onTap: () {
+                          _selectDate(context);
                         },
+                        child: Text(
+                          selectedDate != null ? formatDate(selectedDate!) : "Today",
+                          style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ]
                   ),
                 ),
-                const SizedBox(
-                  height: 15.0,
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(16.0),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(
-                        "Calories Remaining",
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          // fontFamily: "BebasNeue",
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          const Text(
+                            "Calories",
+                            style: TextStyle(
+                                fontSize: 18.0,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold
+                            ),
+                          ),
+                          RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: "${totalCalories.toStringAsFixed(0)}\n",
+                                  style: const TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+                                ),
+                                const TextSpan(
+                                  text: '    Goal', // Replace with your variable
+                                  style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                          MouseRegion(
+                            onEnter: (_) {
+                              setState(() {
+                                isHovered = true;
+                              });
+                            },
+                            onExit: (_) {
+                              setState(() {
+                                isHovered = false;
+                              });
+                            },
+                            child: Tooltip(
+                              message: 'Info',
+                              child: IconButton(
+                                icon: const Icon(
+                                  Icons.info,
+                                ),
+                                onPressed: () {
+                                  updateChart(2500, 1500);
+                                },
+                              ),
+                            ),
+                          ),
+
+                        ],
                       ),
-                      SizedBox(height: 2.0),
-                      Divider(
+                      const Divider(
                         color: Colors.grey, // Set the color of the line
                         height: 20, // Set the height (thickness) of the line
                         thickness: 2, // Set the thickness of the line
@@ -138,9 +184,15 @@ class _DiaryPageState extends State<DiaryPage> {
                 const SizedBox(
                   height: 40.0,
                 ),
-                _buildMealSection('Breakfast', breakfastEntries),
-                _buildMealSection('Lunch', lunchEntries),
-                _buildMealSection('Dinner', dinnerEntries),
+                _buildMealSection('Breakfast', breakfastEntries, () {
+                  _showAddEntryDialog();
+                }),
+                _buildMealSection('Lunch', lunchEntries, () {
+                  _showAddEntryDialog();
+                }),
+                _buildMealSection('Dinner', dinnerEntries, () {
+                  _showAddEntryDialog();
+                }),
                 const SizedBox(
                   height: 10.0,
                 ),
@@ -153,7 +205,7 @@ class _DiaryPageState extends State<DiaryPage> {
   }
 }
 
-Widget _buildMealSection(String title, List<FoodEntry> entries) {
+Widget _buildMealSection(String title, List<FoodEntry> entries, Function() showAddEntryDialog) {
   return Container(
     margin: EdgeInsets.all(8.0),
     child: Card(
@@ -171,13 +223,27 @@ Widget _buildMealSection(String title, List<FoodEntry> entries) {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              title,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const Text(
+                  '0', // Replace with your number
+                  style: TextStyle(
+                    fontSize: 18, // Adjust the font size
+                    fontWeight: FontWeight.bold, // Adjust the font weight
+                    color: Colors.black, // Adjust the text color
+                  ),
+                )
+              ],
             ),
+
             const SizedBox(height: 8.0),
             const Divider(
               color: Colors.grey, // Set the color of the line
@@ -197,6 +263,7 @@ Widget _buildMealSection(String title, List<FoodEntry> entries) {
                   return ListTile(
                     title: Text(entries[index].name),
                     subtitle: Text('${entries[index].quantity} grams'),
+                    trailing: Text('0'),
                   );
                 },
               ),
@@ -206,8 +273,7 @@ Widget _buildMealSection(String title, List<FoodEntry> entries) {
                   backgroundColor: Colors.grey[800] // Background color
               ),
               onPressed: () {
-                // Show a dialog to add a new food entry
-                _showAddEntryDialog();
+                showAddEntryDialog();
               },
               child: Text('Add Food'),
             ),
@@ -216,11 +282,6 @@ Widget _buildMealSection(String title, List<FoodEntry> entries) {
       ),
     ),
   );
-}
-
-// Helper method to show a dialog for adding a new food entry
-void _showAddEntryDialog() {
-  // Implement your dialog here
 }
 
 String formatDate(DateTime date) {

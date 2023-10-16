@@ -74,11 +74,11 @@
 63                android:value="com.google.firebase.components.ComponentRegistrar" />
 63-->[:firebase_auth] /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:13:17-82
 64            <meta-data
-64-->[:cloud_firestore] /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/cloud_firestore/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-13:85
-65                android:name="com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar"
-65-->[:cloud_firestore] /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/cloud_firestore/intermediates/merged_manifest/debug/AndroidManifest.xml:12:17-134
+64-->[:firebase_database] /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/firebase_database/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-13:85
+65                android:name="com.google.firebase.components:io.flutter.plugins.firebase.database.FlutterFirebaseAppRegistrar"
+65-->[:firebase_database] /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/firebase_database/intermediates/merged_manifest/debug/AndroidManifest.xml:12:17-127
 66                android:value="com.google.firebase.components.ComponentRegistrar" />
-66-->[:cloud_firestore] /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/cloud_firestore/intermediates/merged_manifest/debug/AndroidManifest.xml:13:17-82
+66-->[:firebase_database] /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/firebase_database/intermediates/merged_manifest/debug/AndroidManifest.xml:13:17-82
 67            <meta-data
 67-->[:firebase_core] /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-13:85
 68                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
@@ -92,11 +92,11 @@
 72                android:value="com.google.firebase.components.ComponentRegistrar" />
 72-->[com.google.firebase:firebase-auth:22.1.2] /home/boush/.gradle/caches/transforms-3/717b7f59c51433f9386e5977f6add5e1/transformed/jetified-firebase-auth-22.1.2/AndroidManifest.xml:71:17-82
 73            <meta-data
-73-->[com.google.firebase:firebase-firestore:24.8.1] /home/boush/.gradle/caches/transforms-3/bfaeabd99bb79b2fa68c78e2d10abe3c/transformed/jetified-firebase-firestore-24.8.1/AndroidManifest.xml:17:13-19:85
-74                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
-74-->[com.google.firebase:firebase-firestore:24.8.1] /home/boush/.gradle/caches/transforms-3/bfaeabd99bb79b2fa68c78e2d10abe3c/transformed/jetified-firebase-firestore-24.8.1/AndroidManifest.xml:18:17-111
+73-->[com.google.firebase:firebase-database:20.2.2] /home/boush/.gradle/caches/transforms-3/7e9721fb51cbc5d8f891e8418dc977ea/transformed/jetified-firebase-database-20.2.2/AndroidManifest.xml:31:13-33:85
+74                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+74-->[com.google.firebase:firebase-database:20.2.2] /home/boush/.gradle/caches/transforms-3/7e9721fb51cbc5d8f891e8418dc977ea/transformed/jetified-firebase-database-20.2.2/AndroidManifest.xml:32:17-109
 75                android:value="com.google.firebase.components.ComponentRegistrar" />
-75-->[com.google.firebase:firebase-firestore:24.8.1] /home/boush/.gradle/caches/transforms-3/bfaeabd99bb79b2fa68c78e2d10abe3c/transformed/jetified-firebase-firestore-24.8.1/AndroidManifest.xml:19:17-82
+75-->[com.google.firebase:firebase-database:20.2.2] /home/boush/.gradle/caches/transforms-3/7e9721fb51cbc5d8f891e8418dc977ea/transformed/jetified-firebase-database-20.2.2/AndroidManifest.xml:33:17-82
 76        </service>
 77
 78        <activity
@@ -197,13 +197,13 @@
 127-->[com.google.firebase:firebase-common:20.3.3] /home/boush/.gradle/caches/transforms-3/97ba536cb97715cf3a6afeff735547bd/transformed/jetified-firebase-common-20.3.3/AndroidManifest.xml:30:13-36
 128
 129        <activity
-129-->[com.google.android.gms:play-services-base:18.0.1] /home/boush/.gradle/caches/transforms-3/f253648b0be692c533908993735bbd2e/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+129-->[com.google.android.gms:play-services-base:18.1.0] /home/boush/.gradle/caches/transforms-3/f4c0500116144bc04cff0b0b27625b15/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:9-22:45
 130            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-130-->[com.google.android.gms:play-services-base:18.0.1] /home/boush/.gradle/caches/transforms-3/f253648b0be692c533908993735bbd2e/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+130-->[com.google.android.gms:play-services-base:18.1.0] /home/boush/.gradle/caches/transforms-3/f4c0500116144bc04cff0b0b27625b15/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:19-85
 131            android:exported="false"
-131-->[com.google.android.gms:play-services-base:18.0.1] /home/boush/.gradle/caches/transforms-3/f253648b0be692c533908993735bbd2e/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+131-->[com.google.android.gms:play-services-base:18.1.0] /home/boush/.gradle/caches/transforms-3/f4c0500116144bc04cff0b0b27625b15/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:22:19-43
 132            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-132-->[com.google.android.gms:play-services-base:18.0.1] /home/boush/.gradle/caches/transforms-3/f253648b0be692c533908993735bbd2e/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+132-->[com.google.android.gms:play-services-base:18.1.0] /home/boush/.gradle/caches/transforms-3/f4c0500116144bc04cff0b0b27625b15/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:21:19-78
 133
 134        <meta-data
 134-->[com.google.android.gms:play-services-basement:18.1.0] /home/boush/.gradle/caches/transforms-3/5eaba1f028ac62aaabee71faac8d9308/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69

@@ -1,4 +1,5 @@
 import 'package:country_picker/country_picker.dart';
+import 'package:fitnessapp/models/userInformation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../services/auth.dart';
@@ -9,9 +10,16 @@ import '../splash_screen.dart';
 final GlobalKey<FormState> firstStepKey = GlobalKey<FormState>();
 final GlobalKey<FormState> secondStepKey = GlobalKey<FormState>();
 final GlobalKey<FormState> thirdStepKey = GlobalKey<FormState>();
+
 String gender = "";
-String email = "";
-String password = "";
+int age = 0;
+Country selectedCountry = Country.parse("LB");
+
+int height = 0;
+int weight = 0;
+
+String signUpEmail = "";
+String signUpPassword = "";
 String appBarTitle = "Personal Info";
 
 class StepByStepSignUpPage extends StatefulWidget {
@@ -34,13 +42,23 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
 
   void _nextStep() async{
     if (currentStep < steps.length - 1) {
+      if (steps[currentStep].toString() == "FirstStep"){
+        if (! firstStepKey.currentState!.validate()) {
+          return;
+        }
+      }
+      if (steps[currentStep].toString() == "SecondStep"){
+        if (! secondStepKey.currentState!.validate()) {
+          return;
+        }
+      }
       setState(() {
         currentStep++;
       });
       changeAppBarTitleBasedOnCurrentStep();
     } else {
       if (thirdStepKey.currentState!.validate()) {
-        dynamic result = await _authService.registerWithEmailAndPassword(email, password);
+        dynamic result = await _authService.registerWithEmailAndPassword(signUpEmail, signUpPassword);
 
         if (result == null) {
           error = 'An unexpected error occurred while signing up. Please try again later or contact support for assistance';
@@ -49,6 +67,19 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
           error = 'Email is already in use';
           showErrorSigningUp(error);
         } else {
+          // Create user info table
+          var userId = result.uid;
+          userInformation userInfo = userInformation(
+              gender: gender,
+              age: age,
+              country: selectedCountry.countryCode,
+              height: height,
+              heightUnit: "cm",
+              weight: weight,
+              weightUnit: "kg"
+          );
+          await _authService.createUserInfo(userId, userInfo);
+
           // After successful sign-up, navigate to the splash screen
           signUp();
         }
@@ -228,18 +259,10 @@ class FirstStep extends StatefulWidget {
 }
 
 class _FirstStepState extends State<FirstStep>{
-  String? selectedItem;
-  Country? _selectedCountry = Country.parse("LB");
-
-  @override
-  void initState() {
-    super.initState();
-    selectedItem; // Initialize the selected value
-  }
 
   void _onCountryChanged(Country? country) {
     setState(() {
-      _selectedCountry = country;
+      selectedCountry = country!;
     });
   }
 
@@ -262,14 +285,20 @@ class _FirstStepState extends State<FirstStep>{
             ),
             const SizedBox(height: 8.0),
             DropdownButtonFormField<String>(
+              validator: (value) {
+                if (value == null) {
+                  return 'Please select an option';
+                }
+                return null; // Return null if the value is valid
+              },
               decoration: const InputDecoration(
-                labelText: 'Select your sex',
+                labelText: 'Select your sexe',
                 border: OutlineInputBorder(),
               ),
-              value: selectedItem,
+              value: gender == "" ? null : gender,
               onChanged: (String? newValue) {
                 setState(() {
-                  selectedItem = newValue;
+                  gender = newValue!;
                 });
               },
               items: genders.map<DropdownMenuItem<String>>((String gender) {
@@ -290,10 +319,14 @@ class _FirstStepState extends State<FirstStep>{
             SizedBox(
               width: 200,
               child: TextFormField(
+                validator: (val) => val!.isEmpty || int.tryParse(val)! < 1 || int.tryParse(val)! > 100 ? "Please enter your age between\n1 and 100" : null,
+                initialValue: age == 0 ? null : age.toString(),
                 onChanged: (val) {
-                  // setState(() {
-                  //
-                  // });
+                  setState(() {
+                    if (int.tryParse(val) != null) {
+                      age = int.tryParse(val)!;
+                    }
+                  });
                 },
                 keyboardType: TextInputType.number, // Use numeric keyboard
                 inputFormatters: <TextInputFormatter>[
@@ -314,7 +347,7 @@ class _FirstStepState extends State<FirstStep>{
             ),
             const SizedBox(height: 18.0),
             CountryDropdown(
-              selectedCountry: _selectedCountry,
+              selectedCountry: selectedCountry,
               onCountryChanged: _onCountryChanged,
             ),
           ],
@@ -358,10 +391,14 @@ class _SecondStepState extends State<SecondStep> {
             SizedBox(
               width: 200,
               child: TextFormField(
+                validator: (val) => val!.isEmpty ? "Please enter your height" : null,
+                initialValue: height == 0 ? null : height.toString(),
                 onChanged: (val) {
-                  // setState(() {
-                  //
-                  // });
+                  setState(() {
+                    if (int.tryParse(val) != null) {
+                      height = int.tryParse(val)!;
+                    }
+                  });
                 },
                 keyboardType: TextInputType.number, // Use numeric keyboard
                 inputFormatters: <TextInputFormatter>[
@@ -384,10 +421,14 @@ class _SecondStepState extends State<SecondStep> {
             SizedBox(
               width: 200,
               child: TextFormField(
+                validator: (val) => val!.isEmpty ? "Please enter your weight" : null,
+                initialValue: weight == 0 ? null : weight.toString(),
                 onChanged: (val) {
-                  // setState(() {
-                  //
-                  // });
+                  setState(() {
+                    if (int.tryParse(val) != null) {
+                      weight = int.tryParse(val)!;
+                    }
+                  });
                 },
                 keyboardType: TextInputType.number, // Use numeric keyboard
                 inputFormatters: <TextInputFormatter>[
@@ -422,7 +463,7 @@ class _ThirdStepState extends State<ThirdStep> {
       return 'Please enter a password 6+ chars long';
     }
 
-    if (value != password) {
+    if (value != signUpPassword) {
       return 'Passwords do not match';
     }
 
@@ -456,7 +497,7 @@ class _ThirdStepState extends State<ThirdStep> {
                 },
                 onChanged: (val) {
                   setState(() {
-                    email = val;
+                    signUpEmail = val;
                   });
                 },
                 decoration: const InputDecoration(
@@ -469,7 +510,7 @@ class _ThirdStepState extends State<ThirdStep> {
                 validator: (val) =>  _validatePassword(val!),
                 onChanged: (val) {
                   setState(() {
-                    password = val;
+                    signUpPassword = val;
                   });
                 },
                 decoration: const InputDecoration(

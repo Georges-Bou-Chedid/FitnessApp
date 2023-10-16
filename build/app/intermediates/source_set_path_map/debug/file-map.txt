@@ -5,7 +5,7 @@ com.example.fitnessapp-jetified-play-services-basement-18.1.0-3 /home/boush/.gra
 com.example.fitnessapp-jetified-annotation-experimental-1.1.0-4 /home/boush/.gradle/caches/transforms-3/717758e51a3aff0b90b2556f8994e808/transformed/jetified-annotation-experimental-1.1.0/res
 com.example.fitnessapp-jetified-firebase-common-20.3.3-5 /home/boush/.gradle/caches/transforms-3/97ba536cb97715cf3a6afeff735547bd/transformed/jetified-firebase-common-20.3.3/res
 com.example.fitnessapp-core-1.6.0-6 /home/boush/.gradle/caches/transforms-3/cf72013d765e0f69e97cd3b9cbb09800/transformed/core-1.6.0/res
-com.example.fitnessapp-jetified-play-services-base-18.0.1-7 /home/boush/.gradle/caches/transforms-3/f253648b0be692c533908993735bbd2e/transformed/jetified-play-services-base-18.0.1/res
+com.example.fitnessapp-jetified-play-services-base-18.1.0-7 /home/boush/.gradle/caches/transforms-3/f4c0500116144bc04cff0b0b27625b15/transformed/jetified-play-services-base-18.1.0/res
 com.example.fitnessapp-debug-8 /home/boush/Desktop/Flutter+Firebase/fitnessapp/android/app/src/debug/res
 com.example.fitnessapp-main-9 /home/boush/Desktop/Flutter+Firebase/fitnessapp/android/app/src/main/res
 com.example.fitnessapp-google-services-10 /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/app/generated/res/google-services/debug
@@ -15,8 +15,7 @@ com.example.fitnessapp-rs-13 /home/boush/Desktop/Flutter+Firebase/fitnessapp/bui
 com.example.fitnessapp-mergeDebugResources-14 /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/app/intermediates/incremental/debug/mergeDebugResources/merged.dir
 com.example.fitnessapp-mergeDebugResources-15 /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/app/intermediates/incremental/debug/mergeDebugResources/stripped.dir
 com.example.fitnessapp-merged_res-16 /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/app/intermediates/merged_res/debug
-com.example.fitnessapp-packaged_res-17 /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/cloud_firestore/intermediates/packaged_res/debug
-com.example.fitnessapp-packaged_res-18 /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/firebase_auth/intermediates/packaged_res/debug
-com.example.fitnessapp-packaged_res-19 /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/firebase_core/intermediates/packaged_res/debug
+com.example.fitnessapp-packaged_res-17 /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/firebase_auth/intermediates/packaged_res/debug
+com.example.fitnessapp-packaged_res-18 /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/firebase_core/intermediates/packaged_res/debug
+com.example.fitnessapp-packaged_res-19 /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/firebase_database/intermediates/packaged_res/debug
 com.example.fitnessapp-packaged_res-20 /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/fluttertoast/intermediates/packaged_res/debug
-com.example.fitnessapp-packaged_res-21 /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/shared_preferences_android/intermediates/packaged_res/debug

@@ -127,12 +127,13 @@
     <string name="fallback_menu_item_copy_link">Copy link</string>
     <string name="fallback_menu_item_open_in_browser">Open in browser</string>
     <string name="fallback_menu_item_share_link">Share link</string>
-    <string name="gcm_defaultSenderId" translatable="false">323524453681</string>
-    <string name="google_api_key" translatable="false">AIzaSyCSLKyewVAt7z9t6kLiZ9aLvCL6MAPxPEU</string>
-    <string name="google_app_id" translatable="false">1:323524453681:android:148923be43884873e1fc10</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCSLKyewVAt7z9t6kLiZ9aLvCL6MAPxPEU</string>
-    <string name="google_storage_bucket" translatable="false">fitness-app-60289.appspot.com</string>
-    <string name="project_id" translatable="false">fitness-app-60289</string>
+    <string name="firebase_database_url" translatable="false">https://fitness-app-79684-default-rtdb.europe-west1.firebasedatabase.app</string>
+    <string name="gcm_defaultSenderId" translatable="false">463148484210</string>
+    <string name="google_api_key" translatable="false">AIzaSyCEa5zqxXuF1QzMWQP91GfHzQDmjNPVdXQ</string>
+    <string name="google_app_id" translatable="false">1:463148484210:android:aa83302218b8a807ef64eb</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCEa5zqxXuF1QzMWQP91GfHzQDmjNPVdXQ</string>
+    <string name="google_storage_bucket" translatable="false">fitness-app-79684.appspot.com</string>
+    <string name="project_id" translatable="false">fitness-app-79684</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
         
