@@ -1,5 +1,6 @@
 import 'package:country_picker/country_picker.dart';
-import 'package:fitnessapp/models/userInformation.dart';
+import 'package:fitnessapp/models/UserInformation.dart';
+import 'package:fitnessapp/services/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../services/auth.dart';
@@ -33,6 +34,7 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
   int currentStep = 0;
   String error = "";
   final AuthService _authService = AuthService();
+  final UserService _userService = UserService();
 
   final List<Widget> steps = [
     const FirstStep(),
@@ -58,30 +60,35 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
       changeAppBarTitleBasedOnCurrentStep();
     } else {
       if (thirdStepKey.currentState!.validate()) {
-        dynamic result = await _authService.registerWithEmailAndPassword(signUpEmail, signUpPassword);
+        try {
+          dynamic result = await _authService.registerWithEmailAndPassword(signUpEmail, signUpPassword);
 
-        if (result == null) {
+          if (result == null) {
+            error = 'An unexpected error occurred while signing up. Please try again later or contact support for assistance';
+            showErrorSigningUp(error);
+          } else if (result == "Email is already in use") {
+            error = 'Email is already in use';
+            showErrorSigningUp(error);
+          } else {
+            // Create user info table
+            var userId = result.uid;
+            UserInformation userInfo = UserInformation(
+                gender: gender,
+                age: age,
+                country: selectedCountry.countryCode,
+                height: height,
+                heightUnit: "cm",
+                weight: weight,
+                weightUnit: "kg"
+            );
+            await _userService.createUserInfo(userId, userInfo);
+
+            // After successful sign-up, navigate to the splash screen
+            signUp();
+          }
+        } catch (e) {
           error = 'An unexpected error occurred while signing up. Please try again later or contact support for assistance';
           showErrorSigningUp(error);
-        } else if (result == "Email is already in use") {
-          error = 'Email is already in use';
-          showErrorSigningUp(error);
-        } else {
-          // Create user info table
-          var userId = result.uid;
-          userInformation userInfo = userInformation(
-              gender: gender,
-              age: age,
-              country: selectedCountry.countryCode,
-              height: height,
-              heightUnit: "cm",
-              weight: weight,
-              weightUnit: "kg"
-          );
-          await _authService.createUserInfo(userId, userInfo);
-
-          // After successful sign-up, navigate to the splash screen
-          signUp();
         }
       }
     }

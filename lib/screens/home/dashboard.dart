@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../widgets/home_appbar.dart';
+import '../../widgets/appbar.dart';
 import '../../widgets/navdrawer.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -15,16 +15,16 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: MyAppBar().preferredSize,
-        child: MyAppBar(),
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight),
+        child: MyAppBar(selectedTabs: []),
       ),
       drawer:  const SizedBox(
           width: 250,
           child: NavDrawer()
       ),
       body: Container(
-        color: const Color(0xFFC1E1C1),
+        color: Colors.white.withOpacity(0.9),
         child: Center(
           child: SingleChildScrollView(
             child: Padding(

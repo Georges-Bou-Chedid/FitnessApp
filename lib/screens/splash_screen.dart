@@ -55,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
         //     ],
         //   ),
         // ),
-        color: const Color(0xFFC1E1C1),
+        color: Colors.white.withOpacity(0.9),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

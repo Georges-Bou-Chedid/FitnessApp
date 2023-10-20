@@ -428,6 +428,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "simple_gesture_detector",
+      "rootUri": "file:///home/boush/.pub-cache/hosted/pub.dev/simple_gesture_detector-0.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///home/boush/snap/flutter/common/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -462,6 +468,12 @@
       "rootUri": "file:///home/boush/.pub-cache/hosted/pub.dev/string_scanner-1.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
+    },
+    {
+      "name": "table_calendar",
+      "rootUri": "file:///home/boush/.pub-cache/hosted/pub.dev/table_calendar-3.0.9",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "term_glyph",
@@ -530,7 +542,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2023-10-16T13:54:12.497804Z",
+  "generated": "2023-10-19T18:02:41.069720Z",
   "generator": "pub",
   "generatorVersion": "3.1.3"
 }

@@ -41,7 +41,7 @@ class LoginSignup extends State<LoginPage> {
             //     colors: [Color(0xFFFFDE8D), Color(0xFFFFA427)],
             //   ),
             // ),
-            color: const Color(0xFFC1E1C1),
+            color: Colors.white.withOpacity(0.9),
             child: Center(
               child: SingleChildScrollView(
                 child: Padding(

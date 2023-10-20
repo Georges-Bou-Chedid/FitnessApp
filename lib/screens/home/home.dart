@@ -1,4 +1,4 @@
-import 'package:fitnessapp/screens/home/diary.dart';
+import 'package:fitnessapp/screens/home/diary/diary.dart';
 import 'package:flutter/material.dart';
 import 'dashboard.dart';
 
@@ -11,7 +11,7 @@ class Home extends StatelessWidget {
       initialRoute: "/dashboard",
       routes: {
         '/dashboard': (context) => const DashboardPage(),
-        '/diary': (context) => const DiaryPage(),
+        '/diary': (context) => const Diary(),
       },
     );
   }
