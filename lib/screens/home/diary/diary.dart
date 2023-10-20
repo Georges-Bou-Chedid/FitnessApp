@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../widgets/appbar.dart';
 import '../../../widgets/navdrawer.dart';
 import 'diary_section.dart';
+import 'nutrient_section.dart';
 
 class Diary extends StatelessWidget {
   const Diary({super.key});
@@ -28,7 +29,7 @@ class Diary extends StatelessWidget {
           children: [
             DiaryPage(),
             Center(child: Text('Calories')),
-            Center(child: Text('Tab 3 Content')),
+            NutrientPage(),
             Center(child: Text('Macros')),
           ],
         ),
