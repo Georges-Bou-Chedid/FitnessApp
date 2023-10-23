@@ -16,9 +16,8 @@ class Diary extends StatelessWidget {
           preferredSize: Size.fromHeight(100),
           child: MyAppBar(selectedTabs: [
             Tab(text: 'Diary'),
-            Tab(text: 'Calories'),
             Tab(text: 'Nutrients'),
-            Tab(text: 'Macros'),
+            Tab(text: 'Summary')
           ])
         ),
         drawer:  SizedBox(
@@ -28,9 +27,8 @@ class Diary extends StatelessWidget {
         body: TabBarView(
           children: [
             DiaryPage(),
-            Center(child: Text('Calories')),
             NutrientPage(),
-            Center(child: Text('Macros')),
+            Center(child: Text('Summary'))
           ],
         ),
         ),

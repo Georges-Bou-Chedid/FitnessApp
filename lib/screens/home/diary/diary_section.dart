@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import '../../../models/Food.dart';
 import '../../../widgets/datepicker.dart';
 import '../../../widgets/piechart.dart';
@@ -11,7 +10,10 @@ class DiaryPage extends StatefulWidget {
   _DiaryPageState createState() => _DiaryPageState();
 }
 
-class _DiaryPageState extends State<DiaryPage> {
+class _DiaryPageState extends State<DiaryPage> with AutomaticKeepAliveClientMixin<DiaryPage> {
+  @override
+  bool get wantKeepAlive => true;
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   List<Food> breakfastEntries = [];
   List<Food> lunchEntries = [];
