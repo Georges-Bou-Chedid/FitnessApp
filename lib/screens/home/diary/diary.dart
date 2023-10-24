@@ -1,3 +1,4 @@
+import 'package:fitnessapp/screens/home/diary/summary_section.dart';
 import 'package:flutter/material.dart';
 import '../../../widgets/appbar.dart';
 import '../../../widgets/navdrawer.dart';
@@ -10,7 +11,7 @@ class Diary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const DefaultTabController(
-        length: 4,
+        length: 3,
         child: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(100),
@@ -28,7 +29,7 @@ class Diary extends StatelessWidget {
           children: [
             DiaryPage(),
             NutrientPage(),
-            Center(child: Text('Summary'))
+            SummaryPage()
           ],
         ),
         ),

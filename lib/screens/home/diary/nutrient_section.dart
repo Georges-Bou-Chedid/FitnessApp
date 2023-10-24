@@ -105,7 +105,7 @@ class PercentageProgressBar extends StatelessWidget {
           lineHeight: 15,
           percent: percent / 100,
           center: Text('$percent%'),
-          progressColor: Colors.blue,
+          progressColor: Colors.cyan,
         ),
         const SizedBox(height: 10),
       ],

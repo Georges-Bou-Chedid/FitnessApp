@@ -37,7 +37,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
             padding: const EdgeInsets.all(12.0),
             decoration: BoxDecoration(
               gradient: const LinearGradient(
-                colors: [Colors.grey, Colors.white],
+                colors: [Colors.cyan, Colors.white],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
@@ -77,7 +77,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
                       item,
                       style: TextStyle(
                         color: selectedValue == item
-                            ? Colors.blue // Highlight the selected item
+                            ? Colors.cyan // Highlight the selected item
                             : Colors.black,
                       ),
                     ),

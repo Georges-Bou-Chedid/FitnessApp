@@ -176,7 +176,7 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
             color: Colors.black54,
           ),
         ),
-        backgroundColor: const Color(0xFFC1E1C1),
+        backgroundColor: Colors.cyan,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,

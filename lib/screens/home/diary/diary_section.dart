@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../models/Food.dart';
 import '../../../widgets/datepicker.dart';
-import '../../../widgets/piechart.dart';
+import '../../../widgets/diarypiechart.dart';
 
 class DiaryPage extends StatefulWidget {
   const DiaryPage({super.key});
@@ -68,25 +68,11 @@ class _DiaryPageState extends State<DiaryPage> with AutomaticKeepAliveClientMixi
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           const Text(
-                            "Calories",
+                            "Calories Remaining",
                             style: TextStyle(
                                 fontSize: 16.0,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold
-                            ),
-                          ),
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: "${totalCalories.toStringAsFixed(0)}\n",
-                                  style: const TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
-                                ),
-                                const TextSpan(
-                                  text: '   Goal', // Replace with your variable
-                                  style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
-                                ),
-                              ],
                             ),
                           ),
                           MouseRegion(
@@ -107,7 +93,7 @@ class _DiaryPageState extends State<DiaryPage> with AutomaticKeepAliveClientMixi
                                   Icons.info,
                                 ),
                                 onPressed: () {
-                                  updateChart(2500, 1500);
+                                  updateChart(2500, 2200);
                                 },
                               ),
                             ),
@@ -123,13 +109,65 @@ class _DiaryPageState extends State<DiaryPage> with AutomaticKeepAliveClientMixi
                     ]
                 ),
               ),
+              Stack(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          width: 10,
+                          height: 10,
+                          color: Colors.cyan,
+                        ),
+                        const SizedBox(width: 8),
+                        const Text(
+                          'Consumed',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        const SizedBox(width: 12),
+                        Container(
+                          width: 10,
+                          height: 10,
+                          color: Colors.grey[400],
+                        ),
+                        const SizedBox(width: 8),
+                        const Text(
+                          'Remaining',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ],
+                    ),
+                  ]
+              ),
               const SizedBox(height: 30.0),
-              AspectRatio(
-                aspectRatio: 2.0, // Adjust the aspect ratio as needed
-                child: CaloriePieChart(
-                  totalCalories: totalCalories,
-                  consumedCalories: consumedCalories,
-                ),
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  Center(
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "${totalCalories.toStringAsFixed(0)}\n",
+                            style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          const TextSpan(
+                            text: 'Goal', // Replace with your variable
+                            style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  AspectRatio(
+                    aspectRatio: 2.0, // Adjust the aspect ratio as needed
+                    child: CaloriePieChart(
+                      totalCalories: totalCalories,
+                      consumedCalories: consumedCalories,
+                    ),
+                  ),
+                ]
               ),
               const SizedBox(
                 height: 40.0,
@@ -141,6 +179,12 @@ class _DiaryPageState extends State<DiaryPage> with AutomaticKeepAliveClientMixi
                 _showAddEntryDialog();
               }),
               _buildMealSection('Dinner', dinnerEntries, () {
+                _showAddEntryDialog();
+              }),
+              _buildMealSection('Snacks', dinnerEntries, () {
+                _showAddEntryDialog();
+              }),
+              _buildMealSection('Exercise', dinnerEntries, () {
                 _showAddEntryDialog();
               }),
               const SizedBox(
@@ -216,15 +260,20 @@ Widget _buildMealSection(String title, List<Food> entries, Function() showAddEnt
                   );
                 },
               ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey[800] // Background color
+                  backgroundColor: Colors.grey[400] // Background color
               ),
               onPressed: () {
                 showAddEntryDialog();
               },
-              child: Text('Add Food'),
+              child: const Text(
+                'Add Food',
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+              ),
             ),
           ],
         ),

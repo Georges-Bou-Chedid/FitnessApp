@@ -35,7 +35,7 @@ class DatePickerState extends State<DatePicker> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey[400],
+      color: Colors.cyan,
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Row(
