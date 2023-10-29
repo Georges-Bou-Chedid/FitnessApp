@@ -15,8 +15,9 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFF323232),
       appBar: const PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight),
+        preferredSize: Size.fromHeight(65),
         child: MyAppBar(selectedTabs: []),
       ),
       drawer:  const SizedBox(
@@ -24,7 +25,7 @@ class _DashboardPageState extends State<DashboardPage> {
           child: NavDrawer()
       ),
       body: Container(
-        color: Colors.white.withOpacity(0.9),
+        color: const Color(0xFF323232),
         child: Center(
           child: SingleChildScrollView(
             child: Padding(
@@ -35,7 +36,11 @@ class _DashboardPageState extends State<DashboardPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                        'Dashboard'
+                      'Dashboard',
+                      style: TextStyle(
+                          fontFamily: "Inter",
+                          color: Color(0xFFFFFFFF)
+                      ),
                     ),
                   ],
                 ),

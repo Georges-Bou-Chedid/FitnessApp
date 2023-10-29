@@ -7,16 +7,15 @@ class NavDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: const Color(0xFFFFFFFF),
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
           const DrawerHeader(
             decoration: BoxDecoration(
-                color: Colors.cyan,
                 image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage('assets/images/food.png'))), child: null,
+                    fit: BoxFit.cover,
+                    image: AssetImage('assets/images/navdrawerbackground.jpg'))), child: null,
           ),
           ListTile(
             leading: const FaIcon(
@@ -24,7 +23,12 @@ class NavDrawer extends StatelessWidget {
               size: 30, // Icon size
               color: Colors.blue, // Icon color
             ),
-            title: const Text('Dashboard'),
+            title: const Text(
+              'Dashboard',
+              style: TextStyle(
+                  fontFamily: "Inter",
+              ),
+            ),
             onTap: () {
               Navigator.pop(context); // Close the drawer
               Navigator.pushReplacementNamed(context, '/dashboard');
@@ -36,7 +40,12 @@ class NavDrawer extends StatelessWidget {
             size: 30, // Icon size
             color: Colors.blue, // Icon color
             ),
-            title: const Text('Diary'),
+            title: const Text(
+              'Diary',
+              style: TextStyle(
+                fontFamily: "Inter",
+              ),
+            ),
             onTap: () {
               Navigator.pop(context); // Close the drawer
               Navigator.pushReplacementNamed(context, '/diary');

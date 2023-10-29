@@ -16,23 +16,29 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    navigateToMainScreen();
-    // Add any initialization code here
-    // Typically, you might load data or perform some setup tasks
+    Future.delayed(const Duration(milliseconds: 100), () {
+      navigateToMainScreen();
+    });
+  }
 
-    // Redirect to the login/signup screen after a delay
+  void precacheLoginImageInSplashScreen() async {
+    await precacheImage(const AssetImage('assets/images/loginbackground.jpg'), context);
+  }
+  void precacheDrawerImageInSplashScreen() async {
+    await precacheImage(const AssetImage('assets/images/navdrawerbackground.jpg'), context);
   }
 
   void navigateToMainScreen() {
-    // Navigate to the main screen or the screen where you want to use CountryPickerDropdown
     Timer(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context){
             final user = Provider.of<User?>(context);
             if (user == null) {
+              precacheLoginImageInSplashScreen();
               return const LoginPage();
             } else {
+              precacheDrawerImageInSplashScreen();
               return const Home();
             }
           })
@@ -45,30 +51,19 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        // decoration: BoxDecoration(
-        //   gradient: LinearGradient(
-        //     begin: Alignment.topCenter,
-        //     end: Alignment.bottomCenter,
-        //     colors: [
-        //       Colors.blue.withOpacity(0.8), // Blue background color with 80% opacity
-        //       Colors.blue.withOpacity(0.6), // Yellow color with 70% opacity
-        //     ],
-        //   ),
-        // ),
-        color: Colors.white.withOpacity(0.9),
+        color: const Color(0xFF323232),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Image.asset(
-                'assets/images/b.png',
+                'assets/images/nutrilebwhite.png',
                 width: 250.0,
                 height: 250.0,
-              ), // Replace with your logo path
-              // const SizedBox(height: 20.0),
+              ),
               const CircularProgressIndicator(
-                  color: Colors.black
-              ), // Add a loading indicator if needed
+                  color: Color(0xFFFFFFFF)
+              ),
             ],
           ),
         )

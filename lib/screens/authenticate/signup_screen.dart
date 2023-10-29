@@ -123,6 +123,7 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
           title: const Text(
             'Error',
             style: TextStyle(
+              fontFamily: "Inter",
               color: Colors.black, // Set the title text color
               fontWeight: FontWeight.bold, // Make the title bold
               fontSize: 20.0, // Set the title font size
@@ -168,19 +169,30 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                const Color(0xFF55FF5C).withOpacity(0.8),
+                const Color(0xFFBCFF5C)
+              ], // Define your gradient colors
+              begin: Alignment.bottomLeft, // Adjust the start point as needed
+              end: Alignment.bottomRight, // Adjust the end point as needed
+            ),
+          ),
+        ),
         title: Text(
           appBarTitle,
           style: const TextStyle(
-            fontSize: 17.0,
+            fontSize: 18.0,
             fontFamily: "BebasNeue",
-            color: Colors.black54,
+            color: Color(0xFF323232),
           ),
         ),
-        backgroundColor: Colors.cyan,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
-            color: Colors.black54,
+            color: Color(0xFF323232),
           ),
           onPressed: () {
             // Navigate back to the first page when the back button is pressed.
@@ -189,7 +201,7 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
         ),
         actions: <Widget>[
           Image.asset(
-            'assets/images/b.png', // Replace with your app's logo
+            'assets/images/nutrilebblack.png', // Replace with your app's logo
             width: 100.0,
             height: 100.0,
           ),
@@ -199,14 +211,15 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
         child: Container(
           width: double.infinity,
           height: double.infinity,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [Colors.transparent, Colors.black54.withOpacity(0.1)],
-              stops: [0.0, 0.3],
-            ),
-          ),
+          color: const Color(0xFFFFFFFF),
+          // decoration: BoxDecoration(
+          //   gradient: LinearGradient(
+          //     begin: Alignment.topCenter,
+          //     end: Alignment.bottomCenter,
+          //     colors: [Colors.transparent, Colors.black54.withOpacity(0.1)],
+          //     stops: [0.0, 0.3],
+          //   ),
+          // ),
           child: Center(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -215,8 +228,8 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
                   children: <Widget>[
                     LinearProgressIndicator(
                       value: (currentStep + 1) / steps.length,
-                      backgroundColor: Colors.grey,
-                      valueColor: const AlwaysStoppedAnimation<Color>(Colors.black54),
+                      backgroundColor: Colors.grey[300],
+                      valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF323232)),
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     Expanded(
@@ -228,17 +241,27 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
                         if (currentStep > 0)
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.black54, // Background color
+                              backgroundColor: const Color(0xFF323232), // Background color
                             ),
                             onPressed: _previousStep,
-                            child: const Text('Previous'),
+                            child: const Text(
+                              'Previous',
+                              style: TextStyle(
+                                fontFamily: "Inter",
+                              ),
+                            ),
                           ),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.black54, // Background color
+                            backgroundColor: const Color(0xFF323232), // Background color
                           ),
                           onPressed: _nextStep,
-                          child: Text(currentStep == steps.length - 1 ? 'Finish' : 'Next'),
+                          child: Text(
+                            currentStep == steps.length - 1 ? 'Finish' : 'Next',
+                            style: const TextStyle(
+                              fontFamily: "Inter"
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -288,6 +311,7 @@ class _FirstStepState extends State<FirstStep>{
               'Please select your gender to calculate your calorie needs:',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
+                fontFamily: "Inter",
               ),
             ),
             const SizedBox(height: 8.0),
@@ -299,7 +323,11 @@ class _FirstStepState extends State<FirstStep>{
                 return null; // Return null if the value is valid
               },
               decoration: const InputDecoration(
-                labelText: 'Select your sexe',
+                labelText: 'Select your gender',
+                labelStyle: TextStyle(
+                  fontFamily: "Inter",
+                  fontSize: 13
+                ),
                 border: OutlineInputBorder(),
               ),
               value: gender == "" ? null : gender,
@@ -319,14 +347,15 @@ class _FirstStepState extends State<FirstStep>{
             const Text(
               'Please enter your age:',
               style: TextStyle(
+                fontFamily: "Inter",
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 8.0),
             SizedBox(
-              width: 200,
+              width: 150,
               child: TextFormField(
-                validator: (val) => val!.isEmpty || int.tryParse(val)! < 1 || int.tryParse(val)! > 100 ? "Please enter your age between\n1 and 100" : null,
+                validator: (val) => val!.isEmpty || int.tryParse(val)! < 1 || int.tryParse(val)! > 100 ? "Please enter your age\nbetween 1 and 100" : null,
                 initialValue: age == 0 ? null : age.toString(),
                 onChanged: (val) {
                   setState(() {
@@ -341,6 +370,10 @@ class _FirstStepState extends State<FirstStep>{
                 ],
                 decoration: const InputDecoration(
                   labelText: 'Age',
+                  labelStyle: TextStyle(
+                      fontFamily: "Inter",
+                      fontSize: 13
+                  ),
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -349,6 +382,7 @@ class _FirstStepState extends State<FirstStep>{
             const Text(
               'Please select your country:',
               style: TextStyle(
+                fontFamily: "Inter",
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -391,6 +425,7 @@ class _SecondStepState extends State<SecondStep> {
             const Text(
               'Please enter your height in cm:',
               style: TextStyle(
+                fontFamily: "Inter",
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -413,6 +448,10 @@ class _SecondStepState extends State<SecondStep> {
                 ],
                 decoration: const InputDecoration(
                   labelText: 'Height',
+                  labelStyle: TextStyle(
+                      fontFamily: "Inter",
+                      fontSize: 13
+                  ),
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -421,6 +460,7 @@ class _SecondStepState extends State<SecondStep> {
             const Text(
               'Please enter your weight in kg:',
               style: TextStyle(
+                fontFamily: "Inter",
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -443,6 +483,10 @@ class _SecondStepState extends State<SecondStep> {
                 ],
                 decoration: const InputDecoration(
                   labelText: 'Weight',
+                  labelStyle: TextStyle(
+                      fontFamily: "Inter",
+                      fontSize: 13
+                  ),
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -509,6 +553,10 @@ class _ThirdStepState extends State<ThirdStep> {
                 },
                 decoration: const InputDecoration(
                   labelText: 'Email',
+                  labelStyle: TextStyle(
+                      fontFamily: "Inter",
+                      fontSize: 14
+                  ),
                   border: OutlineInputBorder()
                 ),
               ),
@@ -522,6 +570,10 @@ class _ThirdStepState extends State<ThirdStep> {
                 },
                 decoration: const InputDecoration(
                   labelText: 'Password',
+                  labelStyle: TextStyle(
+                      fontFamily: "Inter",
+                      fontSize: 14
+                  ),
                   border: OutlineInputBorder(),
                 ),
                 obscureText: true,
@@ -536,6 +588,10 @@ class _ThirdStepState extends State<ThirdStep> {
                 },
                 decoration: const InputDecoration(
                   labelText: 'Confirm Password',
+                  labelStyle: TextStyle(
+                      fontFamily: "Inter",
+                      fontSize: 14
+                  ),
                   border: OutlineInputBorder(),
                 ),
                 obscureText: true,

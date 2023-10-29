@@ -34,14 +34,12 @@ class LoginSignup extends State<LoginPage> {
     return MaterialApp(
       home: Scaffold(
           body: Container(
-            // decoration: const BoxDecoration(
-            //   gradient: LinearGradient(
-            //     begin: Alignment.topCenter,
-            //     end: Alignment.bottomCenter,
-            //     colors: [Color(0xFFFFDE8D), Color(0xFFFFA427)],
-            //   ),
-            // ),
-            color: Colors.white.withOpacity(0.9),
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/loginbackground.jpg'), // Path to your image
+                fit: BoxFit.cover, // Adjust as needed (cover, contain, etc.)
+              ),
+            ),
             child: Center(
               child: SingleChildScrollView(
                 child: Padding(
@@ -50,17 +48,30 @@ class LoginSignup extends State<LoginPage> {
                     key: _formKey,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Image.asset(
-                          'assets/images/b.png', // Replace with your app's logo
-                          width: 150.0,
-                          height: 150.0,
+                          'assets/images/nutrilebwhite.png', // Replace with your app's logo
+                          width: 200.0,
+                          height: 200.0,
+                          alignment: Alignment.center,
+                          frameBuilder: (BuildContext context, Widget child, int? frame, bool wasSynchronouslyLoaded) {
+                            if (wasSynchronouslyLoaded) {
+                              return child;
+                            }
+                            return AnimatedOpacity(
+                              opacity: frame == null ? 0 : 1,
+                              duration: const Duration(seconds: 1),
+                              curve: Curves.easeOut,
+                              child: child,
+                            );
+                          },
                         ),
                         const Text(
                           'Elevate Your Fitness Journey',
                           style: TextStyle(
                             fontFamily: "ComingSoon",
-                            color: Colors.black,
+                            color: Color(0xFFFFFFFF),
                           ),
                         ),
                         const SizedBox(height: 20.0),
@@ -77,8 +88,13 @@ class LoginSignup extends State<LoginPage> {
                               email = val;
                             });
                           },
+                          style: const TextStyle(color: Color(0xFFFFFFFF)),
                           decoration: const InputDecoration(
                             labelText: 'Email',
+                            labelStyle: TextStyle(
+                              fontFamily: "Inter",
+                              color: Color(0xFFFFFFFF)
+                            ),
                             border: OutlineInputBorder(),
                           ),
                         ),
@@ -90,8 +106,13 @@ class LoginSignup extends State<LoginPage> {
                               password = val;
                             });
                           },
+                          style: const TextStyle(color: Color(0xFFFFFFFF)),
                           decoration: const InputDecoration(
                             labelText: 'Password',
+                            labelStyle: TextStyle(
+                              fontFamily: "Inter",
+                              color: Color(0xFFFFFFFF)
+                            ),
                             border: OutlineInputBorder(),
                           ),
                           obscureText: true,
@@ -99,7 +120,33 @@ class LoginSignup extends State<LoginPage> {
                         const SizedBox(height: 20.0),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.black // Background color
+                            padding: const EdgeInsets.all(0),
+                            minimumSize: const Size(0, 50), // Set the minimum height you want
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50),
+                            ), // Set the background color to null to remove it
+                          ),
+                          child: Ink(
+                            height: 50,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              gradient: LinearGradient(
+                                colors: [const Color(0xFF55FF5C).withOpacity(0.8), const Color(0xFFBCFF5C)], // Gradient colors
+                                begin: Alignment.bottomLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                            ),
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: const Text(
+                                'Login',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: "Inter",
+                                  fontWeight: FontWeight.bold
+                                ),
+                              ),
+                            ),
                           ),
                           onPressed: () async {
                             error = "";
@@ -115,7 +162,6 @@ class LoginSignup extends State<LoginPage> {
                               }
                             }
                           },
-                          child: const Text('Log In'),
                         ),
                         const SizedBox(height: 8.0,),
                         Text(
@@ -141,7 +187,8 @@ class LoginSignup extends State<LoginPage> {
                           child: const Text(
                             'Don\'t have an account? Sign Up',
                             style: TextStyle(
-                              color: Colors.black,
+                              fontFamily: "Inter",
+                              color: Color(0xFFFFFFFF),
                             ),
                           ),
                         ),
