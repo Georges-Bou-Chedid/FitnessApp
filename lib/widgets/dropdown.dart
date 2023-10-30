@@ -31,39 +31,44 @@ class _CustomDropdownState extends State<CustomDropdown> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        GestureDetector(
-          onTap: toggleDropdown,
-          child: Container(
-            padding: const EdgeInsets.all(12.0),
-            decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [Colors.cyan, Colors.white],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
+        Center(
+          child: GestureDetector(
+            onTap: toggleDropdown,
+            child: Container(
+              width: 150,
+              height: 40,
+              padding: const EdgeInsets.all(12.0),
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                // borderRadius: BorderRadius.circular(30.0),
               ),
-              borderRadius: BorderRadius.circular(4.0),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  selectedValue,
-                  style: const TextStyle(
-                    color: Colors.black
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    selectedValue,
+                    style: const TextStyle(
+                      color: Color(0xFF323232),
+                      fontSize: 13,
+                      fontFamily: "Inter"
+                    ),
                   ),
-                ),
-                Icon(
-                  isDropdownOpen ? Icons.arrow_drop_up : Icons.arrow_drop_down,
-                  color: Colors.black
-                ),
-              ],
+                  Icon(
+                    isDropdownOpen ? Icons.arrow_drop_up : Icons.arrow_drop_down,
+                    color: const Color(0xFF323232),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
+        // const SizedBox(height: 2),
         if (isDropdownOpen)
           Container(
+            width: 150,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4.0),
+              color: Colors.grey[300],
+              // borderRadius: BorderRadius.circular(30.0),
             ),
             child: Column(
               children: widget.items.map((item) {
@@ -77,8 +82,10 @@ class _CustomDropdownState extends State<CustomDropdown> {
                       item,
                       style: TextStyle(
                         color: selectedValue == item
-                            ? Colors.cyan // Highlight the selected item
-                            : Colors.black,
+                            ? const Color(0xFF5AC8FA) // Highlight the selected item
+                            : const Color(0xFF323232),
+                        fontSize: 13,
+                        fontFamily: "Inter"
                       ),
                     ),
                   ),

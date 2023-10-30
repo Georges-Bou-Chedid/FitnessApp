@@ -170,11 +170,11 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                const Color(0xFF55FF5C).withOpacity(0.8),
-                const Color(0xFFBCFF5C)
+                Color(0xFF3FCC7C),
+                Color(0xFFBCFF5C)
               ], // Define your gradient colors
               begin: Alignment.bottomLeft, // Adjust the start point as needed
               end: Alignment.bottomRight, // Adjust the end point as needed

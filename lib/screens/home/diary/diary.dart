@@ -13,25 +13,26 @@ class Diary extends StatelessWidget {
     return const DefaultTabController(
         length: 3,
         child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(100),
-          child: MyAppBar(selectedTabs: [
-            Tab(text: 'Diary'),
-            Tab(text: 'Nutrients'),
-            Tab(text: 'Summary')
-          ])
-        ),
-        drawer:  SizedBox(
-            width: 250,
-            child: NavDrawer()
-        ),
-        body: TabBarView(
-          children: [
-            DiaryPage(),
-            NutrientPage(),
-            SummaryPage()
-          ],
-        ),
+          backgroundColor: Color(0xFF323232),
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(100),
+            child: MyAppBar(selectedTabs: [
+              Tab(text: 'Diary'),
+              Tab(text: 'Nutrients'),
+              Tab(text: 'Summary')
+            ])
+          ),
+          drawer:  SizedBox(
+              width: 250,
+              child: NavDrawer()
+          ),
+          body: TabBarView(
+            children: [
+              DiaryPage(),
+              NutrientPage(),
+              SummaryPage()
+            ],
+          ),
         ),
     );
   }

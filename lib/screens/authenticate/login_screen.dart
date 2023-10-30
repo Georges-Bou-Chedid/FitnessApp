@@ -130,8 +130,8 @@ class LoginSignup extends State<LoginPage> {
                             height: 50,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
-                              gradient: LinearGradient(
-                                colors: [const Color(0xFF55FF5C).withOpacity(0.8), const Color(0xFFBCFF5C)], // Gradient colors
+                              gradient: const LinearGradient(
+                                colors: [Color(0xFF3FCC7C), Color(0xFFBCFF5C)], // Gradient colors
                                 begin: Alignment.bottomLeft,
                                 end: Alignment.bottomRight,
                               ),

@@ -29,9 +29,22 @@ class MyAppBarPage extends State<MyAppBar> {
       return null;
     }
     return TabBar(
-        tabs: widget.selectedTabs,
-        labelColor: Colors.white,
-        unselectedLabelColor: Colors.black
+        tabs: widget.selectedTabs.map((tab) {
+          return Tab(
+            child: Text(
+              tab.text!,
+              style: const TextStyle(
+                fontFamily: 'BebasNeue',
+                fontSize: 16
+              ),
+            ),
+          );
+        }).toList(),
+        labelColor: Colors.grey[300],
+        unselectedLabelColor: const Color(0xFF323232),
+      indicator: UnderlineTabIndicator(
+        borderSide: BorderSide(width: 3, color: Colors.grey[300]!), // Set the line width and color
+      ),
     );
   }
 
@@ -41,11 +54,11 @@ class MyAppBarPage extends State<MyAppBar> {
         borderRadius: const BorderRadius.vertical(bottom: Radius.circular(40)),
         child: AppBar(
           flexibleSpace: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  const Color(0xFF55FF5C).withOpacity(0.8),
-                  const Color(0xFFBCFF5C),
+                  Color(0xFF3FCC7C),
+                  Color(0xFFBCFF5C),
                 ],
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,

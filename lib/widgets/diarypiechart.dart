@@ -14,14 +14,16 @@ class CaloriePieChart extends StatelessWidget {
         PieChartData(
           sections: [
             PieChartSectionData(
-              color: Colors.cyan,
+              color: const Color(0xFF3FCC7C),
               value: consumedCalories,
-              title: "${consumedCalories.toStringAsFixed(0)}",
+              titleStyle: TextStyle(color: Colors.grey[300], fontFamily: "Inter"),
+              title: consumedCalories.toStringAsFixed(0),
             ),
             PieChartSectionData(
-              color: Colors.grey[400],
+              color: Colors.grey[300],
               value: (totalCalories - consumedCalories),
-              title: "${(totalCalories - consumedCalories).toStringAsFixed(0)}",
+              titleStyle: const TextStyle(color: Color(0xFF323232), fontFamily: "Inter"),
+              title: (totalCalories - consumedCalories).toStringAsFixed(0),
             ),
           ],
         ),

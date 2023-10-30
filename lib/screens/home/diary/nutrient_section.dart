@@ -10,7 +10,7 @@ class NutrientPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white.withOpacity(0.9),
+      color: const Color(0xFF323232),
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -24,17 +24,11 @@ class NutrientPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                const Divider(
-                  color: Colors.grey, // Set the color of the line
-                  height: 20, // Set the height (thickness) of the line
-                  thickness: 2, // Set the thickness of the line
-                ),
-                const SizedBox(height: 5),
                 CustomDropdown(
                   items: const ['All', 'Breakfast', 'Lunch', 'Dinner'],
                 ),
                 const SizedBox(height: 5),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.all(10.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -43,7 +37,8 @@ class NutrientPage extends StatelessWidget {
                         "Total",
                         style: TextStyle(
                             fontSize: 14.0,
-                            color: Colors.black,
+                            color: Colors.grey[300],
+                            fontFamily: "Inter",
                             fontWeight: FontWeight.bold
                         ),
                       )
@@ -95,8 +90,20 @@ class PercentageProgressBar extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text(label),
-                Text("${gained.toStringAsFixed(0)}/${goal.toStringAsFixed(0)}g")
+                Text(
+                  label,
+                  style: TextStyle(
+                      color: Colors.grey[300],
+                      fontFamily: "Inter",
+                  ),
+                ),
+                Text(
+                  "${gained.toStringAsFixed(0)}/${goal.toStringAsFixed(0)}g",
+                  style: TextStyle(
+                    color: Colors.grey[300],
+                    fontFamily: "Inter",
+                  ),
+                )
               ],
             ),
         ),
@@ -105,7 +112,7 @@ class PercentageProgressBar extends StatelessWidget {
           lineHeight: 15,
           percent: percent / 100,
           center: Text('$percent%'),
-          progressColor: Colors.cyan,
+          progressColor: const Color(0xFF5AC8FA),
         ),
         const SizedBox(height: 10),
       ],

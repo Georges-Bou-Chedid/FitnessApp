@@ -41,10 +41,11 @@ class _DiaryPageState extends State<DiaryPage> with AutomaticKeepAliveClientMixi
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     bool isHovered = false;
 
     return Container(
-      color: Colors.white.withOpacity(0.9),
+      color: const Color(0xFF323232),
       child: SingleChildScrollView(
         child: Form(
           key: _formKey,
@@ -59,19 +60,15 @@ class _DiaryPageState extends State<DiaryPage> with AutomaticKeepAliveClientMixi
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      const Divider(
-                        color: Colors.grey, // Set the color of the line
-                        height: 20, // Set the height (thickness) of the line
-                        thickness: 2, // Set the thickness of the line
-                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          const Text(
+                          Text(
                             "Calories Remaining",
                             style: TextStyle(
-                                fontSize: 16.0,
-                                color: Colors.black,
+                                fontSize: 14.0,
+                                fontFamily: "Inter",
+                                color: Colors.grey[300],
                                 fontWeight: FontWeight.bold
                             ),
                           ),
@@ -89,8 +86,9 @@ class _DiaryPageState extends State<DiaryPage> with AutomaticKeepAliveClientMixi
                             child: Tooltip(
                               message: 'Info',
                               child: IconButton(
-                                icon: const Icon(
+                                icon: Icon(
                                   Icons.info,
+                                  color: Colors.grey[300],
                                 ),
                                 onPressed: () {
                                   updateChart(2500, 2200);
@@ -101,8 +99,8 @@ class _DiaryPageState extends State<DiaryPage> with AutomaticKeepAliveClientMixi
 
                         ],
                       ),
-                      const Divider(
-                        color: Colors.grey, // Set the color of the line
+                      Divider(
+                        color: Colors.grey[300], // Set the color of the line
                         height: 20, // Set the height (thickness) of the line
                         thickness: 2, // Set the thickness of the line
                       ),
@@ -117,23 +115,15 @@ class _DiaryPageState extends State<DiaryPage> with AutomaticKeepAliveClientMixi
                         Container(
                           width: 10,
                           height: 10,
-                          color: Colors.cyan,
+                          color: const Color(0xFF3FCC7C),
                         ),
                         const SizedBox(width: 8),
-                        const Text(
+                        Text(
                           'Consumed',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                        const SizedBox(width: 12),
-                        Container(
-                          width: 10,
-                          height: 10,
-                          color: Colors.grey[400],
-                        ),
-                        const SizedBox(width: 8),
-                        const Text(
-                          'Remaining',
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(
+                            color: Colors.grey[300],
+                            fontFamily: "Inter",
+                          ),
                         ),
                       ],
                     ),
@@ -149,11 +139,19 @@ class _DiaryPageState extends State<DiaryPage> with AutomaticKeepAliveClientMixi
                         children: [
                           TextSpan(
                             text: "${totalCalories.toStringAsFixed(0)}\n",
-                            style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                color: Colors.grey[300],
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold
+                            ),
                           ),
                           const TextSpan(
                             text: 'Goal', // Replace with your variable
-                            style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 12, fontWeight:
+                              FontWeight.bold
+                            ),
                           ),
                         ],
                       ),
@@ -204,13 +202,13 @@ Widget _buildMealSection(String title, List<Food> entries, Function() showAddEnt
     child: Card(
       elevation: 4, // Add elevation for a shadow effect
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.0), // Adjust the radius as needed
-        side: const BorderSide(
-          color: Colors.grey, // Border color
+        borderRadius: BorderRadius.circular(15.0), // Adjust the radius as needed
+        side: BorderSide(
+          color: Colors.grey[300]!, // Border color
           width: 2.0, // Border width
         ),
       ),
-      color: Colors.white.withOpacity(0.9),
+      color: Colors.grey[300],
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -222,16 +220,17 @@ Widget _buildMealSection(String title, List<Food> entries, Function() showAddEnt
                 Text(
                   title,
                   style: const TextStyle(
-                    fontSize: 18,
+                    fontSize: 15,
                     fontWeight: FontWeight.bold,
+                    fontFamily: "Inter"
                   ),
                 ),
                 const Text(
                   '0', // Replace with your number
                   style: TextStyle(
-                    fontSize: 18, // Adjust the font size
-                    fontWeight: FontWeight.bold, // Adjust the font weight
-                    color: Colors.black, // Adjust the text color
+                    fontSize: 15, // Adjust the font size
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Inter"
                   ),
                 )
               ],
@@ -246,7 +245,12 @@ Widget _buildMealSection(String title, List<Food> entries, Function() showAddEnt
             const SizedBox(height: 8.0),
             if (entries.isEmpty)
               const Center(
-                child: Text('No food entries yet.'),
+                child: Text(
+                  'No food entries yet.',
+                  style: TextStyle(
+                    fontFamily: "Inter"
+                  ),
+                ),
               )
             else
               ListView.builder(
@@ -261,20 +265,28 @@ Widget _buildMealSection(String title, List<Food> entries, Function() showAddEnt
                 },
               ),
             const SizedBox(height: 8.0),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey[400] // Background color
-              ),
-              onPressed: () {
-                showAddEntryDialog();
-              },
-              child: const Text(
-                'Add Food',
-                style: TextStyle(
-                  color: Colors.black,
+            Center(
+              child: SizedBox(
+                width: 150, // Adjust the width as needed
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: const Color(0xFF3FCC7C),
+                    minimumSize: const Size(150, 36), // Set the minimum button size
+                  ),
+                  onPressed: () {
+                    showAddEntryDialog();
+                  },
+                  child: Text(
+                    'Add',
+                    style: TextStyle(
+                      color: Colors.grey[300],
+                      fontWeight: FontWeight.w600,
+                      fontFamily: "Inter",
+                    ),
+                  ),
                 ),
               ),
-            ),
+            )
           ],
         ),
       ),
