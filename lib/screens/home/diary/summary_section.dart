@@ -1,34 +1,32 @@
+import 'package:fitnessapp/widgets/summarypiechart.dart';
 import 'package:flutter/material.dart';
-import '../../../widgets/datepicker.dart';
-import '../../../widgets/summarypiechart.dart';
 
 class SummaryPage extends StatefulWidget {
   const SummaryPage({super.key});
 
   @override
-  SummaryPageState createState() =>
-      SummaryPageState();
+  SummaryPageState createState() => SummaryPageState();
 }
 
 class SummaryPageState extends State<SummaryPage> {
   List<Item> items = [
-    Item('Calories', 'This is a description for Calories.'),
-    Item('Protein', 'This is a description for Protein.'),
-    Item('Carbohydrate', 'This is a description for Carbohydrate.'),
-    Item('Fiber', 'This is a description for Fiber.'),
-    Item('Sugar', 'This is a description for Sugar.'),
-    Item('Fat', 'This is a description for Fat.'),
-    Item('Saturated Fat', 'This is a description for Saturated Fat.'),
-    Item('Polyunsaturated Fat', 'This is a description for Polyunsaturated Fat.'),
-    Item('Monounsaturated Fat', 'This is a description for Monounsaturated Fat.'),
-    Item('Trans Fat', 'This is a description for Trans Fat.'),
-    Item('Cholesterol', 'This is a description for Cholesterol.'),
-    Item('Sodium', 'This is a description for Sodium.'),
-    Item('Potassium', 'This is a description for Potassium.'),
-    Item('Vitamin A', 'This is a description for Vitamin A.'),
-    Item('Vitamin C', 'This is a description for Vitamin C.'),
-    Item('Calcium', 'This is a description for Calcium.'),
-    Item('Iron', 'This is a description for Iron.')
+    Item('Calories', 'Calories are a measure of the energy that food and drinks provide when consumed. They play a crucial role in fueling our body`s functions and physical activities. Balancing calorie intake with expenditure is essential for managing body weight and overall health.', Image.asset('assets/images/svg/calories.png', width: 30, height: 30)),
+    Item('Protein', 'Protein is a crucial macronutrient essential for cell growth and repair. It supports muscle development, boosts the immune system, and aids in enzyme production. You can find protein in foods like meat, dairy, legumes, and nuts for a balanced diet.', Image.asset('assets/images/svg/protein.png', width: 30, height: 30)),
+    Item('Carbohydrate', 'Carbohydrates, known as carbs, are essential nutrients providing the bod`s primary energy source. They exist in various forms, including sugars, starches, and fiber. Optimal carbohydrate intake from whole foods supports energy, blood sugar balance, and overall health.', Image.asset('assets/images/svg/carbohydrate.png', width: 30, height: 30)),
+    Item('Fiber', 'Fiber, a plant-based carbohydrate, is essential for digestive health. It helps maintain regular bowel movements and supports overall well-being. Consuming an adequate amount of fiber-rich foods is key to a balanced diet.', Image.asset('assets/images/svg/fiber.png', width: 30, height: 30)),
+    Item('Sugar', 'Sugar, a simple carbohydrate, provides a quick source of energy but should be consumed in moderation. Excessive sugar intake can lead to health issues, such as weight gain and dental problems. A balanced diet includes naturally occurring sugars found in fruits, and it`s advisable to limit added sugars from processed foods and sugary beverages.', Image.asset('assets/images/svg/sugar.png', width: 30, height: 30)),
+    Item('Fat', 'Fat is an essential nutrient vital for various bodily functions. It`s found in different foods, including both healthy sources like avocados and nuts, and less healthy sources like fried foods. Balancing fat intake is crucial, as excessive consumption can lead to weight gain and health problems. Incorporating unsaturated fats, such as those found in olive oil and fatty fish, is a healthier choice for overall well-being.', Image.asset('assets/images/svg/fat.png', width: 30, height: 30)),
+    Item('Saturated Fat', 'Saturated fat is commonly found in animal products and some plant-based oils. Consuming it in moderation is essential for overall health, while excessive intake may increase the risk of heart disease. Opt for lean meats and unsaturated fats for a balanced diet.', Image.asset('assets/images/svg/saturatedfat.png', width: 30, height: 30)),
+    Item('Polyunsaturated Fat', 'Polyunsaturated fats, found in foods like fatty fish, nuts, and seeds, are essential for a healthy diet. These fats, divided into omega-3 and omega-6 categories, promote heart health by reducing bad cholesterol levels. Additionally, omega-3 polyunsaturated fats support brain function and may help lower the risk of neurological disorders.', Image.asset('assets/images/svg/polyunsaturatedfat.png', width: 30, height: 30)),
+    Item('Monounsaturated Fat', 'Monounsaturated fats, abundant in olive oil, avocados, and nuts, are a heart-healthy choice. These fats can help lower bad cholesterol levels and reduce the risk of heart disease. They also provide essential nutrients and support overall well-being.', Image.asset('assets/images/svg/monounsaturatedfat.png', width: 30, height: 30)),
+    Item('Trans Fat', 'Trans fats, often found in processed and fried foods, are harmful to health. These artificial fats can raise bad cholesterol levels and increase the risk of heart disease. Avoiding trans fats is crucial for maintaining a healthy diet and reducing the likelihood of cardiovascular issues.', Image.asset('assets/images/svg/transfat.png', width: 30, height: 30)),
+    Item('Cholesterol', 'Cholesterol is a waxy, fat-like substance that your body needs for various functions. However, too much "bad" cholesterol, or low-density lipoprotein (LDL), can increase the risk of heart disease. It`s essential to manage your cholesterol levels through a balanced diet and a healthy lifestyle to support overall heart health.', Image.asset('assets/images/svg/cholesterol.png', width: 30, height: 30)),
+    Item('Sodium', 'Sodium is an essential mineral that helps regulate bodily functions. However, excessive sodium intake, often found in processed foods, can contribute to high blood pressure and related health issues. Maintaining a balanced diet with limited sodium can support overall heart and kidney health.', Image.asset('assets/images/svg/sodium.png', width: 30, height: 30)),
+    Item('Potassium', 'Potassium is a crucial mineral that aids in muscle function and heart health. It helps maintain proper blood pressure and fluid balance in the body. Including potassium-rich foods, like bananas and sweet potatoes, in your diet can promote overall well-being and lower the risk of certain health concerns.', Image.asset('assets/images/svg/potassium.png', width: 30, height: 30)),
+    Item('Vitamin A', 'Vitamin A is an essential nutrient that supports healthy vision, immune function, and skin health. It`s found in foods like carrots, spinach, and sweet potatoes. Ensuring an adequate intake of vitamin A can help protect your eyes, boost your immune system, and promote radiant skin.', Image.asset('assets/images/svg/vitamin.png', width: 30, height: 30)),
+    Item('Vitamin C', 'Vitamin C, also known as ascorbic acid, is a powerful antioxidant that helps boost your immune system, supports skin health, and aids in wound healing. It`s abundant in citrus fruits like oranges and strawberries. Ensuring an adequate intake of vitamin C can keep you feeling your best and promote a healthy, glowing complexion.', Image.asset('assets/images/svg/vitamin.png', width: 30, height: 30)),
+    Item('Calcium', 'Calcium is an essential mineral vital for strong bones and teeth. It plays a crucial role in muscle function, blood clotting, and nerve transmission. Dairy products like milk and cheese are rich sources of calcium. A balanced intake helps maintain bone density and overall health.', Image.asset('assets/images/svg/calcium.png', width: 30, height: 30)),
+    Item('Iron', 'Iron is a vital mineral that plays a key role in transporting oxygen through the bloodstream, promoting energy production, and supporting overall well-being. It`s found in foods like red meat, spinach, and beans. Adequate iron intake helps prevent anemia and keeps you feeling energized.', Image.asset('assets/images/svg/iron.png', width: 30, height: 30))
   ];
 
   int selectedIndex = -1; // No dropdown expanded by default
@@ -36,74 +34,97 @@ class SummaryPageState extends State<SummaryPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white.withOpacity(0.9),
+      color: const Color(0xFF323232),
       child: SingleChildScrollView(
         child: Column(
           children: [
             const SizedBox(
               height: 10.0,
             ),
-            const DatePicker(),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                const Divider(
-                  color: Colors.grey, // Set the color of the line
-                  height: 20, // Set the height (thickness) of the line
-                  thickness: 2, // Set the thickness of the line
-                ),
-                const SizedBox(
-                  height: 5.0,
-                ),
-              Column(
-                children: items.asMap().entries.map((entry) {
-                  final index = entry.key;
-                  final item = entry.value;
+                Column(
+                  children: items.asMap().entries.map((entry) {
+                    final index = entry.key;
+                    final item = entry.value;
 
-                  return Column(
-                    children: [
-                      Container(
-                        width: double.infinity, // Full width
-                        height: 50, // Set the desired height
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50), // Make it circular
-                          border: Border.all(color: Colors.blue, width: 2),
-                          gradient: const LinearGradient(
-                            colors: [Colors.green, Colors.white], // Grey and white gradient
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
+                    return Column(
+                      children: [
+                        Container(
+                          width: double.infinity, // Full width
+                          height: 60, // Set the desired height
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100), // Make it circular
+                            border: Border.all(color: Color(0xFF3FCC7C), width: 2),
+                            color: Colors.grey[300]!,
                           ),
+                          child: ListTile(
+                            title: Text(
+                              item.title,
+                              style: const TextStyle(
+                                fontFamily: "Inter",
+                                fontWeight: FontWeight.w500
+                              ),
+                            ),
+                            trailing: item.image,
+                            onTap: () {
+                              setState(() {
+                                if (selectedIndex == index) {
+                                  selectedIndex = -1; // Close the selected dropdown
+                                } else {
+                                  selectedIndex = index; // Expand the selected dropdown
+                                }
+                              });
+                            },
+                          )
                         ),
-                        child: ListTile(
-                          title: Text(item.title),
-                          onTap: () {
-                            setState(() {
-                              if (selectedIndex == index) {
-                                selectedIndex = -1; // Close the selected dropdown
-                              } else {
-                                selectedIndex = index; // Expand the selected dropdown
-                              }
-                            });
-                          },
-                        )
-                      ),
-                      if (selectedIndex == index)
-                        Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Text(item.description),
-                        ),
-                      const SizedBox(height: 10),
-                    ],
-                  );
-                }).toList(),
-              ),
-              ],
-            )
-            )
-          ],
-        ),
+                        if (selectedIndex == index)
+                          Container(
+                            padding: const EdgeInsets.all(16.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              border: Border.all(color: Color(0xFF3FCC7C), width: 2),
+                              color: Colors.grey[300], // Set the background color to grey
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  item.description, // Set the text color to white
+                                ),
+                                Align(
+                                  alignment: Alignment.bottomRight,
+                                  child: TextButton(
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return const SummaryPieChart();
+                                        },
+                                      );
+                                    },
+                                    style: TextButton.styleFrom(
+                                      primary: Colors.blue, // Set the button text color to blue
+                                    ),
+                                    child: const Text("View Chart"),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        const SizedBox(height: 10),
+                      ],
+                    );
+                  }).toList(),
+                ),
+                ],
+              )
+              )
+            ],
+          ),
       ),
     );
   }
@@ -112,728 +133,8 @@ class SummaryPageState extends State<SummaryPage> {
 class Item {
   final String title;
   final String description;
+  final Image image;
 
-  Item(this.title, this.description);
+  Item(this.title, this.description, this.image);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: <Widget>[
-                //     Row(
-                //       children: <Widget>[
-                //         Container(
-                //           width: 10,
-                //           height: 10,
-                //           color: Colors.yellow[800],
-                //         ),
-                //         const SizedBox(width: 8), // Add some spacing between the square and label
-                //         const Text(
-                //           'Breakfast',
-                //           style: TextStyle(color: Colors.black),
-                //         ),
-                //       ],
-                //     ),
-                //     Row(
-                //       children: <Widget>[
-                //         Container(
-                //           width: 10,
-                //           height: 10,
-                //           color: Colors.blue[900],
-                //         ),
-                //         const SizedBox(width: 8),
-                //         const Text(
-                //           'Lunch',
-                //           style: TextStyle(color: Colors.black),
-                //         ),
-                //       ],
-                //     ),
-                //     Row(
-                //       children: <Widget>[
-                //         Container(
-                //           width: 10,
-                //           height: 10,
-                //           color: Colors.red[800],
-                //         ),
-                //         const SizedBox(width: 8),
-                //         const Text(
-                //           'Dinner',
-                //           style: TextStyle(color: Colors.black),
-                //         ),
-                //       ],
-                //     ),
-                //     Row(
-                //       children: <Widget>[
-                //         Container(
-                //           width: 10,
-                //           height: 10,
-                //           color: Colors.brown[600],
-                //         ),
-                //         const SizedBox(width: 8),
-                //         const Text(
-                //           'Snacks',
-                //           style: TextStyle(color: Colors.black),
-                //         ),
-                //       ],
-                //     ),
-                //   ],
-                // ),
-                // const SizedBox(
-                //   height: 15.0,
-                // ),
-                // Row(
-                //     mainAxisAlignment: MainAxisAlignment.center,
-                //     children: <Widget>[
-                //       Container(
-                //         width: 10,
-                //         height: 10,
-                //         decoration: const BoxDecoration(
-                //           shape: BoxShape.circle, // Makes the container circular
-                //           color: Colors.black, // Set the color to black
-                //         ),
-                //       ),
-                //       const SizedBox(width: 8),
-                //       const Text(
-                //         'Total (Breakfast + Lunch + Dinner + Snacks) / Goal',
-                //         style: TextStyle(color: Colors.black),
-                //       ),
-                //     ]
-                // ),
-                // const SizedBox(
-                //   height: 30.0,
-                // ),
-                //
-                //
-                //
-                //
-                //
-                // const Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Text(
-                //       'Calories'
-                //     ),
-                //     Text(
-                //       'Protein'
-                //     ),
-                //   ],
-                // ),
-                // const SizedBox(
-                //   height: 10.0,
-                // ),
-                //  const Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Expanded(
-                //       child: AspectRatio(
-                //         aspectRatio: 1.1, // Adjust the aspect ratio as needed
-                //         child: Stack(
-                //           alignment: Alignment.center,
-                //           children: [
-                //             Text(
-                //               '117/2500',
-                //               style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
-                //             ),
-                //             SummaryPieChart()
-                //           ],
-                //         ),
-                //       ),
-                //     ),
-                //     Expanded(
-                //       child: AspectRatio(
-                //         aspectRatio: 1.1, // Adjust the aspect ratio as needed
-                //         child: Stack(
-                //           alignment: Alignment.center,
-                //           children: [
-                //             Text(
-                //               '117/150g',
-                //               style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
-                //             ),
-                //             SummaryPieChart()
-                //           ],
-                //         ),
-                //       ),
-                //     ),
-                //   ],
-                // ),
-                //
-                //
-                //
-                //
-                //
-                //
-                // const SizedBox(
-                //   height: 10.0,
-                // ),
-                // const Divider(
-                //   color: Colors.grey, // Set the color of the line
-                //   height: 20, // Set the height (thickness) of the line
-                //   thickness: 2, // Set the thickness of the line
-                // ),
-                // const SizedBox(
-                //   height: 10.0,
-                // ),
-                // const Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Text(
-                //         'Carbohydrates'
-                //     ),
-                //     Text(
-                //         'Fiber'
-                //     ),
-                //   ],
-                // ),
-                // const SizedBox(
-                //   height: 10.0,
-                // ),
-                // const Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Expanded(
-                //       child: AspectRatio(
-                //         aspectRatio: 1.1, // Adjust the aspect ratio as needed
-                //         child: Stack(
-                //           alignment: Alignment.center,
-                //           children: [
-                //             Text(
-                //               '117/150g',
-                //               style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
-                //             ),
-                //             SummaryPieChart()
-                //           ],
-                //         ),
-                //       ),
-                //     ),
-                //     Expanded(
-                //       child: AspectRatio(
-                //         aspectRatio: 1.1, // Adjust the aspect ratio as needed
-                //         child: Stack(
-                //           alignment: Alignment.center,
-                //           children: [
-                //             Text(
-                //               '117/150g',
-                //               style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
-                //             ),
-                //             SummaryPieChart()
-                //           ],
-                //         ),
-                //       ),
-                //     ),
-                //   ],
-                // ),
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                // const SizedBox(
-                //   height: 10.0,
-                // ),
-                // const Divider(
-                //   color: Colors.grey, // Set the color of the line
-                //   height: 20, // Set the height (thickness) of the line
-                //   thickness: 2, // Set the thickness of the line
-                // ),
-                // const SizedBox(
-                //   height: 10.0,
-                // ),
-                // const Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Text(
-                //         'Sugar'
-                //     ),
-                //     Text(
-                //         'Fat'
-                //     ),
-                //   ],
-                // ),
-                // const SizedBox(
-                //   height: 10.0,
-                // ),
-                // const Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Expanded(
-                //       child: AspectRatio(
-                //         aspectRatio: 1.1, // Adjust the aspect ratio as needed
-                //         child: Stack(
-                //           alignment: Alignment.center,
-                //           children: [
-                //             Text(
-                //               '117/150g',
-                //               style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
-                //             ),
-                //             SummaryPieChart()
-                //           ],
-                //         ),
-                //       ),
-                //     ),
-                //     Expanded(
-                //       child: AspectRatio(
-                //         aspectRatio: 1.1, // Adjust the aspect ratio as needed
-                //         child: Stack(
-                //           alignment: Alignment.center,
-                //           children: [
-                //             Text(
-                //               '117/150g',
-                //               style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
-                //             ),
-                //             SummaryPieChart()
-                //           ],
-                //         ),
-                //       ),
-                //     ),
-                //   ],
-                // ),
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                // const SizedBox(
-                //   height: 10.0,
-                // ),
-                // const Divider(
-                //   color: Colors.grey, // Set the color of the line
-                //   height: 20, // Set the height (thickness) of the line
-                //   thickness: 2, // Set the thickness of the line
-                // ),
-                // const SizedBox(
-                //   height: 10.0,
-                // ),
-                // const Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Text(
-                //         'Saturated Fat'
-                //     ),
-                //     Text(
-                //         'Polyunsaturated Fat'
-                //     ),
-                //   ],
-                // ),
-                // const SizedBox(
-                //   height: 10.0,
-                // ),
-                // const Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Expanded(
-                //       child: AspectRatio(
-                //         aspectRatio: 1.1, // Adjust the aspect ratio as needed
-                //         child: Stack(
-                //           alignment: Alignment.center,
-                //           children: [
-                //             Text(
-                //               '117/150g',
-                //               style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
-                //             ),
-                //             SummaryPieChart()
-                //           ],
-                //         ),
-                //       ),
-                //     ),
-                //     Expanded(
-                //       child: AspectRatio(
-                //         aspectRatio: 1.1, // Adjust the aspect ratio as needed
-                //         child: Stack(
-                //           alignment: Alignment.center,
-                //           children: [
-                //             Text(
-                //               '117/150g',
-                //               style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
-                //             ),
-                //             SummaryPieChart()
-                //           ],
-                //         ),
-                //       ),
-                //     ),
-                //   ],
-                // ),
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                // const SizedBox(
-                //   height: 10.0,
-                // ),
-                // const Divider(
-                //   color: Colors.grey, // Set the color of the line
-                //   height: 20, // Set the height (thickness) of the line
-                //   thickness: 2, // Set the thickness of the line
-                // ),
-                // const SizedBox(
-                //   height: 10.0,
-                // ),
-                // const Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Text(
-                //         'Monounsaturated Fat'
-                //     ),
-                //     Text(
-                //         'Trans Fat'
-                //     ),
-                //   ],
-                // ),
-                // const SizedBox(
-                //   height: 10.0,
-                // ),
-                // const Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Expanded(
-                //       child: AspectRatio(
-                //         aspectRatio: 1.1, // Adjust the aspect ratio as needed
-                //         child: Stack(
-                //           alignment: Alignment.center,
-                //           children: [
-                //             Text(
-                //               '117/150g',
-                //               style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
-                //             ),
-                //             SummaryPieChart()
-                //           ],
-                //         ),
-                //       ),
-                //     ),
-                //     Expanded(
-                //       child: AspectRatio(
-                //         aspectRatio: 1.1, // Adjust the aspect ratio as needed
-                //         child: Stack(
-                //           alignment: Alignment.center,
-                //           children: [
-                //             Text(
-                //               '117/150g',
-                //               style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
-                //             ),
-                //             SummaryPieChart()
-                //           ],
-                //         ),
-                //       ),
-                //     ),
-                //   ],
-                // ),
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                // const SizedBox(
-                //   height: 10.0,
-                // ),
-                // const Divider(
-                //   color: Colors.grey, // Set the color of the line
-                //   height: 20, // Set the height (thickness) of the line
-                //   thickness: 2, // Set the thickness of the line
-                // ),
-                // const SizedBox(
-                //   height: 10.0,
-                // ),
-                // const Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Text(
-                //         'Cholesterol'
-                //     ),
-                //     Text(
-                //         'Sodium'
-                //     ),
-                //   ],
-                // ),
-                // const SizedBox(
-                //   height: 10.0,
-                // ),
-                // const Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Expanded(
-                //       child: AspectRatio(
-                //         aspectRatio: 1.1, // Adjust the aspect ratio as needed
-                //         child: Stack(
-                //           alignment: Alignment.center,
-                //           children: [
-                //             Text(
-                //               '117/150g',
-                //               style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
-                //             ),
-                //             SummaryPieChart()
-                //           ],
-                //         ),
-                //       ),
-                //     ),
-                //     Expanded(
-                //       child: AspectRatio(
-                //         aspectRatio: 1.1, // Adjust the aspect ratio as needed
-                //         child: Stack(
-                //           alignment: Alignment.center,
-                //           children: [
-                //             Text(
-                //               '117/150g',
-                //               style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
-                //             ),
-                //             SummaryPieChart()
-                //           ],
-                //         ),
-                //       ),
-                //     ),
-                //   ],
-                // ),
-                //
-                //
-                //
-                //
-                //
-                // const SizedBox(
-                //   height: 10.0,
-                // ),
-                // const Divider(
-                //   color: Colors.grey, // Set the color of the line
-                //   height: 20, // Set the height (thickness) of the line
-                //   thickness: 2, // Set the thickness of the line
-                // ),
-                // const SizedBox(
-                //   height: 10.0,
-                // ),
-                // const Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Text(
-                //         'Potassium'
-                //     ),
-                //     Text(
-                //         'Vitamin A'
-                //     ),
-                //   ],
-                // ),
-                // const SizedBox(
-                //   height: 10.0,
-                // ),
-                // const Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Expanded(
-                //       child: AspectRatio(
-                //         aspectRatio: 1.1, // Adjust the aspect ratio as needed
-                //         child: Stack(
-                //           alignment: Alignment.center,
-                //           children: [
-                //             Text(
-                //               '117/150g',
-                //               style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
-                //             ),
-                //             SummaryPieChart()
-                //           ],
-                //         ),
-                //       ),
-                //     ),
-                //     Expanded(
-                //       child: AspectRatio(
-                //         aspectRatio: 1.1, // Adjust the aspect ratio as needed
-                //         child: Stack(
-                //           alignment: Alignment.center,
-                //           children: [
-                //             Text(
-                //               '117/150g',
-                //               style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
-                //             ),
-                //             SummaryPieChart()
-                //           ],
-                //         ),
-                //       ),
-                //     ),
-                //   ],
-                // ),
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                // const SizedBox(
-                //   height: 10.0,
-                // ),
-                // const Divider(
-                //   color: Colors.grey, // Set the color of the line
-                //   height: 20, // Set the height (thickness) of the line
-                //   thickness: 2, // Set the thickness of the line
-                // ),
-                // const SizedBox(
-                //   height: 10.0,
-                // ),
-                // const Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Text(
-                //         'Vitamin C'
-                //     ),
-                //     Text(
-                //         'Calcium'
-                //     ),
-                //   ],
-                // ),
-                // const SizedBox(
-                //   height: 10.0,
-                // ),
-                // const Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Expanded(
-                //       child: AspectRatio(
-                //         aspectRatio: 1.1, // Adjust the aspect ratio as needed
-                //         child: Stack(
-                //           alignment: Alignment.center,
-                //           children: [
-                //             Text(
-                //               '117/150g',
-                //               style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
-                //             ),
-                //             SummaryPieChart()
-                //           ],
-                //         ),
-                //       ),
-                //     ),
-                //     Expanded(
-                //       child: AspectRatio(
-                //         aspectRatio: 1.1, // Adjust the aspect ratio as needed
-                //         child: Stack(
-                //           alignment: Alignment.center,
-                //           children: [
-                //             Text(
-                //               '117/150g',
-                //               style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
-                //             ),
-                //             SummaryPieChart()
-                //           ],
-                //         ),
-                //       ),
-                //     ),
-                //   ],
-                // ),
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                //
-                //   const SizedBox(
-                //     height: 10.0,
-                //   ),
-                //   const Divider(
-                //     color: Colors.grey, // Set the color of the line
-                //     height: 20, // Set the height (thickness) of the line
-                //     thickness: 2, // Set the thickness of the line
-                //   ),
-                //   const SizedBox(
-                //     height: 10.0,
-                //   ),
-                //   const Row(
-                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //     children: [
-                //       Text(
-                //           'Cholesterol'
-                //       ),
-                //       Text(
-                //           'Sodium'
-                //       ),
-                //     ],
-                //   ),
-                //   const SizedBox(
-                //     height: 10.0,
-                //   ),
-                //   const Row(
-                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //     children: [
-                //       Expanded(
-                //         child: AspectRatio(
-                //           aspectRatio: 1.1, // Adjust the aspect ratio as needed
-                //           child: Stack(
-                //             alignment: Alignment.center,
-                //             children: [
-                //               Text(
-                //                 '117/150g',
-                //                 style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
-                //               ),
-                //               SummaryPieChart()
-                //             ],
-                //           ),
-                //         ),
-                //       ),
-                //       Expanded(
-                //         child: AspectRatio(
-                //           aspectRatio: 1.1, // Adjust the aspect ratio as needed
-                //           child: Stack(
-                //             alignment: Alignment.center,
-                //             children: [
-                //               Text(
-                //                 '117/150g',
-                //                 style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
-                //               ),
-                //               SummaryPieChart()
-                //             ],
-                //           ),
-                //         ),
-                //       ),
-                //     ],
-                //   ),
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 import '../../../widgets/datepicker.dart';
-import '../../../widgets/dropdown.dart';
+import '../../../widgets/singlevaluefilter.dart';
 
 class NutrientPage extends StatelessWidget {
   const NutrientPage({super.key});
@@ -24,8 +24,32 @@ class NutrientPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                CustomDropdown(
-                  items: const ['All', 'Breakfast', 'Lunch', 'Dinner'],
+                Container(
+                  padding: const EdgeInsets.all(16.0),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.grey[300]!,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(20.0), // Round the corners
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        'Filter by Meal:',
+                        style: TextStyle(
+                          fontSize: 15.0,
+                          fontFamily: "Inter",
+                          color: Colors.grey[300],
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const MealFilter(
+                        filterOptions: ['All', 'Breakfast', 'Lunch', 'Dinner'],
+                      ),
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 5),
                 Padding(
