@@ -470,6 +470,18 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "syncfusion_flutter_charts",
+      "rootUri": "file:///home/boush/.pub-cache/hosted/pub.dev/syncfusion_flutter_charts-23.1.43",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "syncfusion_flutter_core",
+      "rootUri": "file:///home/boush/.pub-cache/hosted/pub.dev/syncfusion_flutter_core-23.1.43",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "table_calendar",
       "rootUri": "file:///home/boush/.pub-cache/hosted/pub.dev/table_calendar-3.0.9",
       "packageUri": "lib/",
@@ -542,7 +554,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2023-10-31T11:55:49.644737Z",
+  "generated": "2023-11-02T14:15:42.680132Z",
   "generator": "pub",
   "generatorVersion": "3.1.3"
 }

@@ -1,4 +1,4 @@
-#Thu Nov 02 13:26:07 EET 2023
+#Thu Nov 02 15:36:38 EET 2023
 base.0=/home/boush/Desktop/Flutter+Firebase/fitnessapp/build/app/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/home/boush/Desktop/Flutter+Firebase/fitnessapp/build/app/intermediates/dex/debug/mergeLibDexDebug/0/classes.dex
 base.2=/home/boush/Desktop/Flutter+Firebase/fitnessapp/build/app/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
