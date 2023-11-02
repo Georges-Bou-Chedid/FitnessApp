@@ -45,7 +45,16 @@ class _DiaryPageState extends State<DiaryPage> with AutomaticKeepAliveClientMixi
     bool isHovered = false;
 
     return Container(
-      color: const Color(0xFF323232),
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color(0xFF323232), // Dark Gray
+            Color(0xFF444444), // Slightly lighter shade of gray
+          ],
+        ),
+      ),
       child: SingleChildScrollView(
         child: Form(
           key: _formKey,
@@ -68,7 +77,7 @@ class _DiaryPageState extends State<DiaryPage> with AutomaticKeepAliveClientMixi
                             style: TextStyle(
                                 fontSize: 14.0,
                                 fontFamily: "Inter",
-                                color: Colors.grey[300],
+                                color: Colors.grey[350],
                                 fontWeight: FontWeight.bold
                             ),
                           ),
@@ -88,7 +97,7 @@ class _DiaryPageState extends State<DiaryPage> with AutomaticKeepAliveClientMixi
                               child: IconButton(
                                 icon: Icon(
                                   Icons.info,
-                                  color: Colors.grey[300],
+                                  color: Colors.grey[350],
                                 ),
                                 onPressed: () {
                                   updateChart(2500, 2200);
@@ -100,7 +109,7 @@ class _DiaryPageState extends State<DiaryPage> with AutomaticKeepAliveClientMixi
                         ],
                       ),
                       Divider(
-                        color: Colors.grey[300], // Set the color of the line
+                        color: Colors.grey[350], // Set the color of the line
                         height: 20, // Set the height (thickness) of the line
                         thickness: 2, // Set the thickness of the line
                       ),
@@ -121,7 +130,7 @@ class _DiaryPageState extends State<DiaryPage> with AutomaticKeepAliveClientMixi
                         Text(
                           'Consumed',
                           style: TextStyle(
-                            color: Colors.grey[300],
+                            color: Colors.grey[350],
                             fontFamily: "Inter",
                           ),
                         ),
@@ -140,7 +149,7 @@ class _DiaryPageState extends State<DiaryPage> with AutomaticKeepAliveClientMixi
                           TextSpan(
                             text: "${totalCalories.toStringAsFixed(0)}\n",
                             style: TextStyle(
-                                color: Colors.grey[300],
+                                color: Colors.grey[350],
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold
                             ),
@@ -204,11 +213,11 @@ Widget _buildMealSection(String title, List<Food> entries, Function() showAddEnt
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0), // Adjust the radius as needed
         side: BorderSide(
-          color: Colors.grey[300]!, // Border color
+          color: Colors.grey[350]!, // Border color
           width: 2.0, // Border width
         ),
       ),
-      color: Colors.grey[300],
+      color: Colors.grey[350],
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -237,8 +246,8 @@ Widget _buildMealSection(String title, List<Food> entries, Function() showAddEnt
             ),
 
             const SizedBox(height: 8.0),
-            const Divider(
-              color: Colors.grey, // Set the color of the line
+            Divider(
+              color: Colors.grey[700], // Set the color of the line
               height: 20, // Set the height (thickness) of the line
               thickness: 2, // Set the thickness of the line
             ),
@@ -279,7 +288,7 @@ Widget _buildMealSection(String title, List<Food> entries, Function() showAddEnt
                   child: Text(
                     'Add',
                     style: TextStyle(
-                      color: Colors.grey[300],
+                      color: Colors.grey[350],
                       fontWeight: FontWeight.w600,
                       fontFamily: "Inter",
                     ),

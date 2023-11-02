@@ -16,17 +16,18 @@ class SummaryPieChart extends StatelessWidget {
           "Calories Pie Chart",
           style: TextStyle(
             fontFamily: "Inter",
-            fontSize: 17
+            fontSize: 17,
+            fontWeight: FontWeight.w600
           ),
         ),
         content: SizedBox(
           width: 380,
           height: 400,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               const SummaryDatePicker(),
-              const SizedBox(height: 18),
+              const SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[

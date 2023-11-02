@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 import '../../../widgets/datepicker.dart';
-import '../../../widgets/singlevaluefilter.dart';
+import '../../../widgets/mealfilter.dart';
 
 class NutrientPage extends StatelessWidget {
   const NutrientPage({super.key});
@@ -10,7 +10,16 @@ class NutrientPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color(0xFF323232),
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color(0xFF323232), // Dark Gray
+            Color(0xFF444444), // Slightly lighter shade of gray
+          ],
+        ),
+      ),
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -28,7 +37,7 @@ class NutrientPage extends StatelessWidget {
                   padding: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Colors.grey[300]!,
+                      color: Colors.grey[350]!,
                       width: 1.0,
                     ),
                     borderRadius: BorderRadius.circular(20.0), // Round the corners
@@ -41,8 +50,8 @@ class NutrientPage extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 15.0,
                           fontFamily: "Inter",
-                          color: Colors.grey[300],
-                          fontWeight: FontWeight.bold,
+                          color: Colors.grey[350],
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                       const MealFilter(
@@ -61,7 +70,7 @@ class NutrientPage extends StatelessWidget {
                         "Total",
                         style: TextStyle(
                             fontSize: 14.0,
-                            color: Colors.grey[300],
+                            color: Colors.grey[350],
                             fontFamily: "Inter",
                             fontWeight: FontWeight.bold
                         ),
@@ -117,14 +126,15 @@ class PercentageProgressBar extends StatelessWidget {
                 Text(
                   label,
                   style: TextStyle(
-                      color: Colors.grey[300],
+                      color: Colors.grey[350],
+                      fontWeight: FontWeight.w600,
                       fontFamily: "Inter",
                   ),
                 ),
                 Text(
                   "${gained.toStringAsFixed(0)}/${goal.toStringAsFixed(0)}g",
                   style: TextStyle(
-                    color: Colors.grey[300],
+                    color: Colors.grey[350],
                     fontFamily: "Inter",
                   ),
                 )
@@ -137,6 +147,7 @@ class PercentageProgressBar extends StatelessWidget {
           percent: percent / 100,
           center: Text('$percent%'),
           progressColor: const Color(0xFF5AC8FA),
+          barRadius: const Radius.circular(15)
         ),
         const SizedBox(height: 10),
       ],

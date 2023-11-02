@@ -25,21 +25,30 @@ class _DashboardPageState extends State<DashboardPage> {
           child: NavDrawer()
       ),
       body: Container(
-        color: const Color(0xFF323232),
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFF323232), // Dark Gray
+              Color(0xFF444444), // Slightly lighter shade of gray
+            ],
+          ),
+        ),
         child: Center(
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Form(
                 key: _formKey,
-                child: const Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
                       'Dashboard',
                       style: TextStyle(
                           fontFamily: "Inter",
-                          color: Color(0xFFFFFFFF)
+                          color: Colors.grey[350]
                       ),
                     ),
                   ],

@@ -40,11 +40,11 @@ class MyAppBarPage extends State<MyAppBar> {
             ),
           );
         }).toList(),
-        labelColor: Colors.grey[300],
+        labelColor: Colors.grey[350],
         unselectedLabelColor: const Color(0xFF323232),
-      indicator: UnderlineTabIndicator(
-        borderSide: BorderSide(width: 3, color: Colors.grey[300]!), // Set the line width and color
-      ),
+        indicator: UnderlineTabIndicator(
+          borderSide: BorderSide(width: 3, color: Colors.grey[350]!), // Set the line width and color
+        ),
     );
   }
 

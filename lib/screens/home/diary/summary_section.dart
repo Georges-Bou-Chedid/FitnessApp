@@ -33,8 +33,18 @@ class SummaryPageState extends State<SummaryPage> {
 
   @override
   Widget build(BuildContext context) {
+    // changeBorder();
     return Container(
-      color: const Color(0xFF323232),
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color(0xFF323232), // Dark Gray
+            Color(0xFF444444), // Slightly lighter shade of gray
+          ],
+        ),
+      ),
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -53,13 +63,14 @@ class SummaryPageState extends State<SummaryPage> {
 
                     return Column(
                       children: [
+                        if (selectedIndex != index)
                         Container(
                           width: double.infinity, // Full width
                           height: 60, // Set the desired height
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100), // Make it circular
-                            border: Border.all(color: Color(0xFF3FCC7C), width: 2),
-                            color: Colors.grey[300]!,
+                            borderRadius: BorderRadius.circular(100),
+                            border: Border.all(color: const Color(0xFF3FCC7C), width: 2),
+                            color: Colors.grey[350]!,
                           ),
                           child: ListTile(
                             title: Text(
@@ -83,11 +94,50 @@ class SummaryPageState extends State<SummaryPage> {
                         ),
                         if (selectedIndex == index)
                           Container(
+                              width: double.infinity, // Full width
+                              height: 60, // Set the desired height
+                              decoration: BoxDecoration(
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(50), // Rounded top-left corner
+                                  topRight: Radius.circular(50), // Rounded top-right corner
+                                  bottomLeft: Radius.circular(0), // Not rounded on the bottom left
+                                  bottomRight: Radius.circular(0), // Not rounded on the bottom right
+                                ),
+                                border: Border.all(color: const Color(0xFF3FCC7C), width: 2),
+                                color: Colors.grey[350]!,
+                              ),
+                              child: ListTile(
+                                title: Text(
+                                  item.title,
+                                  style: const TextStyle(
+                                      fontFamily: "Inter",
+                                      fontWeight: FontWeight.w500
+                                  ),
+                                ),
+                                trailing: item.image,
+                                onTap: () {
+                                  setState(() {
+                                    if (selectedIndex == index) {
+                                      selectedIndex = -1; // Close the selected dropdown
+                                    } else {
+                                      selectedIndex = index; // Expand the selected dropdown
+                                    }
+                                  });
+                                },
+                              )
+                          ),
+                          if (selectedIndex == index)
+                          Container(
                             padding: const EdgeInsets.all(16.0),
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              border: Border.all(color: Color(0xFF3FCC7C), width: 2),
-                              color: Colors.grey[300], // Set the background color to grey
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(0), // Rounded top-left corner
+                                topRight: Radius.circular(0), // Rounded top-right corner
+                                bottomLeft: Radius.circular(50), // Not rounded on the bottom left
+                                bottomRight: Radius.circular(50), // Not rounded on the bottom right
+                              ),
+                              // border: Border.all(color: const Color(0xFF3FCC7C), width: 2),
+                              color: Colors.grey[350], // Set the background color to grey
                             ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,7 +146,7 @@ class SummaryPageState extends State<SummaryPage> {
                                   item.description, // Set the text color to white
                                 ),
                                 Align(
-                                  alignment: Alignment.bottomRight,
+                                  alignment: Alignment.center,
                                   child: TextButton(
                                     onPressed: () {
                                       showDialog(

@@ -40,7 +40,7 @@ class _MealFilterState extends State<MealFilter> {
                 option,
                 style: TextStyle(
                   fontFamily: "Inter",
-                  color: Colors.grey[300]
+                  color: Colors.grey[350]
                 ),
               ),
             );
