@@ -81,47 +81,52 @@ class _DashboardPageState extends State<DashboardPage> {
                 padding: const EdgeInsets.all(4.0),
                 child: Form(
                   key: _formKey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      CarouselSlider(
-                        carouselController: _carouselController,
-                        options: CarouselOptions(
-                          height: 450, // Set the height of the carousel item as needed
-                          enableInfiniteScroll: false, // Disable infinite scrolling if needed
-                          enlargeCenterPage: true, // Enlarge the center card
-                          viewportFraction: 0.9,
-                          onPageChanged: (index, reason) {
-                            setState(() {
-                              currentPage = index; // Update the current page
-                            });
-                          },
+                  child: SizedBox(
+                    height: 500,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Expanded(
+                          child: CarouselSlider(
+                            carouselController: _carouselController,
+                            options: CarouselOptions(
+                              height: 450, // Set the height of the carousel item as needed
+                              enableInfiniteScroll: false, // Disable infinite scrolling if needed
+                              enlargeCenterPage: true, // Enlarge the center card
+                              viewportFraction: 0.9,
+                              onPageChanged: (index, reason) {
+                                setState(() {
+                                  currentPage = index; // Update the current page
+                                });
+                              },
+                            ),
+                            items: <Widget>[
+                              // Create multiple cards with your bar chart
+                              ChartCard(initialChartData: calorieData, label: 'Calories', initialStartDate: startDate1, initialEndDate: endDate1),
+                              ChartCard(initialChartData: proteinData, label: 'Protein', initialStartDate: startDate2, initialEndDate: endDate2),
+                              // Add more chart cards as needed
+                            ],
+                          ),
                         ),
-                        items: <Widget>[
-                          // Create multiple cards with your bar chart
-                          ChartCard(initialChartData: calorieData, label: 'Calories', initialStartDate: startDate1, initialEndDate: endDate1),
-                          ChartCard(initialChartData: proteinData, label: 'Protein', initialStartDate: startDate2, initialEndDate: endDate2),
-                          // Add more chart cards as needed
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: List<Widget>.generate(
-                          2, // Change this value to the total number of items in your carousel
-                              (index) {
-                            return Container(
-                              width: 8.0,
-                              height: 8.0,
-                              margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: currentPage == index ? Colors.blue : Colors.grey,
-                              ),
-                            );
-                          },
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: List<Widget>.generate(
+                            2, // Change this value to the total number of items in your carousel
+                                (index) {
+                              return Container(
+                                width: 8.0,
+                                height: 8.0,
+                                margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: currentPage == index ? Colors.blue : Colors.grey,
+                                ),
+                              );
+                            },
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),

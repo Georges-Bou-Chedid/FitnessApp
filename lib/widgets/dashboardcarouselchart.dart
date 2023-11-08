@@ -64,7 +64,7 @@ class ChartCardState extends State<ChartCard> {
       ),
       color: const Color(0xFF444444),
       child: Padding(
-        padding: const EdgeInsets.all(5.0),
+        padding: const EdgeInsets.all(2.0),
         child: Column(
           children: <Widget>[
             Text(
