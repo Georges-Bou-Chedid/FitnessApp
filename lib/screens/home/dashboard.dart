@@ -1,11 +1,10 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../widgets/appbar.dart';
+import '../../widgets/dashboardcarouselchart.dart';
 import '../../widgets/navdrawer.dart';
-
-DateTime startDate = DateTime.now().subtract(const Duration(days: 4));
-DateTime endDate = DateTime.now(); // Initialize with today's date
 
 String formatDate(DateTime date) {
   DateTime now = DateTime.now();
@@ -19,12 +18,24 @@ String formatDate(DateTime date) {
   return DateFormat('MM/dd').format(date);
 }
 
-List<CalorieData> chartData = <CalorieData>[
-  CalorieData(formatDate(startDate.add(const Duration(days: 0))), 1000),
-  CalorieData(formatDate(startDate.add(const Duration(days: 1))), 1100),
-  CalorieData(formatDate(startDate.add(const Duration(days: 2))), 1200),
-  CalorieData(formatDate(startDate.add(const Duration(days: 3))), 1300),
-  CalorieData(formatDate(startDate.add(const Duration(days: 4))), 1400),
+DateTime startDate1 = DateTime.now().subtract(const Duration(days: 4));
+DateTime endDate1 = DateTime.now();
+List<Data> calorieData = <Data>[
+  Data(formatDate(startDate1.add(const Duration(days: 0))), 1000),
+  Data(formatDate(startDate1.add(const Duration(days: 1))), 1100),
+  Data(formatDate(startDate1.add(const Duration(days: 2))), 1200),
+  Data(formatDate(startDate1.add(const Duration(days: 3))), 1300),
+  Data(formatDate(startDate1.add(const Duration(days: 4))), 1400),
+];
+
+DateTime startDate2 = DateTime.now().subtract(const Duration(days: 4));
+DateTime endDate2 = DateTime.now();
+List<Data> proteinData = <Data>[
+  Data(formatDate(startDate2.add(const Duration(days: 0))), 100),
+  Data(formatDate(startDate2.add(const Duration(days: 1))), 50),
+  Data(formatDate(startDate2.add(const Duration(days: 2))), 200),
+  Data(formatDate(startDate2.add(const Duration(days: 3))), 140),
+  Data(formatDate(startDate2.add(const Duration(days: 4))), 80),
 ];
 
 class DashboardPage extends StatefulWidget {
@@ -36,6 +47,8 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final CarouselController _carouselController = CarouselController();
+  int currentPage = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -65,92 +78,48 @@ class _DashboardPageState extends State<DashboardPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(4.0),
                 child: Form(
                   key: _formKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Text(
-                        'Calories Bar Chart',
-                        style: TextStyle(
-                            fontFamily: "Inter",
-                            color: Colors.grey[350],
-                            fontSize: 15
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      ElevatedButton(
-                        onPressed: () async {
-                          final selectedDates = await showDateRangePicker(
-                            context: context,
-                            initialDateRange: DateTimeRange(start: startDate, end: endDate),
-                            firstDate: DateTime(2000),
-                            lastDate: DateTime(2101),
-                          );
-
-                          if (selectedDates != null) {
+                      CarouselSlider(
+                        carouselController: _carouselController,
+                        options: CarouselOptions(
+                          height: 450, // Set the height of the carousel item as needed
+                          enableInfiniteScroll: false, // Disable infinite scrolling if needed
+                          enlargeCenterPage: true, // Enlarge the center card
+                          viewportFraction: 0.9,
+                          onPageChanged: (index, reason) {
                             setState(() {
-                              startDate = selectedDates.start;
-                              endDate = selectedDates.end;
-                              chartData = <CalorieData>[];
-                              chartData = _updateChartData();
+                              currentPage = index; // Update the current page
                             });
-                          }
-                        },
-                        child: const Icon(
-                          Icons.calendar_today, // Replace with the calendar icon you want to use
-                          color: Colors.white,
-                          size: 17,
+                          },
                         ),
-                      ),
-                      SfCartesianChart(
-                        primaryXAxis: CategoryAxis(
-                          title: AxisTitle(
-                            text: 'Days',
-                            textStyle: TextStyle(
-                              fontFamily: "Inter",
-                              fontSize: 12,
-                              color: Colors.grey[350]
-                            )
-                          ),
-                          labelStyle: TextStyle(
-                            color: Colors.grey[350],
-                            fontFamily: "Inter",
-                          )
-                        ),
-                        primaryYAxis: NumericAxis(
-                          title: AxisTitle(
-                            text: 'Consumed Calories',
-                            textStyle: TextStyle(
-                                fontFamily: "Inter",
-                                fontSize: 12,
-                                color: Colors.grey[350]
-                            )
-                          ),
-                          labelStyle: TextStyle(
-                            color: Colors.grey[350],
-                            fontFamily: "Inter",
-                          )
-                        ),
-                        series: <ColumnSeries<CalorieData, String>>[
-                          ColumnSeries<CalorieData, String>(
-                            dataSource: chartData,
-                            xValueMapper: (CalorieData data, _) => data.date,
-                            yValueMapper: (CalorieData data, _) => data.value,
-                            width: 0.5,
-                            dataLabelSettings: const DataLabelSettings(
-                              isVisible: true,
-                              textStyle: TextStyle(
-                                color: Color(0xFF3FCC7C),
-                                fontFamily: "Inter",
-                              )
-                            ),
-                            borderRadius: const BorderRadius.all(Radius.circular(15)),
-                            color: const Color(0xFF3FCC7C),
-                            animationDuration: 1000
-                          ),
+                        items: <Widget>[
+                          // Create multiple cards with your bar chart
+                          ChartCard(initialChartData: calorieData, label: 'Calories', initialStartDate: startDate1, initialEndDate: endDate1),
+                          ChartCard(initialChartData: proteinData, label: 'Protein', initialStartDate: startDate2, initialEndDate: endDate2),
+                          // Add more chart cards as needed
                         ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List<Widget>.generate(
+                          2, // Change this value to the total number of items in your carousel
+                              (index) {
+                            return Container(
+                              width: 8.0,
+                              height: 8.0,
+                              margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: currentPage == index ? Colors.blue : Colors.grey,
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ],
                   ),
@@ -164,24 +133,11 @@ class _DashboardPageState extends State<DashboardPage> {
   }
 }
 
-/// Method to update the chart data.
-List<CalorieData> _updateChartData() {
-  for (int i = 0; i < 5; i++) {
-    if (startDate.add(Duration(days: i)) == endDate) {
-      chartData.add(CalorieData(formatDate(startDate.add(Duration(days: i))), i * 100));
-      break;
-    }
-    chartData.add(CalorieData(formatDate(startDate.add(Duration(days: i))), i * 100));
-  }
-
-  return chartData;
-}
-
-
-class CalorieData {
+class Data {
   final String date;
   final double value;
 
-  CalorieData(this.date, this.value);
+  Data(this.date, this.value);
 }
+
 

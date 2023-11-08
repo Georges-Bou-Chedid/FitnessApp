@@ -3,7 +3,7 @@ com.example.fitnessapp-jetified-window-java-1.0.0-beta04-1 /home/boush/.gradle/c
 com.example.fitnessapp-browser-1.4.0-2 /home/boush/.gradle/caches/transforms-3/3df77d3f0e42ee5d73cdfadb8bcdc01c/transformed/browser-1.4.0/res
 com.example.fitnessapp-jetified-play-services-basement-18.1.0-3 /home/boush/.gradle/caches/transforms-3/5eaba1f028ac62aaabee71faac8d9308/transformed/jetified-play-services-basement-18.1.0/res
 com.example.fitnessapp-jetified-annotation-experimental-1.1.0-4 /home/boush/.gradle/caches/transforms-3/717758e51a3aff0b90b2556f8994e808/transformed/jetified-annotation-experimental-1.1.0/res
-com.example.fitnessapp-jetified-firebase-common-20.3.3-5 /home/boush/.gradle/caches/transforms-3/97ba536cb97715cf3a6afeff735547bd/transformed/jetified-firebase-common-20.3.3/res
+com.example.fitnessapp-jetified-firebase-common-20.4.2-5 /home/boush/.gradle/caches/transforms-3/8e8f2f99ff6ad02cb30db25119ddf6b9/transformed/jetified-firebase-common-20.4.2/res
 com.example.fitnessapp-core-1.6.0-6 /home/boush/.gradle/caches/transforms-3/cf72013d765e0f69e97cd3b9cbb09800/transformed/core-1.6.0/res
 com.example.fitnessapp-jetified-play-services-base-18.1.0-7 /home/boush/.gradle/caches/transforms-3/f4c0500116144bc04cff0b0b27625b15/transformed/jetified-play-services-base-18.1.0/res
 com.example.fitnessapp-debug-8 /home/boush/Desktop/Flutter+Firebase/fitnessapp/android/app/src/debug/res
