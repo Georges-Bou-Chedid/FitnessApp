@@ -159,7 +159,13 @@ class SummaryPageState extends State<SummaryPage> {
                                     style: TextButton.styleFrom(
                                       primary: Colors.blue, // Set the button text color to blue
                                     ),
-                                    child: const Text("View Chart"),
+                                    child: Text(
+                                      "View Chart",
+                                      style: TextStyle(
+                                        fontFamily: "Inter",
+                                        color: Colors.blue[800], // Set your desired text color
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ],

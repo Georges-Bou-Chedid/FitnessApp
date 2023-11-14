@@ -183,7 +183,13 @@ class SummaryPieChart extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pop(); // Close the dialog
           },
-          child: Text('Close'),
+          child: Text(
+            'Close',
+            style: TextStyle(
+              fontFamily: "Inter",
+              color: Colors.blue[800], // Set your desired text color
+            ),
+          ),
         ),
       ],
     );

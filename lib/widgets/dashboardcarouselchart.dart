@@ -77,11 +77,11 @@ class ChartCardState extends State<ChartCard> {
                   child: Container(
                     width: 32, // Set the desired width
                     height: 32, // Set the desired height
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       shape: BoxShape.circle, // Make it circular
-                      color: Colors.blue, // Set your desired background color
+                      color: Colors.blue[800], // Set your desired background color
                     ),
-                    child: ElevatedButton(
+                    child: TextButton(
                       style: ElevatedButton.styleFrom(
                         padding: EdgeInsets.zero, // Remove default padding
                         shape: const CircleBorder(), // Ensure a circular shape
