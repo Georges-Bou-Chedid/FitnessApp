@@ -51,18 +51,28 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: const Color(0xFF323232),
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFF3FCC7C),
+              Color(0xFFBCFF5C)
+            ],
+          ),
+        ),
+        // color: const Color(0xFF323232),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Image.asset(
-                'assets/images/nutrilebwhite.png',
+                'assets/images/nutrilebblack.png',
                 width: 250.0,
                 height: 250.0,
               ),
               const CircularProgressIndicator(
-                  color: Color(0xFFFFFFFF)
+                  color: Color(0xFF323232)
               ),
             ],
           ),

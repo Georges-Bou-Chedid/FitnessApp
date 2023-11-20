@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../models/Food.dart';
 import '../../../widgets/datepicker.dart';
 import '../../../widgets/diarypiechart.dart';
@@ -42,20 +43,8 @@ class _DiaryPageState extends State<DiaryPage> with AutomaticKeepAliveClientMixi
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    bool isHovered = false;
 
-    return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            Color(0xFF323232), // Dark Gray
-            Color(0xFF444444), // Slightly lighter shade of gray
-          ],
-        ),
-      ),
-      child: SingleChildScrollView(
+    return SingleChildScrollView(
         child: Form(
           key: _formKey,
           child: Column(
@@ -69,115 +58,74 @@ class _DiaryPageState extends State<DiaryPage> with AutomaticKeepAliveClientMixi
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(
-                            "Calories Remaining",
-                            style: TextStyle(
-                                fontSize: 14.0,
-                                fontFamily: "Inter",
-                                color: Colors.grey[350],
-                                fontWeight: FontWeight.bold
+                      Center(
+                        child: Container(
+                          width: 150,
+                          child: Card(
+                            elevation: 0,
+                            color: const Color(0xFF3FCC7C),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0), // Adjust the radius as needed
                             ),
-                          ),
-                          MouseRegion(
-                            onEnter: (_) {
-                              setState(() {
-                                isHovered = true;
-                              });
-                            },
-                            onExit: (_) {
-                              setState(() {
-                                isHovered = false;
-                              });
-                            },
-                            child: Tooltip(
-                              message: 'Info',
-                              child: IconButton(
-                                icon: Icon(
-                                  Icons.info,
-                                  color: Colors.grey[350],
-                                ),
-                                onPressed: () {
-                                  updateChart(2500, 2200);
-                                },
+                            child: Padding(
+                              padding: EdgeInsets.all(12.0),
+                              child: Column(
+                                children: <Widget>[
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const Text(
+                                        "Calories"
+                                      ),
+                                      Image.asset('assets/images/svg/calories.png', width: 20, height: 20)
+                                    ],
+                                  ),
+                                  const SizedBox(height: 5),
+                                  Stack(
+                                      alignment: Alignment.center,
+                                      children: [
+                                        Center(
+                                          child: RichText(
+                                            text: TextSpan(
+                                              children: [
+                                                TextSpan(
+                                                  text: "${consumedCalories.toStringAsFixed(0)}\n",
+                                                  style: const TextStyle(
+                                                      fontSize: 18,
+                                                      fontFamily: "Inter",
+                                                      fontWeight: FontWeight.w600
+                                                  ),
+                                                ),
+                                                const TextSpan(
+                                                  text: 'Kcal', // Replace with your variable
+                                                  style: TextStyle(
+                                                    color: Colors.white54,
+                                                    fontFamily: "Inter",
+                                                    fontSize: 14,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                        AspectRatio(
+                                          aspectRatio: 1, // Adjust the aspect ratio as needed
+                                          child: CaloriePieChart(
+                                            totalCalories: totalCalories,
+                                            consumedCalories: consumedCalories,
+                                          ),
+                                        ),
+                                      ]
+                                  ),
+                                ],
                               ),
                             ),
                           ),
-
-                        ],
-                      ),
-                      Divider(
-                        color: Colors.grey[350], // Set the color of the line
-                        height: 20, // Set the height (thickness) of the line
-                        thickness: 2, // Set the thickness of the line
+                        ),
                       ),
                     ]
                 ),
-              ),
-              Stack(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Container(
-                          width: 10,
-                          height: 10,
-                          color: const Color(0xFF3FCC7C),
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          'Consumed',
-                          style: TextStyle(
-                            color: Colors.grey[350],
-                            fontFamily: "Inter",
-                          ),
-                        ),
-                      ],
-                    ),
-                  ]
-              ),
-              const SizedBox(height: 30.0),
-              Stack(
-                alignment: Alignment.center,
-                children: [
-                  Center(
-                    child: RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: "${totalCalories.toStringAsFixed(0)}\n",
-                            style: TextStyle(
-                                color: Colors.grey[350],
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold
-                            ),
-                          ),
-                          const TextSpan(
-                            text: 'Goal', // Replace with your variable
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 12, fontWeight:
-                              FontWeight.bold
-                            ),
-                          ),
-                        ],
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  AspectRatio(
-                    aspectRatio: 2.0, // Adjust the aspect ratio as needed
-                    child: CaloriePieChart(
-                      totalCalories: totalCalories,
-                      consumedCalories: consumedCalories,
-                    ),
-                  ),
-                ]
-              ),
-              const SizedBox(
-                height: 40.0,
               ),
               _buildMealSection('Breakfast', breakfastEntries, () {
                 _showAddEntryDialog();
@@ -200,26 +148,24 @@ class _DiaryPageState extends State<DiaryPage> with AutomaticKeepAliveClientMixi
             ],
           ),
         ),
-      ),
     );
   }
 }
 
 Widget _buildMealSection(String title, List<Food> entries, Function() showAddEntryDialog) {
   return Container(
-    margin: EdgeInsets.all(8.0),
+    margin: EdgeInsets.all(12.0),
     child: Card(
-      elevation: 4, // Add elevation for a shadow effect
+      elevation: 0, // Add elevation for a shadow effect
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0), // Adjust the radius as needed
-        side: BorderSide(
-          color: Colors.grey[350]!, // Border color
-          width: 2.0, // Border width
+        borderRadius: BorderRadius.circular(20.0), // Adjust the radius as needed
+        side: const BorderSide(
+          color: Color(0xFFFFFFFF), // Border color
+          width: 1.0, // Border width
         ),
       ),
-      color: Colors.grey[350],
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(15.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -229,29 +175,27 @@ Widget _buildMealSection(String title, List<Food> entries, Function() showAddEnt
                 Text(
                   title,
                   style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
                     fontFamily: "Inter"
                   ),
                 ),
                 const Text(
                   '0', // Replace with your number
                   style: TextStyle(
-                    fontSize: 15, // Adjust the font size
-                    fontWeight: FontWeight.bold,
+                    fontSize: 14, // Adjust the font size
+                    fontWeight: FontWeight.w500,
                     fontFamily: "Inter"
                   ),
                 )
               ],
             ),
-
             const SizedBox(height: 8.0),
-            Divider(
-              color: Colors.grey[700], // Set the color of the line
+            const Divider(
+              color: Colors.white24, // Set the color of the line
               height: 20, // Set the height (thickness) of the line
               thickness: 2, // Set the thickness of the line
             ),
-            const SizedBox(height: 8.0),
             if (entries.isEmpty)
               const Center(
                 child: Text(
@@ -267,32 +211,63 @@ Widget _buildMealSection(String title, List<Food> entries, Function() showAddEnt
                 itemCount: entries.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text(entries[index].name),
-                    subtitle: Text('${entries[index].quantity} grams'),
-                    trailing: Text('0'),
+                    title: Text(
+                      entries[index].name,
+                      style: const TextStyle(
+                        fontFamily: "Inter",
+                        fontSize: 13
+                      ),
+                  ),
+                    subtitle: Text(
+                      '${entries[index].quantity} grams',
+                      style: const TextStyle(
+                          fontFamily: "Inter",
+                          fontSize: 12
+                      ),
+                    ),
+                    trailing: const Text(
+                      '0',
+                      style: TextStyle(
+                          fontFamily: "Inter",
+                          fontSize: 14
+                      ),
+                    ),
                   );
                 },
               ),
             const SizedBox(height: 8.0),
             Center(
+              // child: IconButton(
+              //   style: ElevatedButton.styleFrom(
+              //     padding: EdgeInsets.zero, // Remove default padding
+              //     shape: const CircleBorder(), // Ensure a circular shape
+              //   ),
+              //   onPressed: () {
+              //     showAddEntryDialog();
+              //   },
+              //   icon: const FaIcon(
+              //     Icons.add,
+              //     size: 18,
+              //   ),
+              // )
               child: SizedBox(
-                width: 150, // Adjust the width as needed
+                width: 50,
+                height: 30,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     primary: const Color(0xFF3FCC7C),
-                    minimumSize: const Size(150, 36), // Set the minimum button size
+                    minimumSize: const Size(150, 36),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50.0), // Adjust the radius as needed
+                    ),
                   ),
                   onPressed: () {
                     showAddEntryDialog();
                   },
-                  child: Text(
-                    'Add',
-                    style: TextStyle(
-                      color: Colors.grey[350],
-                      fontWeight: FontWeight.w600,
-                      fontFamily: "Inter",
+                  child: const FaIcon(
+                      Icons.add,
+                      size: 18,
                     ),
-                  ),
                 ),
               ),
             )

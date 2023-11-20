@@ -1,3 +1,4 @@
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -16,13 +17,7 @@ class DatePickerState extends State<DatePicker> {
       context: context,
       initialDate: selectedDate,
       firstDate: DateTime(2000),
-      lastDate: DateTime(2101),
-      builder: (BuildContext context, Widget? child) {
-        return Theme(
-          data: ThemeData.light(), // Customize the date picker theme
-          child: child!,
-        );
-      },
+      lastDate: DateTime(2101)
     )) ?? DateTime.now();
 
     if (picked != selectedDate) {
@@ -36,17 +31,28 @@ class DatePickerState extends State<DatePicker> {
   Widget build(BuildContext context) {
     return Container(
       width: 350,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(60.0),
-        color: Colors.grey[300], // Set the indicator color to white
-      ),
+      decoration: Theme.of(context).scaffoldBackgroundColor == const Color(0xFF323232) ?
+          BoxDecoration(
+            borderRadius: BorderRadius.circular(60.0),
+            border: Border.all(
+              color: const Color(0xFFFFFFFF), // Set the border color here
+              width: 1.0, // Set the border width here
+            ),
+          )
+          : BoxDecoration(
+              borderRadius: BorderRadius.circular(60.0),
+              border: Border.all(
+                color: const Color(0xFF323232), // Set the border color here
+                width: 1.0, // Set the border width here
+              ),
+          ),
       child: Padding(
         padding: const EdgeInsets.all(10.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               IconButton(
-                icon: const Icon(Icons.chevron_left, color: Color(0xFF323232), size: 17),
+                icon: const Icon(EvaIcons.chevronLeftOutline, size: 20),
                 onPressed: () {
                   setState(() {
                     selectedDate = selectedDate.subtract(const Duration(days: 1));
@@ -60,12 +66,11 @@ class DatePickerState extends State<DatePicker> {
                       _selectDate(context);
                     },
                     child: const Icon(
-                      Icons.calendar_today, // Replace with the calendar icon you want to use
-                      color: Color(0xFF323232),
-                      size: 17,
+                      Icons.calendar_today,
+                      size: 16,
                     ),
                   ),
-                  const SizedBox(width: 5),
+                  const SizedBox(width: 7),
                   InkWell(
                     onTap: () {
                       _selectDate(context);
@@ -74,7 +79,7 @@ class DatePickerState extends State<DatePicker> {
                       formatDate(selectedDate),
                       style: const TextStyle(
                         fontSize: 12,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w600,
                         fontFamily: "Inter"
                       ),
                     ),
@@ -82,7 +87,7 @@ class DatePickerState extends State<DatePicker> {
                 ],
               ),
               IconButton(
-                icon: const Icon(Icons.chevron_right, color: Color(0xFF323232), size: 17),
+                icon: const Icon(EvaIcons.chevronRightOutline, size: 20),
                 onPressed: () {
                   setState(() {
                     selectedDate = selectedDate.add(const Duration(days: 1));
@@ -97,8 +102,6 @@ class DatePickerState extends State<DatePicker> {
 }
 
 String formatDate(DateTime date) {
-  // final formatter = DateFormat('EEEE, d MMM');
-  // return formatter.format(date);
   final now = DateTime.now();
   final today = DateTime(now.year, now.month, now.day);
   final yesterday = today.subtract(Duration(days: 1));
@@ -111,7 +114,7 @@ String formatDate(DateTime date) {
   } else if (date.isAtSameMomentAs(tomorrow)) {
     return 'Tomorrow';
   } else {
-    final formatter = DateFormat('EEEE, d MMM');
+    final formatter = DateFormat('EEE, d MMM');
     return formatter.format(date);
   }
 }

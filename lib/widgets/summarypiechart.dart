@@ -8,7 +8,6 @@ class SummaryPieChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-        backgroundColor:  Colors.grey[300]!,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
@@ -16,13 +15,13 @@ class SummaryPieChart extends StatelessWidget {
           "Calories Pie Chart",
           style: TextStyle(
             fontFamily: "Inter",
-            fontSize: 17,
-            fontWeight: FontWeight.w600
+            fontSize: 15,
+            fontWeight: FontWeight.w500
           ),
         ),
         content: SizedBox(
           width: 380,
-          height: 400,
+          height: 360,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
@@ -43,8 +42,7 @@ class SummaryPieChart extends StatelessWidget {
                         'Breakfast',
                         style: TextStyle(
                           fontFamily: "Inter",
-                          fontSize: 12.8,
-                          color: Colors.black
+                          fontSize: 13
                         ),
                       ),
                     ],
@@ -61,8 +59,7 @@ class SummaryPieChart extends StatelessWidget {
                         'Lunch',
                         style: TextStyle(
                             fontFamily: "Inter",
-                            fontSize: 12.8,
-                            color: Colors.black
+                            fontSize: 13
                         ),
                       ),
                     ],
@@ -79,8 +76,7 @@ class SummaryPieChart extends StatelessWidget {
                         'Dinner',
                         style: TextStyle(
                             fontFamily: "Inter",
-                            fontSize: 12.8,
-                            color: Colors.black
+                            fontSize: 13
                         ),
                       ),
                     ],
@@ -97,8 +93,7 @@ class SummaryPieChart extends StatelessWidget {
                         'Snacks',
                         style: TextStyle(
                             fontFamily: "Inter",
-                            fontSize: 12.8,
-                            color: Colors.black
+                            fontSize: 13
                         ),
                       ),
                     ],
@@ -124,23 +119,40 @@ class SummaryPieChart extends StatelessWidget {
                       'Total (B + L + D + S) / Goal',
                       style: TextStyle(
                           fontFamily: "Inter",
-                          fontSize: 12.8,
-                          color: Colors.black
+                          fontSize: 13
                       ),
                     ),
                   ]
               ),
-              const SizedBox(
-                height: 15.0,
-              ),
               AspectRatio(
-                aspectRatio: 1.1, // Adjust the aspect ratio as needed
+                aspectRatio: 1.25, // Adjust the aspect ratio as needed
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
-                    const Text(
-                      '117/2500',
-                      style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
+                    Center(
+                      child: RichText(
+                        text: const TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "117 / 2500\n",
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: "Inter",
+                                  fontWeight: FontWeight.w600
+                              ),
+                            ),
+                            TextSpan(
+                              text: 'Kcal', // Replace with your variable
+                              style: TextStyle(
+                                color: Colors.white54,
+                                fontFamily: "Inter",
+                                fontSize: 13,
+                              ),
+                            ),
+                          ],
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                     PieChart(
                       PieChartData(
@@ -148,25 +160,45 @@ class SummaryPieChart extends StatelessWidget {
                             PieChartSectionData(
                                 color: Colors.yellow[800], // breakfast
                                 value: 55,
-                                title: 55.toStringAsFixed(0)
+                                title: "${55.toStringAsFixed(0)}\n(8%)",
+                                titleStyle: const TextStyle(
+                                    fontFamily: "Inter",
+                                    fontSize: 13
+                                ),
+                                radius: 35
                             ),
                             PieChartSectionData(
                                 color: Colors.blue[900], // lunch
                                 value: 30,
-                                title: 30.toStringAsFixed(0)
+                                title: "${30.toStringAsFixed(0)}\n(5%)",
+                                titleStyle: const TextStyle(
+                                    fontFamily: "Inter",
+                                    fontSize: 13
+                                ),
+                                radius: 35
                             ),
                             PieChartSectionData(
                                 color: Colors.red[800], // dinner
                                 value: 22,
-                                title: 22.toStringAsFixed(0)
+                                title: "${22.toStringAsFixed(0)}\n(3%)",
+                                titleStyle: const TextStyle(
+                                    fontFamily: "Inter",
+                                    fontSize: 13
+                                ),
+                                radius: 35
                             ),
                             PieChartSectionData(
                                 color: Colors.brown[600], // snacks
                                 value: 10,
-                                title: 10.toStringAsFixed(0)
+                                title: "${10.toStringAsFixed(0)}\n(2%)",
+                                titleStyle: const TextStyle(
+                                  fontFamily: "Inter",
+                                  fontSize: 13
+                                ),
+                                radius: 35
                             ),
                           ],
-                          centerSpaceRadius: 40,
+                          centerSpaceRadius: 55,
                           sectionsSpace: 1
                       ),
                       swapAnimationCurve: Curves.easeInOutQuint,
@@ -183,11 +215,11 @@ class SummaryPieChart extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pop(); // Close the dialog
           },
-          child: Text(
+          child: const Text(
             'Close',
             style: TextStyle(
               fontFamily: "Inter",
-              color: Colors.blue[800], // Set your desired text color
+              color: Color(0xFF5AC8FA)
             ),
           ),
         ),

@@ -8,7 +8,6 @@ class NavDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Drawer(
-      backgroundColor: const Color(0xFF323232),
       child: Column(
         children: <Widget>[
           Expanded(
@@ -20,8 +19,8 @@ class NavDrawer extends StatelessWidget {
                     margin: const EdgeInsets.all(0),
                     child: ClipRRect(
                       borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(50.0),
-                        bottomRight: Radius.circular(50.0),
+                        bottomLeft: Radius.circular(30.0),
+                        bottomRight: Radius.circular(30.0),
                       ),
                       child: Container(
                         decoration: const BoxDecoration(
@@ -31,21 +30,15 @@ class NavDrawer extends StatelessWidget {
                           ),
                         ),
                       ),
-                    ), // Remove any margin around the image
+                    ),
                   ),
                   ListTile(
                     leading: const FaIcon(
-                      FontAwesomeIcons.gaugeSimpleHigh, // The icon you want to use
-                      size: 30, // Icon size
-                      color: Color(0xFF3FCC7C), // Icon color
+                      FontAwesomeIcons.gaugeSimpleHigh,
+                      color: Color(0xFF3FCC7C),
+                      size: 30
                     ),
-                    title: const Text(
-                      'Dashboard',
-                      style: TextStyle(
-                          fontFamily: "Inter",
-                          color: Color(0xFFFFFFFF)
-                      ),
-                    ),
+                    title: const Text('Dashboard'),
                     onTap: () {
                       Navigator.pop(context); // Close the drawer
                       Navigator.pushReplacementNamed(context, '/dashboard');
@@ -53,17 +46,11 @@ class NavDrawer extends StatelessWidget {
                   ),
                   ListTile(
                     leading: const FaIcon(
-                      FontAwesomeIcons.book, // The "book" icon represents a diary
-                      size: 30, // Icon size
-                      color: Color(0xFF3FCC7C), // Icon color
+                      FontAwesomeIcons.book,
+                      color: Color(0xFF3FCC7C),
+                      size: 30,
                     ),
-                    title: const Text(
-                      'Diary',
-                      style: TextStyle(
-                          fontFamily: "Inter",
-                          color: Color(0xFFFFFFFF)
-                      ),
-                    ),
+                    title: const Text('Diary'),
                     onTap: () {
                       Navigator.pop(context); // Close the drawer
                       Navigator.pushReplacementNamed(context, '/diary');
@@ -71,13 +58,7 @@ class NavDrawer extends StatelessWidget {
                   ),
                   ListTile(
                     leading: const Icon(Icons.star, size: 30, color: Colors.yellow),
-                    title: const Text(
-                      'Health Guidance',
-                      style: TextStyle(
-                        fontFamily: "Inter",
-                        color: Color(0xFFFFFFFF),
-                      ),
-                    ),
+                    title: const Text('Health Guidance'),
                     onTap: () {
                       // Handle onTap for the ListTile with the recommendations icon
                     },
@@ -86,16 +67,11 @@ class NavDrawer extends StatelessWidget {
             )
           ),
           ListTile(
-            leading: const Icon(Icons.settings, size: 30, color: Color(0xFF3FCC7C)),
-            title: const Text(
-              'Settings',
-              style: TextStyle(
-                fontFamily: "Inter",
-                color: Color(0xFFFFFFFF),
-              ),
-            ),
+            leading: const Icon(Icons.settings, size: 30, color: Color(0xFF3FCC7C),),
+            title: const Text('Settings'),
             onTap: () {
-              // Handle onTap for the bottom ListTile
+              Navigator.pop(context); // Close the drawer
+              Navigator.pushReplacementNamed(context, '/settings');
             },
           ),
         ],

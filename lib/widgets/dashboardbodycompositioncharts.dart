@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../screens/home/dashboard.dart';
@@ -82,252 +84,222 @@ class _BodyCompositionChartState extends State<BodyCompositionChart> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 4, // Add elevation for a shadow effect
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0), // Adjust the radius as needed
-        side: BorderSide(
-          color: Colors.grey[350]!, // Border color
-          width: 2.0, // Border width
-        ),
-      ),
-      color: const Color(0xFF444444),
       child: Padding(
-        padding: const EdgeInsets.all(2.0),
+        padding: const EdgeInsets.all(6.0),
         child: Column(
           children: <Widget>[
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 5.0, top: 5.0),
-                  child: IconButton(
-                    onPressed: () {
-                      showDialog(
-                          context: context,
-                          builder: (context) => Dialog(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(16),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    const Text(
-                                      'Do you want to remove all data from the chart? This action cannot be undone.',
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        fontFamily: "Inter",
+                IconButton(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) => Dialog(
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Text(
+                                    'Do you want to remove all data from the chart? This action cannot be undone.',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontFamily: "Inter",
+                                    ),
+                                  ),
+                                  const SizedBox(height: 16),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop(); // Close the dialog on cancel
+                                        },
+                                        child: const Text(
+                                          'Cancel',
+                                          style: TextStyle(
+                                            fontFamily: "Inter",
+                                            color: Color(0xFF5AC8FA), // Set your desired text color
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                    const SizedBox(height: 16),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.of(context).pop(); // Close the dialog on cancel
-                                          },
-                                          child: Text(
-                                            'Cancel',
-                                            style: TextStyle(
-                                              fontFamily: "Inter",
-                                              color: Colors.blue[800], // Set your desired text color
-                                            ),
+                                      TextButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            chartData.clear();
+                                          });
+                                          Navigator.of(context).pop(); // Close the dialog on save
+                                        },
+                                        child: const Text(
+                                          'Yes',
+                                          style: TextStyle(
+                                            fontFamily: "Inter",
+                                            color: Color(0xFF5AC8FA), // Set your desired text color
                                           ),
                                         ),
-                                        TextButton(
-                                          onPressed: () {
-                                            setState(() {
-                                              chartData.clear();
-                                            });
-                                            Navigator.of(context).pop(); // Close the dialog on save
-                                          },
-                                          child: Text(
-                                            'Yes',
-                                            style: TextStyle(
-                                              fontFamily: "Inter",
-                                              color: Colors.blue[800], // Set your desired text color
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
-                          ),
-                        );
-                      },
-                    icon: const Icon(
-                      Icons.clear,
-                      color: Colors.red,
-                      size: 22,// Set your desired icon color
-                    ),
+                            ),
+                        ),
+                      );
+                    },
+                  icon: const FaIcon(
+                    Icons.clear,
+                    color: Colors.red,
+                    size: 16,// Set your desired icon color
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 5.0, top: 5.0),
-                  child: Container(
-                    width: 32, // Set the desired width
-                    height: 32, // Set the desired height
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle, // Make it circular
-                      color: Colors.blue[800], // Set your desired background color
-                    ),
-                    child: TextButton(
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.zero, // Remove default padding
-                        shape: const CircleBorder(), // Ensure a circular shape
-                      ),
-                      onPressed: () async {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            _selectedDate = DateTime.now();
-                            _updateControllerText();
+                IconButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.zero, // Remove default padding
+                    shape: const CircleBorder(), // Ensure a circular shape
+                  ),
+                  onPressed: () async {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        _selectedDate = DateTime.now();
+                        _updateControllerText();
 
-                            return Dialog(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(16),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
+                        return Dialog(
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  'Add ${widget.title}',
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    fontFamily: "Inter",
+                                  ),
+                                ),
+                                const SizedBox(height: 8),
+                                Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        width: widget.sizedWidth,
+                                        child: TextFormField(
+                                          validator: (val) => val!.isEmpty ? "Required" : null,
+                                          controller: _textEditingController,
+                                          decoration: InputDecoration(
+                                            labelText: widget.title,
+                                            labelStyle: const TextStyle(
+                                              fontFamily: "Inter",
+                                              fontSize: 13,
+                                            ),
+                                          ),
+                                          keyboardType: TextInputType.number, // Use numeric keyboard
+                                          inputFormatters: <TextInputFormatter>[
+                                            FilteringTextInputFormatter.digitsOnly // Restrict input to digits (integers)
+                                          ],
+                                        ),
+                                      ),
+                                    ]
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      'Add ${widget.title}',
-                                      style: const TextStyle(
-                                        fontSize: 18,
-                                        fontFamily: "Inter",
-                                        fontWeight: FontWeight.bold,
+                                    SizedBox(
+                                      width: 200,
+                                      child: TextFormField(
+                                        validator: (val) => val!.isEmpty ? "Required" : null,
+                                        controller: _dateController,
+                                        decoration: const InputDecoration(
+                                          labelText: "Time",
+                                          labelStyle: TextStyle(
+                                            fontFamily: "Inter",
+                                            fontSize: 13,
+                                          ),
+                                        ),
+                                        readOnly: true,
+                                        onTap: () {
+                                          _selectTime(context);
+                                          _selectDate(context);
+                                        },
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                const SizedBox(height: 16),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop(); // Close the dialog on cancel
+                                      },
+                                      child: const Text(
+                                        'Cancel',
+                                        style: TextStyle(
+                                          fontFamily: "Inter",
+                                          color: Color(0xFF5AC8FA), // Set your desired text color
+                                        ),
                                       ),
                                     ),
-                                    const SizedBox(height: 8),
-                                    Row(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        children: [
-                                          SizedBox(
-                                            width: widget.sizedWidth,
-                                            child: TextFormField(
-                                              controller: _textEditingController,
-                                              decoration: InputDecoration(
-                                                labelText: widget.title,
-                                                labelStyle: const TextStyle(
-                                                  fontFamily: "Inter",
-                                                  color: Colors.black87,
-                                                  fontSize: 13,
-                                                ),
-                                                focusedBorder: UnderlineInputBorder(
-                                                  borderSide: BorderSide(color: Colors.blue[800]!), // Change the color as needed
-                                                ),
-                                                enabledBorder: const UnderlineInputBorder(
-                                                  borderSide: BorderSide(color: Colors.black54), // Change the color as needed
-                                                ),
-                                              ),
-                                              keyboardType: TextInputType.number, // Use numeric keyboard
-                                              inputFormatters: <TextInputFormatter>[
-                                                FilteringTextInputFormatter.digitsOnly // Restrict input to digits (integers)
-                                              ],
-                                            ),
-                                          ),
-                                        ]
-                                    ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          width: 200,
-                                          child: TextFormField(
-                                            controller: _dateController,
-                                            decoration: InputDecoration(
-                                              labelText: "Time",
-                                              labelStyle: const TextStyle(
-                                                fontFamily: "Inter",
-                                                color: Colors.black87,
-                                                fontSize: 13,
-                                              ),
-                                              focusedBorder: UnderlineInputBorder(
-                                                borderSide: BorderSide(color: Colors.blue[800]!), // Change the color as needed
-                                              ),
-                                              enabledBorder: const UnderlineInputBorder(
-                                                borderSide: BorderSide(color: Colors.black54), // Change the color as needed
-                                              ),
-                                            ),
-                                            readOnly: true,
-                                            onTap: () {
-                                              _selectTime(context);
-                                              _selectDate(context);
-                                            },
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                    const SizedBox(height: 16),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.of(context).pop(); // Close the dialog on cancel
-                                          },
-                                          child: Text(
-                                            'Cancel',
-                                            style: TextStyle(
-                                              fontFamily: "Inter",
-                                              color: Colors.blue[800], // Set your desired text color
-                                            ),
-                                          ),
-                                        ),
-                                        TextButton(
-                                          onPressed: () {
-                                            switch (widget.title) {
-                                              case 'Weight (Kg)':
-                                                setState(() {
-                                                  weightData = _updateChartData(_textEditingController.text, _dateController.text);
-                                                });
-                                                break;
-                                              case 'Skeletal Muscle Mass (Kg)':
-                                                setState(() {
-                                                  skeletalMuscleData = _updateChartData(_textEditingController.text, _dateController.text);
-                                                });
-                                                break;
-                                              case 'Percent Body Fat (%)':
-                                                setState(() {
-                                                  percentBodyFatData = _updateChartData(_textEditingController.text, _dateController.text);
-                                                });
-                                                break;
+                                    TextButton(
+                                      onPressed: () {
+                                        if (_textEditingController.text == "") {
+                                          Fluttertoast.showToast(
+                                              msg: "Weight is required",
+                                              toastLength: Toast.LENGTH_SHORT,
+                                              // Toast duration (Toast.LENGTH_SHORT or Toast.LENGTH_LONG)
+                                              gravity: ToastGravity.BOTTOM,
+                                              // Toast position (ToastGravity.TOP, ToastGravity.CENTER, or ToastGravity.BOTTOM)
+                                              timeInSecForIosWeb: 1,
+                                              // Time for iOS and web (in seconds)
+                                              fontSize: 16.0
+                                          );
 
-                                              default:
-                                                break;
-                                            }
-                                            Navigator.of(context).pop(); // Close the dialog on save
-                                          },
-                                          child: Text(
-                                            'Save',
-                                            style: TextStyle(
-                                              fontFamily: "Inter",
-                                              color: Colors.blue[800], // Set your desired text color
-                                            ),
-                                          ),
+                                          return;
+                                        }
+                                        switch (widget.title) {
+                                          case 'Weight (Kg)':
+                                            setState(() {
+                                              weightData = _updateChartData(_textEditingController.text, _dateController.text);
+                                            });
+                                            break;
+                                          case 'Skeletal Muscle Mass (Kg)':
+                                            setState(() {
+                                              skeletalMuscleData = _updateChartData(_textEditingController.text, _dateController.text);
+                                            });
+                                            break;
+                                          case 'Percent Body Fat (%)':
+                                            setState(() {
+                                              percentBodyFatData = _updateChartData(_textEditingController.text, _dateController.text);
+                                            });
+                                            break;
+
+                                          default:
+                                            break;
+                                        }
+                                        Navigator.of(context).pop(); // Close the dialog on save
+                                      },
+                                      child: const Text(
+                                        'Save',
+                                        style: TextStyle(
+                                          fontFamily: "Inter",
+                                          color: Color(0xFF5AC8FA), // Set your desired text color
                                         ),
-                                      ],
+                                      ),
                                     ),
                                   ],
                                 ),
-                              ),
-                            );
-                          }
+                              ],
+                            ),
+                          ),
                         );
-                      },
-                      child: Icon(
-                        Icons.add,
-                        // Replace with the calendar icon you want to use
-                        color: Colors.grey[350],
-                        size: 22,
-                      ),
-                    ),
+                      }
+                    );
+                  },
+                  icon: const FaIcon(
+                    Icons.add,
+                    size: 21,
                   ),
                 ),
               ],
@@ -337,33 +309,20 @@ class _BodyCompositionChartState extends State<BodyCompositionChart> {
               child: SfCartesianChart(
                   title: ChartTitle(
                     text: widget.title,
-                    textStyle: TextStyle(
+                    textStyle: const TextStyle(
                       fontFamily: "Inter",
-                      color: Colors.grey[350],
                       fontSize: 11,
                     ),
                   ),
                   primaryXAxis: CategoryAxis(
-                    title: AxisTitle(
-                        text: 'Time',
-                        textStyle: TextStyle(
-                          fontFamily: "Inter",
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.grey[350],
-                          height: 2,
-                        )
-                    ),
-                    labelStyle: TextStyle(
-                      color: Colors.grey[350],
+                    labelStyle: const TextStyle(
                       fontFamily: "Inter",
                     ),
                     majorGridLines: const MajorGridLines(color: Colors.grey), // Color for major gridlines
                     minorGridLines: const MinorGridLines(color: Colors.grey),
                   ),
                   primaryYAxis: NumericAxis(
-                    labelStyle: TextStyle(
-                      color: Colors.grey[350],
+                    labelStyle: const TextStyle(
                       fontFamily: "Inter",
                     ),
                     majorGridLines: const MajorGridLines(color: Colors.grey), // Color for major gridlines
@@ -398,24 +357,5 @@ class _BodyCompositionChartState extends State<BodyCompositionChart> {
         ),
       ),
     );
-
-
-
   }
 }
-
-
-// List<WeightData> saveWeight(String newWeight, String time) {
-//   double? weight;
-//   weight = double.tryParse(newWeight);
-//   weightData.add(WeightData(formatBodyCompositionDate(_selectedDate), weight!));
-//   return weightData;
-// }
-//
-// void saveSkeletalMuscleMass(String newSkeletalMuscleMass) {
-//   print('Name saved: $newSkeletalMuscleMass');
-// }
-//
-// void savePercentBodyFat(String newPercentBodyFat) {
-//   print('Name saved: $newPercentBodyFat');
-// }

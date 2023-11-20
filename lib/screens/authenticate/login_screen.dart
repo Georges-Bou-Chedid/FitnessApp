@@ -141,7 +141,7 @@ class LoginSignup extends State<LoginPage> {
                               child: const Text(
                                 'Login',
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color: Color(0xFF323232),
                                   fontFamily: "Inter",
                                   fontWeight: FontWeight.bold
                                 ),
@@ -168,6 +168,7 @@ class LoginSignup extends State<LoginPage> {
                           error,
                           style: const TextStyle(
                             color: Colors.red,
+                            fontFamily: "Inter",
                             fontSize: 14.0
                           ),
                         ),

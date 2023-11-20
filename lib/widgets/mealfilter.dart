@@ -1,3 +1,4 @@
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 
 class MealFilter extends StatefulWidget {
@@ -30,17 +31,16 @@ class _MealFilterState extends State<MealFilter> {
           onChanged: (String? newValue) {
             selectItem(newValue!);
           },
-          elevation: 4,
           isExpanded: true,
-          icon: Icon(Icons.arrow_drop_down, color: Colors.grey[300]),
+          icon: const Icon(EvaIcons.arrowDownOutline, color: Color(0xFFFFFFFF), size: 18),
           items: widget.filterOptions.map((String option) {
             return DropdownMenuItem<String>(
               value: option,
               child: Text(
                 option,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "Inter",
-                  color: Colors.grey[350]
+                  fontSize: 13
                 ),
               ),
             );

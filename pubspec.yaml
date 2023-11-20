@@ -50,6 +50,8 @@ dependencies:
   percent_indicator: ^4.2.3
   table_calendar: ^3.0.9
   carousel_slider: ^4.2.1
+  settings_ui: ^2.0.2
+  eva_icons_flutter: ^3.0.0
 
 dev_dependencies:
   flutter_launcher_icons: ^0.13.1

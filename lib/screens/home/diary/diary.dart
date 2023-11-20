@@ -13,7 +13,6 @@ class Diary extends StatelessWidget {
     return const DefaultTabController(
         length: 3,
         child: Scaffold(
-          backgroundColor: Color(0xFF323232),
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(100),
             child: MyAppBar(selectedTabs: [

@@ -1,4 +1,5 @@
 import 'package:country_picker/country_picker.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:fitnessapp/models/UserInformation.dart';
 import 'package:fitnessapp/services/user.dart';
 import 'package:flutter/material.dart';
@@ -124,7 +125,7 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
             'Error',
             style: TextStyle(
               fontFamily: "Inter",
-              color: Colors.black, // Set the title text color
+              color: Color(0xFF323232), // Set the title text color
               fontWeight: FontWeight.bold, // Make the title bold
               fontSize: 20.0, // Set the title font size
             ),
@@ -132,7 +133,8 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
           content: Text(
             errorMessage,
             style: const TextStyle(
-              fontSize: 16.0, // Set the content font size
+              fontSize: 16.0,
+              fontFamily: "Inter",
             ),
           ),
           actions: <Widget>[
@@ -146,7 +148,7 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
               child: const Text(
                 'OK',
                 style: TextStyle(
-                  color: Colors.white, // Set the button text color
+                  color: Color(0xFFFFFFFF), // Set the button text color
                 ),
               ),
             ),
@@ -191,7 +193,7 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
         ),
         leading: IconButton(
           icon: const Icon(
-            Icons.arrow_back,
+            EvaIcons.arrowBackOutline,
             color: Color(0xFF323232),
           ),
           onPressed: () {
@@ -212,14 +214,6 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
           width: double.infinity,
           height: double.infinity,
           color: const Color(0xFFFFFFFF),
-          // decoration: BoxDecoration(
-          //   gradient: LinearGradient(
-          //     begin: Alignment.topCenter,
-          //     end: Alignment.bottomCenter,
-          //     colors: [Colors.transparent, Colors.black54.withOpacity(0.1)],
-          //     stops: [0.0, 0.3],
-          //   ),
-          // ),
           child: Center(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -534,7 +528,7 @@ class _ThirdStepState extends State<ThirdStep> {
                 style: TextStyle(
                   fontSize: 18.0,
                   fontFamily: "BebasNeue",
-                  color: Colors.black54,
+                  color: Color(0xFF323232),
                 ),
               ),
               const SizedBox(height: 30.0),

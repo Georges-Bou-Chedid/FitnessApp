@@ -1,3 +1,4 @@
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -17,12 +18,6 @@ class SummaryDatePickerState extends State<SummaryDatePicker> {
       initialDate: selectedDate,
       firstDate: DateTime(2000),
       lastDate: DateTime(2101),
-      builder: (BuildContext context, Widget? child) {
-        return Theme(
-          data: ThemeData.light(), // Customize the date picker theme
-          child: child!,
-        );
-      },
     )) ?? DateTime.now();
 
     if (picked != selectedDate) {
@@ -36,15 +31,26 @@ class SummaryDatePickerState extends State<SummaryDatePicker> {
   Widget build(BuildContext context) {
     return Container(
       width: 250,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        color: Colors.grey[300], // Set the indicator color to white
+      decoration: Theme.of(context).scaffoldBackgroundColor == const Color(0xFF323232) ?
+          BoxDecoration(
+            borderRadius: BorderRadius.circular(60.0),
+            border: Border.all(
+              color: const Color(0xFFFFFFFF), // Set the border color here
+              width: 1.0, // Set the border width here
+            ),
+          )
+          : BoxDecoration(
+            borderRadius: BorderRadius.circular(60.0),
+            border: Border.all(
+              color: const Color(0xFF323232), // Set the border color here
+              width: 1.0, // Set the border width here
+            ),
       ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             IconButton(
-              icon: const Icon(Icons.chevron_left, color: Color(0xFF323232), size: 18),
+              icon: const Icon(EvaIcons.chevronLeftOutline, size: 16),
               onPressed: () {
                 setState(() {
                   selectedDate = selectedDate.subtract(const Duration(days: 1));
@@ -59,8 +65,7 @@ class SummaryDatePickerState extends State<SummaryDatePicker> {
                   },
                   child: const Icon(
                     Icons.calendar_today, // Replace with the calendar icon you want to use
-                    color: Color(0xFF323232),
-                    size: 18,
+                    size: 15,
                   ),
                 ),
                 const SizedBox(width: 5),
@@ -71,8 +76,8 @@ class SummaryDatePickerState extends State<SummaryDatePicker> {
                   child: Text(
                     formatDate(selectedDate),
                     style: const TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
                       fontFamily: "Inter"
                     ),
                   ),
@@ -80,7 +85,7 @@ class SummaryDatePickerState extends State<SummaryDatePicker> {
               ],
             ),
             IconButton(
-              icon: const Icon(Icons.chevron_right, color: Color(0xFF323232), size: 18),
+              icon: const Icon(EvaIcons.chevronRightOutline, size: 16),
               onPressed: () {
                 setState(() {
                   selectedDate = selectedDate.add(const Duration(days: 1));
@@ -94,8 +99,6 @@ class SummaryDatePickerState extends State<SummaryDatePicker> {
 }
 
 String formatDate(DateTime date) {
-  // final formatter = DateFormat('EEEE, d MMM');
-  // return formatter.format(date);
   final now = DateTime.now();
   final today = DateTime(now.year, now.month, now.day);
   final yesterday = today.subtract(Duration(days: 1));
@@ -108,7 +111,7 @@ String formatDate(DateTime date) {
   } else if (date.isAtSameMomentAs(tomorrow)) {
     return 'Tomorrow';
   } else {
-    final formatter = DateFormat('EEEE, d MMM');
+    final formatter = DateFormat('EEE, d MMM');
     return formatter.format(date);
   }
 }

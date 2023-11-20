@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../screens/splash_screen.dart';
@@ -40,11 +39,6 @@ class MyAppBarPage extends State<MyAppBar> {
             ),
           );
         }).toList(),
-        labelColor: Colors.grey[350],
-        unselectedLabelColor: const Color(0xFF323232),
-        indicator: UnderlineTabIndicator(
-          borderSide: BorderSide(width: 3, color: Colors.grey[350]!), // Set the line width and color
-        ),
     );
   }
 
@@ -85,8 +79,7 @@ class MyAppBarPage extends State<MyAppBar> {
             IconButton(
               icon: const FaIcon(
                 FontAwesomeIcons.user,
-                size: 24,
-                color: Colors.black,
+                size: 24
               ),
               onPressed: () async {
                 await _authService.signOut();

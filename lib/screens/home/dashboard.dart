@@ -1,26 +1,17 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../widgets/appbar.dart';
 import '../../widgets/dashboardcarouselchart.dart';
 import '../../widgets/dashboardbodycompositioncharts.dart';
 import '../../widgets/navdrawer.dart';
 
 String formatDate(DateTime date) {
-  DateTime now = DateTime.now();
-  if (date.year == now.year && date.month == now.month && date.day == now.day) {
-    return 'Today';
-  } 
-  DateTime yesterday = now.subtract(Duration(days: 1));
-  if (date.year == yesterday.year && date.month == yesterday.month && date.day == yesterday.day) {
-    return 'Yesterday';
-  }
-  return DateFormat('dd/MM/yy').format(date);
+  return DateFormat('dd\nEEE').format(date);
 }
 
 String formatBodyCompositionDate(DateTime date) {
-  return DateFormat('dd/MM/yy\nH:m').format(date);
+  return DateFormat('MM-dd\nH:m').format(date);
 }
 
 DateTime startDate1 = DateTime.now().subtract(const Duration(days: 4));
@@ -62,7 +53,6 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF323232),
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(65),
         child: MyAppBar(selectedTabs: []),
@@ -72,16 +62,6 @@ class _DashboardPageState extends State<DashboardPage> {
           child: NavDrawer()
       ),
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF323232), // Dark Gray
-              Color(0xFF444444), // Slightly lighter shade of gray
-            ],
-          ),
-        ),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -108,8 +88,8 @@ class _DashboardPageState extends State<DashboardPage> {
                           ),
                           items: <Widget>[
                             // Create multiple cards with your bar chart
-                            ChartCard(initialChartData: calorieData, label: 'Calories', initialStartDate: startDate1, initialEndDate: endDate1, goal: "2500", image: Image.asset('assets/images/svg/calories.png', width: 30, height: 30)),
-                            ChartCard(initialChartData: proteinData, label: 'Protein', initialStartDate: startDate2, initialEndDate: endDate2, goal: "250", image: Image.asset('assets/images/svg/protein.png', width: 30, height: 30)),
+                            ChartCard(initialChartData: calorieData, label: 'Calories', initialStartDate: startDate1, initialEndDate: endDate1, goal: "2500", image: Image.asset('assets/images/svg/calories.png', width: 30, height: 30), unit: "Kcal"),
+                            ChartCard(initialChartData: proteinData, label: 'Protein', initialStartDate: startDate2, initialEndDate: endDate2, goal: "250", image: Image.asset('assets/images/svg/protein.png', width: 30, height: 30), unit: "g"),
                             // Add more chart cards as needed
                           ],
                         ),
@@ -124,374 +104,29 @@ class _DashboardPageState extends State<DashboardPage> {
                                 margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color: currentPage == index ? Colors.blue[800] : Colors.grey,
+                                  color: currentPage == index ? const Color(0xFF5AC8FA) : const Color(0xFFFFFFFF),
                                 ),
                               );
                             },
                           ),
                         ),
                         const SizedBox(height: 10),
-                        Row(
+                        const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
                               "Body Composition History",
                               style: TextStyle(
                                 fontFamily: "Inter",
-                                color: Colors.grey[350],
-                                fontSize: 16,
+                                fontSize: 15,
                               ),
                             )
                           ]
                         ),
                         const SizedBox(height: 10),
-                        BodyCompositionChart(initialChartData: weightData, title: "Weight (Kg)", sizedWidth: 80, color: Colors.blue[800]!),
-                        BodyCompositionChart(initialChartData: skeletalMuscleData, title: "Skeletal Muscle Mass (Kg)", sizedWidth: 180, color: Colors.orange),
-                        BodyCompositionChart(initialChartData: percentBodyFatData, title: "Percent Body Fat (%)", sizedWidth: 150, color: Colors.purple)
-                        // Card(
-                        //   elevation: 4, // Add elevation for a shadow effect
-                        //   shape: RoundedRectangleBorder(
-                        //     borderRadius: BorderRadius.circular(15.0), // Adjust the radius as needed
-                        //     side: BorderSide(
-                        //       color: Colors.grey[350]!, // Border color
-                        //       width: 2.0, // Border width
-                        //     ),
-                        //   ),
-                        //   color: const Color(0xFF444444),
-                        //   child: Padding(
-                        //     padding: const EdgeInsets.all(2.0),
-                        //     child: Column(
-                        //       children: <Widget>[
-                        //         Row(
-                        //           mainAxisAlignment: MainAxisAlignment.end,
-                        //           children: [
-                        //             Padding(
-                        //               padding: const EdgeInsets.only(right: 5.0, top: 5.0),
-                        //               child: Container(
-                        //                 width: 24, // Set the desired width
-                        //                 height: 24, // Set the desired height
-                        //                 decoration: BoxDecoration(
-                        //                   shape: BoxShape.circle, // Make it circular
-                        //                   color: Colors.blue[800], // Set your desired background color
-                        //                 ),
-                        //                 child: TextButton(
-                        //                   style: ElevatedButton.styleFrom(
-                        //                     padding: EdgeInsets.zero, // Remove default padding
-                        //                     shape: const CircleBorder(), // Ensure a circular shape
-                        //                   ),
-                        //                   onPressed: () async {
-                        //                     showDialog(
-                        //                       context: context,
-                        //                       builder: (context) => const BodyCompositionChart(title: 'Weight (Kg)', sizedWidth: 80),
-                        //                     );
-                        //                   },
-                        //                   child: Icon(
-                        //                     Icons.edit,
-                        //                     // Replace with the calendar icon you want to use
-                        //                     color: Colors.grey[350],
-                        //                     size: 13,
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ],
-                        //         ),
-                        //         SizedBox(
-                        //           height: 180,
-                        //           child: SfCartesianChart(
-                        //               title: ChartTitle(
-                        //                 text: "Weight (Kg)",
-                        //                 textStyle: TextStyle(
-                        //                   fontFamily: "Inter",
-                        //                   color: Colors.grey[350],
-                        //                   fontSize: 11,
-                        //                 ),
-                        //               ),
-                        //               primaryXAxis: CategoryAxis(
-                        //                 title: AxisTitle(
-                        //                     text: 'Time',
-                        //                     textStyle: TextStyle(
-                        //                       fontFamily: "Inter",
-                        //                       fontSize: 12,
-                        //                       fontWeight: FontWeight.w600,
-                        //                       color: Colors.grey[350],
-                        //                       height: 2,
-                        //                     )
-                        //                 ),
-                        //                 labelStyle: TextStyle(
-                        //                   color: Colors.grey[350],
-                        //                   fontFamily: "Inter",
-                        //                 ),
-                        //                 majorGridLines: const MajorGridLines(color: Colors.grey), // Color for major gridlines
-                        //                 minorGridLines: const MinorGridLines(color: Colors.grey),
-                        //               ),
-                        //               primaryYAxis: NumericAxis(
-                        //                 labelStyle: TextStyle(
-                        //                   color: Colors.grey[350],
-                        //                   fontFamily: "Inter",
-                        //                 ),
-                        //                 majorGridLines: const MajorGridLines(color: Colors.grey), // Color for major gridlines
-                        //                 minorGridLines: const MinorGridLines(color: Colors.grey),
-                        //               ),
-                        //               series: <ChartSeries>[
-                        //                 // Renders spline chart
-                        //                 SplineSeries<WeightData, String>(
-                        //                   dataSource: weightData,
-                        //                   dataLabelSettings: DataLabelSettings(
-                        //                     isVisible: true, // Show data labels
-                        //                     textStyle: TextStyle(
-                        //                       color: Colors.blue[800], // Specify the desired color for data labels
-                        //                       fontSize: 10, // Specify the desired font size for data labels
-                        //                       fontFamily: "Inter", // Specify the desired font family for data labels
-                        //                       fontWeight: FontWeight.normal, // Specify the desired font weight for data labels
-                        //                     ),
-                        //                   ),
-                        //                   markerSettings: MarkerSettings(
-                        //                       isVisible: true,
-                        //                       color: Colors.blue[800]
-                        //                   ),
-                        //                   xValueMapper: (WeightData data, _) => data.date,
-                        //                   yValueMapper: (WeightData data, _) => data.weight,
-                        //                   width: 3,
-                        //                   color: Colors.blue[800],
-                        //                 )
-                        //               ]
-                        //           ),
-                        //         )
-                        //       ],
-                        //     ),
-                        //   ),
-                        // ),
-                        // Card(
-                        //   elevation: 4, // Add elevation for a shadow effect
-                        //   shape: RoundedRectangleBorder(
-                        //     borderRadius: BorderRadius.circular(15.0), // Adjust the radius as needed
-                        //     side: BorderSide(
-                        //       color: Colors.grey[350]!, // Border color
-                        //       width: 2.0, // Border width
-                        //     ),
-                        //   ),
-                        //   color: const Color(0xFF444444),
-                        //   child: Padding(
-                        //     padding: const EdgeInsets.all(2.0),
-                        //     child: Column(
-                        //       children: <Widget>[
-                        //         Row(
-                        //           mainAxisAlignment: MainAxisAlignment.end,
-                        //           children: [
-                        //             Padding(
-                        //               padding: const EdgeInsets.only(right: 5.0, top: 5.0),
-                        //               child: Container(
-                        //                 width: 24, // Set the desired width
-                        //                 height: 24, // Set the desired height
-                        //                 decoration: BoxDecoration(
-                        //                   shape: BoxShape.circle, // Make it circular
-                        //                   color: Colors.blue[800], // Set your desired background color
-                        //                 ),
-                        //                 child: TextButton(
-                        //                   style: ElevatedButton.styleFrom(
-                        //                     padding: EdgeInsets.zero, // Remove default padding
-                        //                     shape: const CircleBorder(), // Ensure a circular shape
-                        //                   ),
-                        //                   onPressed: () async {
-                        //                     showDialog(
-                        //                       context: context,
-                        //                       builder: (context) => const EditDialog(title: 'Skeletal Muscle Mass (Kg)', sizedWidth: 180),
-                        //                     );
-                        //                   },
-                        //                   child: Icon(
-                        //                     Icons.edit,
-                        //                     // Replace with the calendar icon you want to use
-                        //                     color: Colors.grey[350],
-                        //                     size: 13,
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ],
-                        //         ),
-                        //         SizedBox(
-                        //           height: 180,
-                        //           child: SfCartesianChart(
-                        //               title: ChartTitle(
-                        //                 text: "Skeletal Muscle Mass (Kg)",
-                        //                 textStyle: TextStyle(
-                        //                   fontFamily: "Inter",
-                        //                   color: Colors.grey[350],
-                        //                   fontSize: 11,
-                        //                 ),
-                        //               ),
-                        //               primaryXAxis: CategoryAxis(
-                        //                 title: AxisTitle(
-                        //                     text: 'Time',
-                        //                     textStyle: TextStyle(
-                        //                       fontFamily: "Inter",
-                        //                       fontSize: 12,
-                        //                       fontWeight: FontWeight.w600,
-                        //                       color: Colors.grey[350],
-                        //                       height: 2,
-                        //                     )
-                        //                 ),
-                        //                 labelStyle: TextStyle(
-                        //                   color: Colors.grey[350],
-                        //                   fontFamily: "Inter",
-                        //                 ),
-                        //                 majorGridLines: const MajorGridLines(color: Colors.grey), // Color for major gridlines
-                        //                 minorGridLines: const MinorGridLines(color: Colors.grey),
-                        //               ),
-                        //               primaryYAxis: NumericAxis(
-                        //                 labelStyle: TextStyle(
-                        //                   color: Colors.grey[350],
-                        //                   fontFamily: "Inter",
-                        //                 ),
-                        //                 majorGridLines: const MajorGridLines(color: Colors.grey), // Color for major gridlines
-                        //                 minorGridLines: const MinorGridLines(color: Colors.grey),
-                        //               ),
-                        //               series: <ChartSeries>[
-                        //                 // Renders spline chart
-                        //                 SplineSeries<SkeletalMuscleMassData, String>(
-                        //                   dataSource: skeletalMuscleData,
-                        //                   dataLabelSettings: const DataLabelSettings(
-                        //                     isVisible: true, // Show data labels
-                        //                     textStyle: TextStyle(
-                        //                       color: Colors.orange, // Specify the desired color for data labels
-                        //                       fontSize: 10, // Specify the desired font size for data labels
-                        //                       fontFamily: "Inter", // Specify the desired font family for data labels
-                        //                       fontWeight: FontWeight.normal, // Specify the desired font weight for data labels
-                        //                     ),
-                        //                   ),
-                        //                   markerSettings: const MarkerSettings(
-                        //                       isVisible: true,
-                        //                       color: Colors.orange
-                        //                   ),
-                        //                   xValueMapper: (SkeletalMuscleMassData data, _) => data.date,
-                        //                   yValueMapper: (SkeletalMuscleMassData data, _) => data.skeletalMuscle,
-                        //                   width: 3,
-                        //                   color: Colors.orange,
-                        //                 )
-                        //               ]
-                        //           ),
-                        //         )
-                        //       ],
-                        //     ),
-                        //   ),
-                        // ),
-                        // Card(
-                        //   elevation: 4, // Add elevation for a shadow effect
-                        //   shape: RoundedRectangleBorder(
-                        //     borderRadius: BorderRadius.circular(15.0), // Adjust the radius as needed
-                        //     side: BorderSide(
-                        //       color: Colors.grey[350]!, // Border color
-                        //       width: 2.0, // Border width
-                        //     ),
-                        //   ),
-                        //   color: const Color(0xFF444444),
-                        //   child: Padding(
-                        //     padding: const EdgeInsets.all(2.0),
-                        //     child: Column(
-                        //       children: <Widget>[
-                        //         Row(
-                        //           mainAxisAlignment: MainAxisAlignment.end,
-                        //           children: [
-                        //             Padding(
-                        //               padding: const EdgeInsets.only(right: 5.0, top: 5.0),
-                        //               child: Container(
-                        //                 width: 24, // Set the desired width
-                        //                 height: 24, // Set the desired height
-                        //                 decoration: BoxDecoration(
-                        //                   shape: BoxShape.circle, // Make it circular
-                        //                   color: Colors.blue[800], // Set your desired background color
-                        //                 ),
-                        //                 child: TextButton(
-                        //                   style: ElevatedButton.styleFrom(
-                        //                     padding: EdgeInsets.zero, // Remove default padding
-                        //                     shape: const CircleBorder(), // Ensure a circular shape
-                        //                   ),
-                        //                   onPressed: () async {
-                        //                     showDialog(
-                        //                       context: context,
-                        //                       builder: (context) => const EditDialog(title: 'Percent Body Fat (%)', sizedWidth: 150),
-                        //                     );
-                        //                   },
-                        //                   child: Icon(
-                        //                     Icons.edit,
-                        //                     // Replace with the calendar icon you want to use
-                        //                     color: Colors.grey[350],
-                        //                     size: 13,
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ],
-                        //         ),
-                        //         SizedBox(
-                        //           height: 180,
-                        //           child: SfCartesianChart(
-                        //               title: ChartTitle(
-                        //                 text: "Percent Body Fat (%)",
-                        //                 textStyle: TextStyle(
-                        //                   fontFamily: "Inter",
-                        //                   color: Colors.grey[350],
-                        //                   fontSize: 11,
-                        //                 ),
-                        //               ),
-                        //               primaryXAxis: CategoryAxis(
-                        //                 title: AxisTitle(
-                        //                     text: 'Time',
-                        //                     textStyle: TextStyle(
-                        //                       fontFamily: "Inter",
-                        //                       fontSize: 12,
-                        //                       fontWeight: FontWeight.w600,
-                        //                       color: Colors.grey[350],
-                        //                       height: 2,
-                        //                     )
-                        //                 ),
-                        //                 labelStyle: TextStyle(
-                        //                   color: Colors.grey[350],
-                        //                   fontFamily: "Inter",
-                        //                 ),
-                        //                 majorGridLines: const MajorGridLines(color: Colors.grey), // Color for major gridlines
-                        //                 minorGridLines: const MinorGridLines(color: Colors.grey),
-                        //               ),
-                        //               primaryYAxis: NumericAxis(
-                        //                 labelStyle: TextStyle(
-                        //                   color: Colors.grey[350],
-                        //                   fontFamily: "Inter",
-                        //                 ),
-                        //                 majorGridLines: const MajorGridLines(color: Colors.grey), // Color for major gridlines
-                        //                 minorGridLines: const MinorGridLines(color: Colors.grey),
-                        //                 // minimum: 0,
-                        //                 // maximum: 100
-                        //               ),
-                        //               series: <ChartSeries>[
-                        //                 // Renders spline chart
-                        //                 SplineSeries<PercentBodyFatData, String>(
-                        //                   dataSource: percentBodyFatData,
-                        //                   dataLabelSettings: const DataLabelSettings(
-                        //                     isVisible: true, // Show data labels
-                        //                     textStyle: TextStyle(
-                        //                       color: Colors.purple, // Specify the desired color for data labels
-                        //                       fontSize: 10, // Specify the desired font size for data labels
-                        //                       fontFamily: "Inter", // Specify the desired font family for data labels
-                        //                       fontWeight: FontWeight.normal, // Specify the desired font weight for data labels
-                        //                     ),
-                        //                   ),
-                        //                   markerSettings: const MarkerSettings(
-                        //                       isVisible: true,
-                        //                       color: Colors.purple
-                        //                   ),
-                        //                   xValueMapper: (PercentBodyFatData data, _) => data.date,
-                        //                   yValueMapper: (PercentBodyFatData data, _) => data.percentBodyFat,
-                        //                   width: 3,
-                        //                   color: Colors.purple,
-                        //                 )
-                        //               ]
-                        //           ),
-                        //         )
-                        //       ],
-                        //     ),
-                        //   ),
-                        // ),
+                        BodyCompositionChart(initialChartData: weightData, title: "Weight (Kg)", sizedWidth: 80, color: const Color(0xFF5AC8FA)),
+                        BodyCompositionChart(initialChartData: skeletalMuscleData, title: "Skeletal Muscle Mass (Kg)", sizedWidth: 180, color: const Color(0xFFFF9500)),
+                        BodyCompositionChart(initialChartData: percentBodyFatData, title: "Percent Body Fat (%)", sizedWidth: 150, color: const Color(0xFFE91E63))
                       ],
                     ),
                   ),
