@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../models/Food.dart';
-import '../../../widgets/datepicker.dart';
-import '../../../widgets/diarypiechart.dart';
+import '../../../widgets/date_picker.dart';
+import '../../../widgets/diary_pie_chart.dart';
 
 class DiaryPage extends StatefulWidget {
   const DiaryPage({super.key});

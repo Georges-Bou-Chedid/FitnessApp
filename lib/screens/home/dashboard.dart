@@ -1,10 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../../widgets/appbar.dart';
-import '../../widgets/dashboardcarouselchart.dart';
-import '../../widgets/dashboardbodycompositioncharts.dart';
-import '../../widgets/navdrawer.dart';
+import '../../widgets/app_bar.dart';
+import '../../widgets/dashboard_carousel_chart.dart';
+import '../../widgets/dashboard_body_composition_charts.dart';
+import '../../widgets/nav_drawer.dart';
 
 String formatDate(DateTime date) {
   return DateFormat('dd\nEEE').format(date);

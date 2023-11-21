@@ -1,4 +1,4 @@
-import 'package:fitnessapp/widgets/summarypiechart.dart';
+import 'package:fitnessapp/widgets/summary_pie_chart.dart';
 import 'package:flutter/material.dart';
 
 class SummaryPage extends StatefulWidget {

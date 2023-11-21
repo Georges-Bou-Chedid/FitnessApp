@@ -5,6 +5,7 @@ import '../../util/theme_data.dart';
 import 'dashboard.dart';
 
 late _HomeState settingUI;
+bool isDarkMode = true;
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -14,7 +15,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  bool isDarkMode = true;
 
   void callSetState() {
     setState(() {});
@@ -31,7 +31,7 @@ class _HomeState extends State<Home> {
       routes: {
         '/dashboard': (context) => const DashboardPage(),
         '/diary': (context) => const Diary(),
-        // '/settings': (context) => const SettingsScreen(),
+        '/settings': (context) => const SettingsScreen(),
       },
     );
   }

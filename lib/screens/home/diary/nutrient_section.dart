@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import '../../../widgets/datepicker.dart';
-import '../../../widgets/mealfilter.dart';
+import '../../../widgets/date_picker.dart';
+import '../../../widgets/meal_filter.dart';
 
 class NutrientPage extends StatelessWidget {
   const NutrientPage({super.key});

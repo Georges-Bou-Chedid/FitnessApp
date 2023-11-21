@@ -1,7 +1,7 @@
 import 'package:fitnessapp/screens/home/diary/summary_section.dart';
 import 'package:flutter/material.dart';
-import '../../../widgets/appbar.dart';
-import '../../../widgets/navdrawer.dart';
+import '../../../widgets/app_bar.dart';
+import '../../../widgets/nav_drawer.dart';
 import 'diary_section.dart';
 import 'nutrient_section.dart';
 
