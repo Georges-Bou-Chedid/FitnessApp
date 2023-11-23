@@ -58,71 +58,129 @@ class _DiaryPageState extends State<DiaryPage> with AutomaticKeepAliveClientMixi
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Center(
-                        child: Container(
-                          width: 150,
-                          child: Card(
-                            elevation: 0,
-                            color: const Color(0xFF3FCC7C),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0), // Adjust the radius as needed
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(12.0),
-                              child: Column(
-                                children: <Widget>[
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      const Text(
-                                        "Calories"
-                                      ),
-                                      Image.asset('assets/images/svg/calories.png', width: 20, height: 20)
-                                    ],
-                                  ),
-                                  const SizedBox(height: 5),
-                                  Stack(
-                                      alignment: Alignment.center,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          SizedBox(
+                            width: 150,
+                            child: Card(
+                              elevation: 0,
+                              color: const Color(0xFF3FCC7C),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0), // Adjust the radius as needed
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(12.0),
+                                child: Column(
+                                  children: <Widget>[
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Center(
-                                          child: RichText(
-                                            text: TextSpan(
-                                              children: [
-                                                TextSpan(
-                                                  text: "${consumedCalories.toStringAsFixed(0)}\n",
-                                                  style: const TextStyle(
-                                                      fontSize: 18,
+                                        const Text(
+                                          "Calories",
+                                          style: TextStyle(
+                                              color: Color(0xFFFFFFFF)
+                                          ),
+                                        ),
+                                        Image.asset('assets/images/svg/calories.png', width: 20, height: 20)
+                                      ],
+                                    ),
+                                    const SizedBox(height: 5),
+                                    Stack(
+                                        alignment: Alignment.center,
+                                        children: [
+                                          Center(
+                                            child: RichText(
+                                              text: TextSpan(
+                                                children: [
+                                                  TextSpan(
+                                                    text: "${consumedCalories.toStringAsFixed(0)}\n",
+                                                    style: const TextStyle(
+                                                        fontSize: 18,
+                                                        fontFamily: "Inter",
+                                                        fontWeight: FontWeight.w600
+                                                    ),
+                                                  ),
+                                                  const TextSpan(
+                                                    text: 'Kcal', // Replace with your variable
+                                                    style: TextStyle(
+                                                      color: Colors.white54,
                                                       fontFamily: "Inter",
-                                                      fontWeight: FontWeight.w600
+                                                      fontSize: 14,
+                                                    ),
                                                   ),
-                                                ),
-                                                const TextSpan(
-                                                  text: 'Kcal', // Replace with your variable
-                                                  style: TextStyle(
-                                                    color: Colors.white54,
-                                                    fontFamily: "Inter",
-                                                    fontSize: 14,
-                                                  ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
+                                              textAlign: TextAlign.center,
                                             ),
-                                            textAlign: TextAlign.center,
                                           ),
-                                        ),
-                                        AspectRatio(
-                                          aspectRatio: 1, // Adjust the aspect ratio as needed
-                                          child: CaloriePieChart(
-                                            totalCalories: totalCalories,
-                                            consumedCalories: consumedCalories,
+                                          AspectRatio(
+                                            aspectRatio: 1, // Adjust the aspect ratio as needed
+                                            child: CaloriePieChart(
+                                              totalCalories: totalCalories,
+                                              consumedCalories: consumedCalories,
+                                            ),
                                           ),
-                                        ),
-                                      ]
-                                  ),
-                                ],
+                                        ]
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
+                          SizedBox(
+                            width: 150,
+                            child: Card(
+                              elevation: 0,
+                              color: const Color(0xFF5AC8FA),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0), // Adjust the radius as needed
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(12.0),
+                                child: Column(
+                                  children: <Widget>[
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const Text(
+                                          "Water",
+                                          style: TextStyle(
+                                              color: Color(0xFFFFFFFF)
+                                          ),
+                                        ),
+                                        Image.asset('assets/images/svg/water.png', width: 20, height: 20)
+                                      ],
+                                    ),
+                                    const SizedBox(height: 5),
+                                    Stack(
+                                        alignment: Alignment.center,
+                                        children: [
+                                          const Center(
+                                            child: Text(
+                                              "2.5 L",
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  fontFamily: "Inter",
+                                                  fontWeight: FontWeight.w600
+                                              ),
+                                            )
+                                          ),
+                                          AspectRatio(
+                                            aspectRatio: 1, // Adjust the aspect ratio as needed
+                                            child: CaloriePieChart(
+                                              totalCalories: totalCalories,
+                                              consumedCalories: consumedCalories,
+                                            ),
+                                          ),
+                                        ]
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ]
                 ),
@@ -156,13 +214,8 @@ Widget _buildMealSection(String title, List<Food> entries, Function() showAddEnt
   return Container(
     margin: EdgeInsets.all(12.0),
     child: Card(
-      elevation: 0, // Add elevation for a shadow effect
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0), // Adjust the radius as needed
-        side: const BorderSide(
-          color: Color(0xFFFFFFFF), // Border color
-          width: 1.0, // Border width
-        ),
+        borderRadius: BorderRadius.circular(30.0), // Adjust the radius as needed
       ),
       child: Padding(
         padding: const EdgeInsets.all(15.0),

@@ -27,15 +27,15 @@ class NutrientPage extends StatelessWidget {
                       BoxDecoration(
                         borderRadius: BorderRadius.circular(30.0),
                         border: Border.all(
-                          color: const Color(0xFFFFFFFF), // Set the border color here
+                          color: Colors.white54, // Set the border color here
                           width: 0.5, // Set the border width here
                         ),
                       )
                       : BoxDecoration(
                           borderRadius: BorderRadius.circular(30.0),
                           border: Border.all(
-                            color: const Color(0xFF323232), // Set the border color here
-                            width: 0.5, // Set the border width here
+                            color: Colors.black12, // Set the border color here
+                            width: 1.0, // Set the border width here
                           ),
                   ),
                   child: const Row(

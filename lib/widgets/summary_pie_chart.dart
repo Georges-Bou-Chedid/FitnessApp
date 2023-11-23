@@ -131,20 +131,25 @@ class SummaryPieChart extends StatelessWidget {
                   children: [
                     Center(
                       child: RichText(
-                        text: const TextSpan(
+                        text: TextSpan(
                           children: [
                             TextSpan(
-                              text: "117 / 2500\n",
+                              text: "117/2500\n",
                               style: TextStyle(
                                   fontSize: 14,
                                   fontFamily: "Inter",
+                                  color: Theme.of(context).scaffoldBackgroundColor == const Color(0xFF323232) ?
+                                      const Color(0xFFFFFFFF)
+                                      : const Color(0xFF323232),
                                   fontWeight: FontWeight.w600
                               ),
                             ),
                             TextSpan(
                               text: 'Kcal', // Replace with your variable
                               style: TextStyle(
-                                color: Colors.white54,
+                                color: Theme.of(context).scaffoldBackgroundColor == const Color(0xFF323232) ?
+                                    Colors.white54
+                                    : const Color(0xFF323232),
                                 fontFamily: "Inter",
                                 fontSize: 13,
                               ),

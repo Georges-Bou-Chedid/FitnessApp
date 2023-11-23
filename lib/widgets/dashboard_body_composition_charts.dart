@@ -309,20 +309,29 @@ class _BodyCompositionChartState extends State<BodyCompositionChart> {
               child: SfCartesianChart(
                   title: ChartTitle(
                     text: widget.title,
-                    textStyle: const TextStyle(
+                    textStyle: TextStyle(
+                      color: Theme.of(context).scaffoldBackgroundColor == const Color(0xFF323232) ?
+                          const Color(0xFFFFFFFF)
+                          : const Color(0xFF323232),
                       fontFamily: "Inter",
                       fontSize: 11,
                     ),
                   ),
                   primaryXAxis: CategoryAxis(
-                    labelStyle: const TextStyle(
+                    labelStyle: TextStyle(
+                      color: Theme.of(context).scaffoldBackgroundColor == const Color(0xFF323232) ?
+                          const Color(0xFFFFFFFF)
+                          : const Color(0xFF323232),
                       fontFamily: "Inter",
                     ),
                     majorGridLines: const MajorGridLines(color: Colors.grey), // Color for major gridlines
                     minorGridLines: const MinorGridLines(color: Colors.grey),
                   ),
                   primaryYAxis: NumericAxis(
-                    labelStyle: const TextStyle(
+                    labelStyle: TextStyle(
+                      color: Theme.of(context).scaffoldBackgroundColor == const Color(0xFF323232) ?
+                          const Color(0xFFFFFFFF)
+                          : const Color(0xFF323232),
                       fontFamily: "Inter",
                     ),
                     majorGridLines: const MajorGridLines(color: Colors.grey), // Color for major gridlines

@@ -100,20 +100,30 @@ class ChartCardState extends State<ChartCard> {
             SfCartesianChart(
               title: ChartTitle(
                 text: "${widget.label} Consumed",
-                textStyle: const TextStyle(
+                textStyle:  TextStyle(
+                  color: Theme.of(context).scaffoldBackgroundColor == const Color(0xFF323232) ?
+                      const Color(0xFFFFFFFF)
+                      : const Color(0xFF323232),
                   fontFamily: "Inter",
-                  fontSize: 11.5
+                  fontSize: 11.5,
+                  fontWeight: FontWeight.w600
                 ),
               ),
               primaryXAxis: CategoryAxis(
-                labelStyle: const TextStyle(
+                labelStyle: TextStyle(
+                  color: Theme.of(context).scaffoldBackgroundColor == const Color(0xFF323232) ?
+                      const Color(0xFFFFFFFF)
+                      : const Color(0xFF323232),
                   fontFamily: "Inter",
                 ),
                 majorGridLines: const MajorGridLines(color: Colors.transparent), // Color for major gridlines
                 minorGridLines: const MinorGridLines(color: Colors.transparent),
               ),
               primaryYAxis: NumericAxis(
-                labelStyle: const TextStyle(
+                labelStyle: TextStyle(
+                  color: Theme.of(context).scaffoldBackgroundColor == const Color(0xFF323232) ?
+                      const Color(0xFFFFFFFF)
+                      : const Color(0xFF323232),
                   fontFamily: "Inter",
                 ),
                 majorGridLines: const MajorGridLines(color: Colors.transparent), // Color for major gridlines
@@ -125,10 +135,12 @@ class ChartCardState extends State<ChartCard> {
                     xValueMapper: (Data data, _) => data.date,
                     yValueMapper: (Data data, _) => data.value,
                     width: 0.35,
-                    dataLabelSettings: const DataLabelSettings(
+                    dataLabelSettings: DataLabelSettings(
                         isVisible: true,
                         textStyle: TextStyle(
-                          // color: Color(0xFF35AA67),
+                          color: Theme.of(context).scaffoldBackgroundColor == const Color(0xFF323232) ?
+                              const Color(0xFFFFFFFF)
+                              : const Color(0xFF323232),
                           fontFamily: "Inter",
                         )
                     ),

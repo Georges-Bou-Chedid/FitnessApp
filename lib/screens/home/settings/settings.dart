@@ -31,7 +31,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
       body: SettingsList(
         lightTheme: const SettingsThemeData(
           settingsListBackground: Color(0xFFFFFFFF),
-          settingsSectionBackground: Color(0xFFFFFFFF)
+          settingsSectionBackground: Color(0xFFFFFFFF),
+          titleTextColor: Color(0xFF323232)
         ),
         darkTheme: const SettingsThemeData(
             settingsListBackground: Color(0xFF323232),

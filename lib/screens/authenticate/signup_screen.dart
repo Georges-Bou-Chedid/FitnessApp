@@ -188,7 +188,7 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
           style: const TextStyle(
             fontSize: 18.0,
             fontFamily: "BebasNeue",
-            color: Color(0xFF323232),
+            color: Colors.black,
           ),
         ),
         leading: IconButton(

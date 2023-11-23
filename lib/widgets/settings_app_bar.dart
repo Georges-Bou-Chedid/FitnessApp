@@ -65,12 +65,19 @@ class MySettingsAppBarPage extends State<MySettingsAppBar> {
             style: TextStyle(
               color: Colors.black,
               fontFamily: "BebasNeue",
-              fontSize: 22,
-              fontWeight: FontWeight.w500
+              fontSize: 18,
+              fontWeight: FontWeight.w400
             ),
           ),
           elevation: 0.0,
           centerTitle: false,
+          actions: <Widget>[
+            Image.asset(
+              'assets/images/nutrilebblack.png', // Replace with your app's logo
+              width: 100.0,
+              height: 100.0,
+            ),
+          ],
         )
     );
   }

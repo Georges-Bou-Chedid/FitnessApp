@@ -35,14 +35,14 @@ class SummaryDatePickerState extends State<SummaryDatePicker> {
           BoxDecoration(
             borderRadius: BorderRadius.circular(60.0),
             border: Border.all(
-              color: const Color(0xFFFFFFFF), // Set the border color here
+              color: Colors.white54, // Set the border color here
               width: 1.0, // Set the border width here
             ),
           )
           : BoxDecoration(
             borderRadius: BorderRadius.circular(60.0),
             border: Border.all(
-              color: const Color(0xFF323232), // Set the border color here
+              color: Colors.black12, // Set the border color here
               width: 1.0, // Set the border width here
             ),
       ),

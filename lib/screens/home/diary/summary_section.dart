@@ -59,14 +59,14 @@ class SummaryPageState extends State<SummaryPage> {
                               BoxDecoration(
                                 borderRadius: BorderRadius.circular(100.0),
                                 border: Border.all(
-                                  color: const Color(0xFFFFFFFF), // Set the border color here
+                                  color: Colors.white54, // Set the border color here
                                   width: 1.0, // Set the border width here
                                 ),
                               )
                               : BoxDecoration(
                                   borderRadius: BorderRadius.circular(100.0),
                                   border: Border.all(
-                                    color: const Color(0xFF323232), // Set the border color here
+                                    color: Colors.black12, // Set the border color here
                                     width: 1.0, // Set the border width here
                                   ),
                           ),
@@ -104,7 +104,7 @@ class SummaryPageState extends State<SummaryPage> {
                                       bottomRight: Radius.circular(0), // Not rounded on the bottom right
                                     ),
                                     border: Border.all(
-                                      color: const Color(0xFFFFFFFF), // Set the border color here
+                                      color: Colors.white54, // Set the border color here
                                       width: 1.0, // Set the border width here
                                     ),
                                   )
@@ -116,7 +116,7 @@ class SummaryPageState extends State<SummaryPage> {
                                         bottomRight: Radius.circular(0), // Not rounded on the bottom right
                                       ),
                                       border: Border.all(
-                                        color: const Color(0xFF323232), // Set the border color here
+                                        color: Colors.black12, // Set the border color here
                                         width: 1.0, // Set the border width here
                                       ),
                               ),
@@ -153,7 +153,7 @@ class SummaryPageState extends State<SummaryPage> {
                                     bottomRight: Radius.circular(50), // Not rounded on the bottom right
                                   ),
                                   border: Border.all(
-                                    color: const Color(0xFFFFFFFF), // Set the border color here
+                                    color: Colors.white54, // Set the border color here
                                     width: 1.0, // Set the border width here
                                   ),
                                 )
@@ -165,7 +165,7 @@ class SummaryPageState extends State<SummaryPage> {
                                     bottomRight: Radius.circular(50), // Not rounded on the bottom right
                                   ),
                                   border: Border.all(
-                                    color: const Color(0xFF323232), // Set the border color here
+                                    color: Colors.black12, // Set the border color here
                                     width: 1.0, // Set the border width here
                                   ),
                             ),
