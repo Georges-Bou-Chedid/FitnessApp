@@ -1,6 +1,6 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
-import 'package:fitnessapp/models/UserInformation.dart';
+import 'package:fitnessapp/models/UserProfile.dart';
 import 'package:fitnessapp/services/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,7 +19,11 @@ Country selectedCountry = Country.parse("LB");
 
 int height = 0;
 int weight = 0;
+String measurementSystem = "Metric";
 
+String fullName = "";
+String userName = "";
+String phoneNumber = "";
 String signUpEmail = "";
 String signUpPassword = "";
 String appBarTitle = "Personal Info";
@@ -73,16 +77,18 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
           } else {
             // Create user info table
             var userId = result.uid;
-            UserInformation userInfo = UserInformation(
-                gender: gender,
-                age: age,
-                country: selectedCountry.countryCode,
-                height: height,
-                heightUnit: "cm",
-                weight: weight,
-                weightUnit: "kg"
+            UserProfile userInfo = UserProfile(
+              name: fullName,
+              userName: userName,
+              phoneNumber: phoneNumber,
+              gender: gender,
+              age: age,
+              country: selectedCountry.countryCode,
+              height: height,
+              weight: weight,
+              measurementSystem: measurementSystem
             );
-            await _userService.createUserInfo(userId, userInfo);
+            await _userService.createUserProfile(userId, userInfo);
 
             // After successful sign-up, navigate to the splash screen
             signUp();
@@ -405,6 +411,7 @@ class SecondStep extends StatefulWidget {
 }
 
 class _SecondStepState extends State<SecondStep> {
+  List<String> measurementSystems = ['Imperial', 'Metric'];
 
   @override
   Widget build(BuildContext context) {
@@ -417,7 +424,7 @@ class _SecondStepState extends State<SecondStep> {
           children: <Widget>[
             const SizedBox(height: 40.0),
             const Text(
-              'Please enter your height in cm:',
+              'Please enter your height',
               style: TextStyle(
                 fontFamily: "Inter",
                 fontWeight: FontWeight.bold,
@@ -425,7 +432,7 @@ class _SecondStepState extends State<SecondStep> {
             ),
             const SizedBox(height: 8.0),
             SizedBox(
-              width: 200,
+              width: 170,
               child: TextFormField(
                 validator: (val) => val!.isEmpty ? "Please enter your height" : null,
                 initialValue: height == 0 ? null : height.toString(),
@@ -452,7 +459,7 @@ class _SecondStepState extends State<SecondStep> {
             ),
             const SizedBox(height: 30.0),
             const Text(
-              'Please enter your weight in kg:',
+              'Please enter your weight',
               style: TextStyle(
                 fontFamily: "Inter",
                 fontWeight: FontWeight.bold,
@@ -460,7 +467,7 @@ class _SecondStepState extends State<SecondStep> {
             ),
             const SizedBox(height: 8.0),
             SizedBox(
-              width: 200,
+              width: 170,
               child: TextFormField(
                 validator: (val) => val!.isEmpty ? "Please enter your weight" : null,
                 initialValue: weight == 0 ? null : weight.toString(),
@@ -485,6 +492,62 @@ class _SecondStepState extends State<SecondStep> {
                 ),
               ),
             ),
+            const SizedBox(height: 30.0),
+            const Text(
+              'Measurement System',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontFamily: "Inter",
+              ),
+            ),
+            const SizedBox(height: 8.0),
+            SizedBox(
+              width: 200,
+              child: DropdownButtonFormField<String>(
+                decoration: const InputDecoration(
+                  labelText: 'Select your measurement system',
+                  labelStyle: TextStyle(
+                      fontFamily: "Inter",
+                      fontSize: 13
+                  ),
+                  border: OutlineInputBorder(),
+                ),
+                value: measurementSystem,
+                onChanged: (String? newValue) {
+                  setState(() {
+                    measurementSystem = newValue!;
+                  });
+                },
+                items: measurementSystems.map<DropdownMenuItem<String>>((String measurementSystem) {
+                  return DropdownMenuItem<String>(
+                    value: measurementSystem,
+                    child: Text(measurementSystem),
+                  );
+                }).toList(),
+              ),
+            ),
+            const SizedBox(height: 80.0),
+            Container(
+              alignment: Alignment.bottomCenter,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(60.0),
+                border: Border.all(
+                  color: const Color(0xFF323232), // Set the border color here
+                  width: 1.0, // Set the border width here
+                ),
+              ),
+              child: const Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Text(
+                    "Imperial System: height in feet/inches, weight in pounds, energy in calories, water in liters.\nMetric System: height in centimeters, weight in kilograms, energy in calories, water in fluid ounces.",
+                    style: TextStyle(
+                      fontFamily: "Inter",
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              )
           ],
         ),
       ),
@@ -532,6 +595,56 @@ class _ThirdStepState extends State<ThirdStep> {
                 ),
               ),
               const SizedBox(height: 30.0),
+              TextFormField(
+                validator: (val) => val!.isEmpty ? "Please enter your full name" : null,
+                onChanged: (val) {
+                  setState(() {
+                    fullName = val;
+                  });
+                },
+                decoration: const InputDecoration(
+                    labelText: 'Name',
+                    labelStyle: TextStyle(
+                        fontFamily: "Inter",
+                        fontSize: 14
+                    ),
+                    border: OutlineInputBorder()
+                ),
+              ),
+              const SizedBox(height: 20.0),
+              TextFormField(
+                onChanged: (val) {
+                  setState(() {
+                    userName = val;
+                  });
+                },
+                decoration: const InputDecoration(
+                    labelText: 'Username',
+                    labelStyle: TextStyle(
+                        fontFamily: "Inter",
+                        fontSize: 14
+                    ),
+                    border: OutlineInputBorder()
+                ),
+              ),
+              const SizedBox(height: 20.0),
+              TextFormField(
+                validator: (val) => val!.isEmpty ? "Please enter your phone number" : null,
+                onChanged: (val) {
+                  setState(() {
+                    phoneNumber = val;
+                  });
+                },
+                decoration: const InputDecoration(
+                    labelText: 'Phone Number',
+                    labelStyle: TextStyle(
+                        fontFamily: "Inter",
+                        fontSize: 14
+                    ),
+                    border: OutlineInputBorder()
+                ),
+              ),
+              const SizedBox(height: 20.0),
               TextFormField(
                 validator: (val) {
                   if (isEmailValid(val!)) {

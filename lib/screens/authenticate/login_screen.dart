@@ -176,10 +176,14 @@ class LoginSignup extends State<LoginPage> {
                         TextButton(
                           onPressed: () {
                             gender = "";
+                            measurementSystem = "Metric";
                             age = 0;
                             selectedCountry = Country.parse("LB");
                             height = 0;
                             weight = 0;
+                            fullName = "";
+                            userName = "";
+                            phoneNumber = "";
                             signUpEmail = "";
                             signUpPassword = "";
                             appBarTitle = "Personal Info";

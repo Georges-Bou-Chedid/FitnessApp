@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import '../models/UserProfile.dart';
+import '../services/user.dart';
 
 class MySettingsAppBar extends StatefulWidget {
-  const MySettingsAppBar({super.key});
+  final UserProfile userProfile;
+
+  const MySettingsAppBar({super.key, required this.userProfile});
 
   @override
   MySettingsAppBarPage createState() => MySettingsAppBarPage();
 }
 
 class MySettingsAppBarPage extends State<MySettingsAppBar> {
+  final UserService _userService = UserService();
+
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -30,23 +36,23 @@ class MySettingsAppBarPage extends State<MySettingsAppBar> {
               children: [
                 Container(
                   margin: const EdgeInsets.only(left: 10.0, bottom: 8.0),
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      CircleAvatar(
+                      const CircleAvatar(
                         backgroundImage: AssetImage('assets/images/user.png'), // Replace with your profile image
                       ),
-                      SizedBox(width: 10), // Add some spacing between the avatar and email
+                      const SizedBox(width: 10), // Add some spacing between the avatar and email
                       Text(
-                        "example@hotmail.com\n71941695",
-                        style: TextStyle(
+                        "${_userService.currentUser?.email}\n${widget.userProfile.phoneNumber}",
+                        style: const TextStyle(
                           color: Colors.black,
                           fontFamily: "BebasNeue",
                         ),
                       ),
-                      SizedBox(width: 50),
-                      Text(
+                      const SizedBox(width: 50),
+                      const Text(
                         "Gained 0 kg",
                         style: TextStyle(
                           color: Colors.black,
