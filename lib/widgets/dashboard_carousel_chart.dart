@@ -90,10 +90,11 @@ class ChartCardState extends State<ChartCard> {
                       }
                     }
                   },
-                  icon: const FaIcon(
-                    Icons.calendar_today,
-                    size: 18,
-                  ),
+                  icon: Image.asset('assets/images/icons/calendar.png', width: 23, height: 23),
+                  // icon: const FaIcon(
+                  //   Icons.calendar_today,
+                  //   size: 18,
+                  // ),
                 ),
               ],
             ),
@@ -106,7 +107,6 @@ class ChartCardState extends State<ChartCard> {
                       : const Color(0xFF323232),
                   fontFamily: "Inter",
                   fontSize: 11.5,
-                  fontWeight: FontWeight.w600
                 ),
               ),
               primaryXAxis: CategoryAxis(

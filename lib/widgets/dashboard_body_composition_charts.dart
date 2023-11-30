@@ -147,11 +147,12 @@ class _BodyCompositionChartState extends State<BodyCompositionChart> {
                         ),
                       );
                     },
-                  icon: const FaIcon(
-                    Icons.clear,
-                    color: Colors.red,
-                    size: 16,// Set your desired icon color
-                  ),
+                  icon: Image.asset('assets/images/icons/clear.png', width: 18, height: 18),
+                  // icon: const FaIcon(
+                  //   Icons.clear,
+                  //   color: Colors.red,
+                  //   size: 16,// Set your desired icon color
+                  // ),
                 ),
                 IconButton(
                   style: ElevatedButton.styleFrom(
@@ -297,10 +298,11 @@ class _BodyCompositionChartState extends State<BodyCompositionChart> {
                       }
                     );
                   },
-                  icon: const FaIcon(
-                    Icons.add,
-                    size: 21,
-                  ),
+                  icon: Image.asset('assets/images/icons/add.png', width: 23, height: 23),
+                  // icon: const FaIcon(
+                  //   Icons.add,
+                  //   size: 21,
+                  // ),
                 ),
               ],
             ),

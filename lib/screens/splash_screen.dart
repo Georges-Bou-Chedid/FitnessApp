@@ -25,12 +25,13 @@ class _SplashScreenState extends State<SplashScreen> {
     await precacheImage(const AssetImage('assets/images/loginbackground.jpg'), context);
   }
   void precacheDrawerImageInSplashScreen() async {
-    await precacheImage(const AssetImage('assets/images/navdrawerbackground.jpg'), context);
+    await precacheImage(const AssetImage('assets/images/drawer/background.jpg'), context);
   }
 
   void navigateToMainScreen() {
     Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
+      if (mounted) {
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context){
             final user = Provider.of<User?>(context);
@@ -42,7 +43,8 @@ class _SplashScreenState extends State<SplashScreen> {
               return const Home();
             }
           })
-      );
+        );
+      }
     });
   }
 

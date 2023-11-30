@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../controllers/auth.dart';
 import '../screens/splash_screen.dart';
-import '../services/auth.dart';
 
 class MyAppBar extends StatefulWidget {
   final List<Tab> selectedTabs;

@@ -1,11 +1,11 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:fitnessapp/models/UserProfile.dart';
-import 'package:fitnessapp/services/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../services/auth.dart';
-import '../../services/countries.dart';
+import '../../controllers/auth.dart';
+import '../../controllers/countries.dart';
+import '../../controllers/user.dart';
 import '../splash_screen.dart';
 
 // Declare all global variables
@@ -47,7 +47,12 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
     const ThirdStep(),
   ];
 
-  void _nextStep() async{
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  void _nextStep() {
     if (currentStep < steps.length - 1) {
       if (steps[currentStep].toString() == "FirstStep"){
         if (! firstStepKey.currentState!.validate()) {
@@ -65,38 +70,48 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
       changeAppBarTitleBasedOnCurrentStep();
     } else {
       if (thirdStepKey.currentState!.validate()) {
-        try {
-          dynamic result = await _authService.registerWithEmailAndPassword(signUpEmail, signUpPassword);
-
-          if (result == null) {
-            error = 'An unexpected error occurred while signing up. Please try again later or contact support for assistance';
-            showErrorSigningUp(error);
-          } else if (result == "Email is already in use") {
-            error = 'Email is already in use';
-            showErrorSigningUp(error);
-          } else {
-            // Create user info table
-            var userId = result.uid;
-            UserProfile userInfo = UserProfile(
-              name: fullName,
-              userName: userName,
-              phoneNumber: phoneNumber,
-              gender: gender,
-              age: age,
-              country: selectedCountry.countryCode,
-              height: height,
-              weight: weight,
-              measurementSystem: measurementSystem
-            );
-            await _userService.createUserProfile(userId, userInfo);
-
-            // After successful sign-up, navigate to the splash screen
-            signUp();
+        _authService.registerWithEmailAndPassword(signUpEmail, signUpPassword).then((result) {
+          if (mounted) {
+            if (result == null) {
+              error = 'An unexpected error occurred while signing up. Please try again later or contact support for assistance';
+              showErrorSigningUp(error);
+            } else if (result == "Email is already in use") {
+              error = 'Email is already in use';
+              showErrorSigningUp(error);
+            } else {
+              // Create user profile table
+              UserProfile userProfile = UserProfile(
+                  name: fullName,
+                  userName: userName,
+                  phoneNumber: phoneNumber,
+                  gender: gender,
+                  age: age,
+                  country: selectedCountry.countryCode,
+                  height: height,
+                  weight: weight,
+                  measurementSystem: measurementSystem,
+                  darkMode: true
+              );
+              _userService.createUserProfile(result.uid, userProfile).then((profileResult) {
+                if (mounted) {
+                  if (profileResult) {
+                    // After successful sign-up, navigate to the splash screen
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SplashScreen(),
+                      ),
+                    );
+                  } else {
+                    _authService.removeUser();
+                    error = 'An unexpected error occurred while signing up. Please try again later or contact support for assistance';
+                    showErrorSigningUp(error);
+                  }
+                }
+              });
+            }
           }
-        } catch (e) {
-          error = 'An unexpected error occurred while signing up. Please try again later or contact support for assistance';
-          showErrorSigningUp(error);
-        }
+        });
       }
     }
   }
@@ -131,7 +146,6 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
             'Error',
             style: TextStyle(
               fontFamily: "Inter",
-              color: Color(0xFF323232), // Set the title text color
               fontWeight: FontWeight.bold, // Make the title bold
               fontSize: 20.0, // Set the title font size
             ),
@@ -146,7 +160,7 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
           actions: <Widget>[
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Colors.redAccent, // Set the button background color
+                backgroundColor: const Color(0xFF323232), // Background color
               ),
               onPressed: () {
                 Navigator.of(context).pop(); // Close the dialog
@@ -154,22 +168,13 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
               child: const Text(
                 'OK',
                 style: TextStyle(
-                  color: Color(0xFFFFFFFF), // Set the button text color
+                    fontFamily: "Inter"
                 ),
               ),
             ),
           ],
         );
       },
-    );
-  }
-
-  void signUp() {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const SplashScreen(),
-      ),
     );
   }
 

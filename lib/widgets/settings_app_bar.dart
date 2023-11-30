@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../controllers/user.dart';
 import '../models/UserProfile.dart';
-import '../services/user.dart';
 
 class MySettingsAppBar extends StatefulWidget {
   final UserProfile userProfile;
@@ -35,28 +35,22 @@ class MySettingsAppBarPage extends State<MySettingsAppBar> {
               crossAxisAlignment: CrossAxisAlignment.start, // Align to the start (left) of the flexibleSpace
               children: [
                 Container(
-                  margin: const EdgeInsets.only(left: 10.0, bottom: 8.0),
+                  margin: const EdgeInsets.only(left: 25.0, bottom: 8.0),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const CircleAvatar(
-                        backgroundImage: AssetImage('assets/images/user.png'), // Replace with your profile image
+                        backgroundImage: AssetImage('assets/images/settings/user.png'), // Replace with your profile image
                       ),
                       const SizedBox(width: 10), // Add some spacing between the avatar and email
                       Text(
                         "${_userService.currentUser?.email}\n${widget.userProfile.phoneNumber}",
                         style: const TextStyle(
                           color: Colors.black,
-                          fontFamily: "BebasNeue",
-                        ),
-                      ),
-                      const SizedBox(width: 50),
-                      const Text(
-                        "Gained 0 kg",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontFamily: "BebasNeue",
+                          fontFamily: "Inter",
+                          fontSize: 11.5,
+                          fontWeight: FontWeight.w600
                         ),
                       ),
                     ],

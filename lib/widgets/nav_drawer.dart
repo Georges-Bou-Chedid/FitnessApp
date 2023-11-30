@@ -22,22 +22,24 @@ class NavDrawer extends StatelessWidget {
                         bottomLeft: Radius.circular(30.0),
                         bottomRight: Radius.circular(30.0),
                       ),
+                      clipBehavior: Clip.antiAlias,
                       child: Container(
                         decoration: const BoxDecoration(
                           image: DecorationImage(
                             fit: BoxFit.cover,
-                            image: AssetImage('assets/images/navdrawerbackground.jpg'),
+                            image: AssetImage('assets/images/drawer/background.jpg'),
                           ),
                         ),
                       ),
                     ),
                   ),
                   ListTile(
-                    leading: const FaIcon(
-                      FontAwesomeIcons.gaugeSimpleHigh,
-                      color: Color(0xFF3FCC7C),
-                      size: 30
-                    ),
+                    leading: Image.asset('assets/images/drawer/dashboard.png', width: 30, height: 30),
+                    // leading: const FaIcon(
+                    //   FontAwesomeIcons.gaugeSimpleHigh,
+                    //   color: Color(0xFF3FCC7C),
+                    //   size: 30
+                    // ),
                     title: const Text('Dashboard'),
                     onTap: () {
                       Navigator.pop(context); // Close the drawer
@@ -45,11 +47,12 @@ class NavDrawer extends StatelessWidget {
                     },
                   ),
                   ListTile(
-                    leading: const FaIcon(
-                      FontAwesomeIcons.book,
-                      color: Color(0xFF3FCC7C),
-                      size: 30,
-                    ),
+                    leading: Image.asset('assets/images/drawer/planner.png', width: 30, height: 30),
+                    // leading: const FaIcon(
+                    //   FontAwesomeIcons.book,
+                    //   color: Color(0xFF3FCC7C),
+                    //   size: 30,
+                    // ),
                     title: const Text('Diary'),
                     onTap: () {
                       Navigator.pop(context); // Close the drawer
@@ -57,7 +60,8 @@ class NavDrawer extends StatelessWidget {
                     },
                   ),
                   ListTile(
-                    leading: const Icon(Icons.star, size: 30, color: Colors.yellow),
+                    leading: Image.asset('assets/images/drawer/premium-quality.png', width: 30, height: 30),
+                    // leading: const Icon(Icons.star, size: 30, color: Colors.yellow),
                     title: const Text('Health Guidance'),
                     onTap: () {
                       // Handle onTap for the ListTile with the recommendations icon
@@ -67,7 +71,8 @@ class NavDrawer extends StatelessWidget {
             )
           ),
           ListTile(
-            leading: const Icon(Icons.settings, size: 30, color: Color(0xFF3FCC7C),),
+            leading: Image.asset('assets/images/drawer/cogwheel.png', width: 29, height: 29),
+            // leading: const Icon(Icons.settings, size: 30, color: Color(0xFF3FCC7C),),
             title: const Text('Settings'),
             onTap: () {
               Navigator.pop(context); // Close the drawer

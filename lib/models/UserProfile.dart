@@ -1,16 +1,17 @@
 class UserProfile {
-  final String name;
-  final String userName;
-  final String phoneNumber;
-  final String gender;
-  final int age;
-  final String country;
-  final int height;
-  final int weight;
-  final String measurementSystem;
+  final String? name;
+  final String? userName;
+  final String? phoneNumber;
+  final String? gender;
+  final int? age;
+  final String? country;
+  final int? height;
+  final int? weight;
+  final String? measurementSystem;
+  final bool? darkMode;
 
-  UserProfile({required this.name, required this.userName, required this.phoneNumber, required this.gender, required this.age, required this.country,
-    required this.height, required this.weight, required this.measurementSystem});
+  UserProfile({this.name, this.userName, this.phoneNumber, this.gender, this.age, this.country,
+    this.height, this.weight, this.measurementSystem, this.darkMode});
 
   // Factory method to convert data from Firebase to UserProfile
   factory UserProfile.fromMap(Map<String?, dynamic> map) {
@@ -24,6 +25,7 @@ class UserProfile {
       height: map['height'],
       weight: map['weight'],
       measurementSystem: map['measurement_system'],
+      darkMode: map['dark_mode']
     );
   }
 }

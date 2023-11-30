@@ -1,7 +1,7 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:fitnessapp/screens/authenticate/signup_screen.dart';
-import 'package:fitnessapp/services/auth.dart';
 import 'package:flutter/material.dart';
+import '../../controllers/auth.dart';
 import '../splash_screen.dart';
 
 class LoginPage extends StatefulWidget {

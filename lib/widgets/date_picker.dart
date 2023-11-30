@@ -52,7 +52,11 @@ class DatePickerState extends State<DatePicker> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               IconButton(
-                icon: const Icon(EvaIcons.chevronLeftOutline, size: 20),
+                icon: Transform.rotate(
+                  angle: 3.141592653589793, // This is the angle in radians for 180 degrees
+                  child: Image.asset('assets/images/icons/arrow-right.png', width: 15, height: 15),
+                ),
+                // icon: const Icon(EvaIcons.chevronLeftOutline, size: 20),
                 onPressed: () {
                   setState(() {
                     selectedDate = selectedDate.subtract(const Duration(days: 1));
@@ -65,10 +69,11 @@ class DatePickerState extends State<DatePicker> {
                     onTap: () {
                       _selectDate(context);
                     },
-                    child: const Icon(
-                      Icons.calendar_today,
-                      size: 16,
-                    ),
+                    child: Image.asset('assets/images/icons/calendar.png', width: 20, height: 20),
+                    // child: const Icon(
+                    //   Icons.calendar_today,
+                    //   size: 16,
+                    // ),
                   ),
                   const SizedBox(width: 7),
                   InkWell(
@@ -87,7 +92,8 @@ class DatePickerState extends State<DatePicker> {
                 ],
               ),
               IconButton(
-                icon: const Icon(EvaIcons.chevronRightOutline, size: 20),
+                icon: Image.asset('assets/images/icons/arrow-right.png', width: 15, height: 15),
+                // icon: const Icon(EvaIcons.chevronRightOutline, size: 20),
                 onPressed: () {
                   setState(() {
                     selectedDate = selectedDate.add(const Duration(days: 1));

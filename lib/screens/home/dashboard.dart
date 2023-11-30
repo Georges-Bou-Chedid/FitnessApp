@@ -104,7 +104,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                 margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color: currentPage == index ? const Color(0xFF5AC8FA) : const Color(0xFFFFFFFF),
+                                  color: currentPage == index ? const Color(0xFF5AC8FA) : Colors.grey[300],
                                 ),
                               );
                             },

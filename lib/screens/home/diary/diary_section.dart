@@ -290,39 +290,23 @@ Widget _buildMealSection(String title, List<Food> entries, Function() showAddEnt
               ),
             const SizedBox(height: 8.0),
             Center(
-              // child: IconButton(
-              //   style: ElevatedButton.styleFrom(
-              //     padding: EdgeInsets.zero, // Remove default padding
-              //     shape: const CircleBorder(), // Ensure a circular shape
-              //   ),
-              //   onPressed: () {
-              //     showAddEntryDialog();
-              //   },
-              //   icon: const FaIcon(
-              //     Icons.add,
-              //     size: 18,
-              //   ),
-              // )
-              child: SizedBox(
-                width: 50,
-                height: 30,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: const Color(0xFF3FCC7C),
-                    minimumSize: const Size(150, 36),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50.0), // Adjust the radius as needed
-                    ),
-                  ),
+              child: IconButton(
+                  // style: ElevatedButton.styleFrom(
+                  //   primary: const Color(0xFF3FCC7C),
+                  //   minimumSize: const Size(50, 30),
+                  //   shape: RoundedRectangleBorder(
+                  //     borderRadius: BorderRadius.circular(50.0), // Adjust the radius as needed
+                  //   ),
+                  // ),
                   onPressed: () {
                     showAddEntryDialog();
                   },
-                  child: const FaIcon(
-                      Icons.add,
-                      size: 18,
-                    ),
+                  icon: Image.asset('assets/images/icons/add.png', width: 25, height: 25),
+                  // child: const FaIcon(
+                  //     Icons.add,
+                  //     size: 18,
+                  // ),
                 ),
-              ),
             )
           ],
         ),
