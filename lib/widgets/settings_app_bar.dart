@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../controllers/auth.dart';
 import '../controllers/user.dart';
 import '../models/UserProfile.dart';
 
 class MySettingsAppBar extends StatefulWidget {
-  final UserProfile userProfile;
+  const MySettingsAppBar({super.key});
 
-  const MySettingsAppBar({super.key, required this.userProfile});
 
   @override
   MySettingsAppBarPage createState() => MySettingsAppBarPage();
 }
 
 class MySettingsAppBarPage extends State<MySettingsAppBar> {
-  final UserService _userService = UserService();
 
   @override
   Widget build(BuildContext context) {
+    final AuthService _authService = AuthService();
+    final userProfileProvider = Provider.of<UserService>(context, listen: false);
+
     return ClipRRect(
         borderRadius: const BorderRadius.vertical(bottom: Radius.circular(40)),
         child: AppBar(
@@ -41,11 +44,13 @@ class MySettingsAppBarPage extends State<MySettingsAppBar> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const CircleAvatar(
-                        backgroundImage: AssetImage('assets/images/settings/user.png'), // Replace with your profile image
+                        backgroundImage: AssetImage('assets/images/settings/user.png'),
                       ),
                       const SizedBox(width: 10), // Add some spacing between the avatar and email
                       Text(
-                        "${_userService.currentUser?.email}\n${widget.userProfile.phoneNumber}",
+                        userProfileProvider.userProfile?.phoneNumber == ""
+                        ? "${userProfileProvider.userProfile?.name}\n${_authService.getCurrentUser()?.email}"
+                        : "${_authService.getCurrentUser()?.email}\n${userProfileProvider.userProfile?.phoneNumber}",
                         style: const TextStyle(
                           color: Colors.black,
                           fontFamily: "Inter",

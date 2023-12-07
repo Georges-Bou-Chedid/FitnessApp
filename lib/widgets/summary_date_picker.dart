@@ -50,6 +50,10 @@ class SummaryDatePickerState extends State<SummaryDatePicker> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             IconButton(
+              // icon: Transform.rotate(
+              //   angle: 3.141592653589793, // This is the angle in radians for 180 degrees
+              //   child: Image.asset('assets/images/icons/arrow-right.png', width: 10, height: 10),
+              // ),
               icon: const Icon(EvaIcons.chevronLeftOutline, size: 16),
               onPressed: () {
                 setState(() {
@@ -63,10 +67,11 @@ class SummaryDatePickerState extends State<SummaryDatePicker> {
                   onTap: () {
                     _selectDate(context);
                   },
-                  child: const Icon(
-                    Icons.calendar_today, // Replace with the calendar icon you want to use
-                    size: 15,
-                  ),
+                  child: Image.asset('assets/images/icons/calendar.png', width: 15, height: 15),
+                  // child: const Icon(
+                  //   Icons.calendar_today, // Replace with the calendar icon you want to use
+                  //   size: 15,
+                  // ),
                 ),
                 const SizedBox(width: 5),
                 InkWell(
@@ -85,6 +90,7 @@ class SummaryDatePickerState extends State<SummaryDatePicker> {
               ],
             ),
             IconButton(
+              // icon: Image.asset('assets/images/icons/arrow-right.png', width: 10, height: 10),
               icon: const Icon(EvaIcons.chevronRightOutline, size: 16),
               onPressed: () {
                 setState(() {

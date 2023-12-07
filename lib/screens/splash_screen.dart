@@ -4,6 +4,8 @@ import 'package:fitnessapp/screens/authenticate/login_screen.dart';
 import 'package:fitnessapp/screens/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../controllers/auth.dart';
+import '../controllers/user.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -13,11 +15,18 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  bool _delayCompleted = false;
+
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(milliseconds: 100), () {
-      navigateToMainScreen();
+    // Add a delay of 10 seconds
+    Future.delayed(const Duration(seconds: 3), () {
+      if (mounted) {
+        setState(() {
+          _delayCompleted = true;
+        });
+      }
     });
   }
 
@@ -28,57 +37,57 @@ class _SplashScreenState extends State<SplashScreen> {
     await precacheImage(const AssetImage('assets/images/drawer/background.jpg'), context);
   }
 
-  void navigateToMainScreen() {
-    Timer(const Duration(seconds: 3), () {
-      if (mounted) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context){
-            final user = Provider.of<User?>(context);
-            if (user == null) {
-              precacheLoginImageInSplashScreen();
-              return const LoginPage();
-            } else {
-              precacheDrawerImageInSplashScreen();
-              return const Home();
-            }
-          })
-        );
-      }
-    });
-  }
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF3FCC7C),
-              Color(0xFFBCFF5C)
-            ],
-          ),
-        ),
-        // color: const Color(0xFF323232),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Image.asset(
-                'assets/images/nutrilebblack.png',
-                width: 250.0,
-                height: 250.0,
-              ),
-              const CircularProgressIndicator(
-                  color: Color(0xFF323232)
-              ),
-            ],
-          ),
-        )
+      body: StreamBuilder<User?>(
+        stream: AuthService().user,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting || !_delayCompleted) {
+            precacheDrawerImageInSplashScreen();
+            precacheLoginImageInSplashScreen();
+
+            return Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color(0xFF3FCC7C),
+                      Color(0xFFBCFF5C)
+                    ],
+                  ),
+                ),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Image.asset(
+                        'assets/images/nutrilebblack.png',
+                        width: 250.0,
+                        height: 250.0,
+                      ),
+                      const CircularProgressIndicator(
+                          color: Color(0xFF323232)
+                      ),
+                    ],
+                  ),
+                )
+            );
+          } else {
+            // If the user is logged in, display authenticated content
+            if (snapshot.data != null) {
+              return ChangeNotifierProvider(
+                create: (context) => UserService(),
+                child: const Home(),
+              );
+            }
+            // If the user is not logged in, display non-authenticated content
+            else {
+              return const LoginPage();
+            }
+          }
+        },
       ),
     );
   }

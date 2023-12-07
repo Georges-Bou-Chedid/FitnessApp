@@ -9,6 +9,27 @@ class AuthService {
     return _auth.authStateChanges();
   }
 
+  User? getCurrentUser() {
+    User? user = FirebaseAuth.instance.currentUser;
+    return user;
+  }
+
+  Future? reload() async {
+    try{
+      var user = getCurrentUser();
+      if (user != null) {
+        await user.reload();
+      }
+    } catch (e) {
+      // Check if the error is due to an expired token
+      if (e is FirebaseAuthException && e.code == 'user-token-expired') {
+        print("Your email has been changed");
+      } else {
+        print("Error: $e");
+      }
+    }
+  }
+
   // sign in anon
   Future signInAnon() async {
     try {
@@ -35,13 +56,18 @@ class AuthService {
   Future registerWithEmailAndPassword(String email, String password) async {
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+      await result.user?.sendEmailVerification();
       return result.user;
     } catch(e) {
       if (e is FirebaseAuthException) {
-        if (e.code == 'email-already-in-use');
-        return "Email is already in use";
-      }
-      else {
+        if (e.code == 'email-already-in-use') {
+          return "in-use";
+        } else {
+          print(e.toString());
+          return null;
+        }
+      } else {
+        print(e.toString());
         return null;
       }
     }
@@ -56,6 +82,37 @@ class AuthService {
     } catch (e) {
       print("Error removing user: $e");
       // Handle the error as needed
+    }
+  }
+
+  Future changeEmail(String newEmail, String currentPassword) async {
+    try {
+      User? user = FirebaseAuth.instance.currentUser;
+
+      // Re-authenticate the user using their current password
+      AuthCredential credential = EmailAuthProvider.credential(
+        email: user!.email!,
+        password: currentPassword,
+      );
+
+      await user.reauthenticateWithCredential(credential);
+      await user.updateEmail(newEmail);
+
+      return user;
+    } catch(e) {
+      if (e is FirebaseAuthException) {
+        if (e.code == 'wrong-password') {
+          return "wrong-password";
+        } else if (e.code == 'email-already-in-use') {
+          return "in-use";
+        } else {
+          print(e.toString());
+          return null;
+        }
+      } else {
+        print(e.toString());
+        return null;
+      }
     }
   }
 

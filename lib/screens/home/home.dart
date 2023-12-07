@@ -1,7 +1,7 @@
 import 'package:fitnessapp/screens/home/diary/diary.dart';
 import 'package:fitnessapp/screens/home/settings/settings.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import '../../controllers/auth.dart';
 import '../../controllers/user.dart';
 import '../../models/UserProfile.dart';
@@ -19,14 +19,15 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final UserService _userService = UserService();
-  final AuthService _authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
+    final AuthService authService = AuthService();
+    final userProfileProvider = Provider.of<UserService>(context, listen: false);
+
     settingUI = this;
     return FutureBuilder<UserProfile?>(
-        future: _userService.getProfile(),
+        future: userProfileProvider.getProfile(authService.getCurrentUser()?.uid),
         builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
         // The future is still running, show a loading indicator
@@ -46,7 +47,7 @@ class _HomeState extends State<Home> {
             routes: {
               '/dashboard': (context) => const DashboardPage(),
               '/diary': (context) => const Diary(),
-              '/settings': (context) => SettingsScreen(userProfile: userProfile),
+              '/settings': (context) => const SettingsScreen(),
             },
           );
         }

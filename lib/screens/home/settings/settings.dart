@@ -1,4 +1,5 @@
 import 'package:fitnessapp/widgets/settings_app_bar.dart';
+import 'package:provider/provider.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'package:flutter/material.dart';
 import '../../../controllers/auth.dart';
@@ -6,12 +7,11 @@ import '../../../controllers/user.dart';
 import '../../../models/UserProfile.dart';
 import '../../../widgets/nav_drawer.dart';
 import '../../splash_screen.dart';
+import 'edit_profile.dart';
 
 
 class SettingsScreen extends StatefulWidget {
-  final UserProfile userProfile;
-
-  const SettingsScreen({Key? key, required this.userProfile}) : super(key: key);
+  const SettingsScreen({super.key});
 
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
@@ -19,14 +19,15 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   final AuthService _authService = AuthService();
-  final UserService _userService = UserService();
 
   @override
   Widget build(BuildContext context) {
+    final userProfileProvider = Provider.of<UserService>(context, listen: false);
+
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(110),
-        child: MySettingsAppBar(userProfile: widget.userProfile),
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(110),
+        child: MySettingsAppBar(),
       ),
       drawer: const SizedBox(
         width: 250,
@@ -62,7 +63,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
                 leading: const Icon(Icons.edit),
                 onPressed: (context) {
-
+                  Navigator.of(context).push(_editProfileRoute());
                 }
             ),
           ],
@@ -84,14 +85,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   fontSize: 13.5
                 ),
               ),
-              initialValue: widget.userProfile.darkMode,
+              initialValue: userProfileProvider.userProfile?.darkMode,
               leading: const Icon(Icons.brightness_4),
               onToggle: (bool value) {
                 setState(() {
                   UserProfile userProfile = UserProfile(
-                      darkMode: !widget.userProfile.darkMode!
+                      darkMode: !userProfileProvider.userProfile!.darkMode!
                   );
-                  _userService.updateTheme(_userService.currentUser!.uid, userProfile).then((result) {
+                  userProfileProvider.updateTheme(_authService.getCurrentUser()!.uid, userProfile).then((result) {
                     if (result) {
                       Navigator.pushReplacement(
                         context,
@@ -185,5 +186,27 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
     );
   }
+}
+
+PageRouteBuilder<dynamic> _editProfileRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => const EditProfilePage(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, 1.0); // Slide in from the bottom
+      const end = Offset.zero;
+      const curve = Curves.easeInOut;
+
+      var tween = Tween(begin: begin, end: end).chain(
+        CurveTween(curve: curve),
+      );
+
+      var offsetAnimation = animation.drive(tween);
+
+      return SlideTransition(
+        position: offsetAnimation,
+        child: child,
+      );
+    },
+  );
 }
 

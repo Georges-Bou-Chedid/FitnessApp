@@ -175,18 +175,6 @@ class LoginSignup extends State<LoginPage> {
                         const SizedBox(height: 8.0),
                         TextButton(
                           onPressed: () {
-                            gender = "";
-                            measurementSystem = "Metric";
-                            age = 0;
-                            selectedCountry = Country.parse("LB");
-                            height = 0;
-                            weight = 0;
-                            fullName = "";
-                            userName = "";
-                            phoneNumber = "";
-                            signUpEmail = "";
-                            signUpPassword = "";
-                            appBarTitle = "Personal Info";
                             Navigator.of(context).push(_signUpRoute());
                           },
                           child: const Text(

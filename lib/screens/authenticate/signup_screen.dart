@@ -1,5 +1,6 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitnessapp/models/UserProfile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,20 +14,18 @@ final GlobalKey<FormState> firstStepKey = GlobalKey<FormState>();
 final GlobalKey<FormState> secondStepKey = GlobalKey<FormState>();
 final GlobalKey<FormState> thirdStepKey = GlobalKey<FormState>();
 
-String gender = "";
-int age = 0;
+final TextEditingController _genderEditingController = TextEditingController();
+final TextEditingController _ageEditingController = TextEditingController();
 Country selectedCountry = Country.parse("LB");
 
-int height = 0;
-int weight = 0;
-String measurementSystem = "Metric";
+final TextEditingController _heightEditingController = TextEditingController();
+final TextEditingController _weightEditingController = TextEditingController();
+final TextEditingController _measurementSystemEditingController = TextEditingController();
 
-String fullName = "";
-String userName = "";
-String phoneNumber = "";
-String signUpEmail = "";
-String signUpPassword = "";
-String appBarTitle = "Personal Info";
+final TextEditingController _fullNameEditingController = TextEditingController();
+final TextEditingController _phoneNumberEditingController = TextEditingController();
+final TextEditingController _signUpEmailEditingController = TextEditingController();
+final TextEditingController _signUpPasswordEditingController = TextEditingController();
 
 class StepByStepSignUpPage extends StatefulWidget {
   const StepByStepSignUpPage({super.key});
@@ -36,16 +35,35 @@ class StepByStepSignUpPage extends StatefulWidget {
 }
 
 class _StepByStepPageState extends State<StepByStepSignUpPage>{
-  int currentStep = 0;
-  String error = "";
   final AuthService _authService = AuthService();
   final UserService _userService = UserService();
+  late int currentStep;
+  String? error;
+  String? appBarTitle;
 
   final List<Widget> steps = [
     const FirstStep(),
     const SecondStep(),
     const ThirdStep(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    currentStep = 0;
+    error = "";
+    appBarTitle = "Personal Info";
+    _genderEditingController.text = "";
+    _ageEditingController.text = "";
+    selectedCountry = Country.parse("LB");
+    _heightEditingController.text = "";
+    _weightEditingController.text = "";
+    _measurementSystemEditingController.text = "Metric";
+    _fullNameEditingController.text = "";
+    _phoneNumberEditingController.text = "";
+    _signUpEmailEditingController.text = "";
+    _signUpPasswordEditingController.text = "";
+  }
 
   @override
   void dispose() {
@@ -70,29 +88,22 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
       changeAppBarTitleBasedOnCurrentStep();
     } else {
       if (thirdStepKey.currentState!.validate()) {
-        _authService.registerWithEmailAndPassword(signUpEmail, signUpPassword).then((result) {
+        _authService.registerWithEmailAndPassword(_signUpEmailEditingController.text, _signUpPasswordEditingController.text).then((result) {
           if (mounted) {
-            if (result == null) {
-              error = 'An unexpected error occurred while signing up. Please try again later or contact support for assistance';
-              showErrorSigningUp(error);
-            } else if (result == "Email is already in use") {
-              error = 'Email is already in use';
-              showErrorSigningUp(error);
-            } else {
+            if (result is User) {
               // Create user profile table
               UserProfile userProfile = UserProfile(
-                  name: fullName,
-                  userName: userName,
-                  phoneNumber: phoneNumber,
-                  gender: gender,
-                  age: age,
+                  name: _fullNameEditingController.text,
+                  phoneNumber: _phoneNumberEditingController.text,
+                  gender: _genderEditingController.text,
+                  age: int.tryParse(_ageEditingController.text),
                   country: selectedCountry.countryCode,
-                  height: height,
-                  weight: weight,
-                  measurementSystem: measurementSystem,
+                  height: int.tryParse(_heightEditingController.text),
+                  weight: int.tryParse(_weightEditingController.text),
+                  measurementSystem: _measurementSystemEditingController.text,
                   darkMode: true
               );
-              _userService.createUserProfile(result.uid, userProfile).then((profileResult) {
+              _userService.createProfile(result.uid, userProfile).then((profileResult) {
                 if (mounted) {
                   if (profileResult) {
                     // After successful sign-up, navigate to the splash screen
@@ -105,10 +116,16 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
                   } else {
                     _authService.removeUser();
                     error = 'An unexpected error occurred while signing up. Please try again later or contact support for assistance';
-                    showErrorSigningUp(error);
+                    showErrorSigningUp(error!);
                   }
                 }
               });
+            } else if (result == "in-use") {
+              error = 'Email is already in use';
+              showErrorSigningUp(error!);
+            } else {
+              error = 'An unexpected error occurred while signing up. Please try again later or contact support for assistance';
+              showErrorSigningUp(error!);
             }
           }
         });
@@ -142,6 +159,9 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
           title: const Text(
             'Error',
             style: TextStyle(
@@ -195,7 +215,7 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
           ),
         ),
         title: Text(
-          appBarTitle,
+          appBarTitle!,
           style: const TextStyle(
             fontSize: 18.0,
             fontFamily: "BebasNeue",
@@ -204,11 +224,10 @@ class _StepByStepPageState extends State<StepByStepSignUpPage>{
         ),
         leading: IconButton(
           icon: const Icon(
-            EvaIcons.arrowBackOutline,
+            EvaIcons.chevronLeftOutline,
             color: Color(0xFF323232),
           ),
           onPressed: () {
-            // Navigate back to the first page when the back button is pressed.
             Navigator.of(context).pop();
           },
         ),
@@ -335,10 +354,10 @@ class _FirstStepState extends State<FirstStep>{
                 ),
                 border: OutlineInputBorder(),
               ),
-              value: gender == "" ? null : gender,
+              value: _genderEditingController.text == "" ? null : _genderEditingController.text,
               onChanged: (String? newValue) {
                 setState(() {
-                  gender = newValue!;
+                  _genderEditingController.text = newValue!;
                 });
               },
               items: genders.map<DropdownMenuItem<String>>((String gender) {
@@ -361,14 +380,7 @@ class _FirstStepState extends State<FirstStep>{
               width: 150,
               child: TextFormField(
                 validator: (val) => val!.isEmpty || int.tryParse(val)! < 1 || int.tryParse(val)! > 100 ? "Please enter your age\nbetween 1 and 100" : null,
-                initialValue: age == 0 ? null : age.toString(),
-                onChanged: (val) {
-                  setState(() {
-                    if (int.tryParse(val) != null) {
-                      age = int.tryParse(val)!;
-                    }
-                  });
-                },
+                controller: _ageEditingController,
                 keyboardType: TextInputType.number, // Use numeric keyboard
                 inputFormatters: <TextInputFormatter>[
                   FilteringTextInputFormatter.digitsOnly // Restrict input to digits (integers)
@@ -420,7 +432,6 @@ class _SecondStepState extends State<SecondStep> {
 
   @override
   Widget build(BuildContext context) {
-
     return SingleChildScrollView(
       child: Form(
       key: secondStepKey,
@@ -440,14 +451,7 @@ class _SecondStepState extends State<SecondStep> {
               width: 170,
               child: TextFormField(
                 validator: (val) => val!.isEmpty ? "Please enter your height" : null,
-                initialValue: height == 0 ? null : height.toString(),
-                onChanged: (val) {
-                  setState(() {
-                    if (int.tryParse(val) != null) {
-                      height = int.tryParse(val)!;
-                    }
-                  });
-                },
+                controller: _heightEditingController,
                 keyboardType: TextInputType.number, // Use numeric keyboard
                 inputFormatters: <TextInputFormatter>[
                   FilteringTextInputFormatter.digitsOnly // Restrict input to digits (integers)
@@ -475,14 +479,7 @@ class _SecondStepState extends State<SecondStep> {
               width: 170,
               child: TextFormField(
                 validator: (val) => val!.isEmpty ? "Please enter your weight" : null,
-                initialValue: weight == 0 ? null : weight.toString(),
-                onChanged: (val) {
-                  setState(() {
-                    if (int.tryParse(val) != null) {
-                      weight = int.tryParse(val)!;
-                    }
-                  });
-                },
+                controller: _weightEditingController,
                 keyboardType: TextInputType.number, // Use numeric keyboard
                 inputFormatters: <TextInputFormatter>[
                   FilteringTextInputFormatter.digitsOnly // Restrict input to digits (integers)
@@ -506,53 +503,54 @@ class _SecondStepState extends State<SecondStep> {
               ),
             ),
             const SizedBox(height: 8.0),
-            SizedBox(
-              width: 200,
-              child: DropdownButtonFormField<String>(
-                decoration: const InputDecoration(
-                  labelText: 'Select your measurement system',
-                  labelStyle: TextStyle(
-                      fontFamily: "Inter",
-                      fontSize: 13
-                  ),
-                  border: OutlineInputBorder(),
-                ),
-                value: measurementSystem,
-                onChanged: (String? newValue) {
-                  setState(() {
-                    measurementSystem = newValue!;
-                  });
-                },
-                items: measurementSystems.map<DropdownMenuItem<String>>((String measurementSystem) {
-                  return DropdownMenuItem<String>(
-                    value: measurementSystem,
-                    child: Text(measurementSystem),
-                  );
-                }).toList(),
-              ),
-            ),
-            const SizedBox(height: 80.0),
-            Container(
-              alignment: Alignment.bottomCenter,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(60.0),
-                border: Border.all(
-                  color: const Color(0xFF323232), // Set the border color here
-                  width: 1.0, // Set the border width here
-                ),
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Text(
-                    "Imperial System: height in feet/inches, weight in pounds, energy in calories, water in liters.\nMetric System: height in centimeters, weight in kilograms, energy in calories, water in fluid ounces.",
-                    style: TextStyle(
-                      fontFamily: "Inter",
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
+            Row(
+              children: [
+                SizedBox(
+                  width: 200,
+                  child: DropdownButtonFormField<String>(
+                    decoration: const InputDecoration(
+                      labelText: 'Select your measurement system',
+                      labelStyle: TextStyle(
+                          fontFamily: "Inter",
+                          fontSize: 13
+                      ),
+                      border: OutlineInputBorder(),
                     ),
+                    value: _measurementSystemEditingController.text,
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        _measurementSystemEditingController.text = newValue!;
+                      });
+                    },
+                    items: measurementSystems.map<DropdownMenuItem<String>>((String measurementSystem) {
+                      return DropdownMenuItem<String>(
+                        value: measurementSystem,
+                        child: Text(measurementSystem),
+                      );
+                    }).toList(),
                   ),
                 ),
-              )
+                const SizedBox(width: 8.0),
+                HintButton(
+                  hint: 'Imperial System:\n'
+                      '  - Height: feet/inches\n'
+                      '  - Weight: pounds\n'
+                      '  - Energy: calories\n'
+                      '  - Water: liters\n'
+                      'Metric System:\n'
+                      '  - Height: centimeters\n'
+                      '  - Weight: kilograms\n'
+                      '  - Energy: calories\n'
+                      '  - Water: fluid ounces',
+                  child: IconButton(
+                    onPressed: () {
+                      // Your button's onPressed logic here
+                    },
+                    icon: Image.asset('assets/images/icons/info.png', width: 24, height: 24),
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),
@@ -570,13 +568,15 @@ class ThirdStep extends StatefulWidget {
 
 class _ThirdStepState extends State<ThirdStep> {
   String _confirmPassword = '';
+  bool showPassword = true;
+  bool showConfirmPassword = true;
 
   String? _validatePassword(String value) {
     if (value.length < 6) {
       return 'Please enter a password 6+ chars long';
     }
 
-    if (value != signUpPassword) {
+    if (value != _signUpPasswordEditingController.text) {
       return 'Passwords do not match';
     }
 
@@ -602,11 +602,7 @@ class _ThirdStepState extends State<ThirdStep> {
               const SizedBox(height: 30.0),
               TextFormField(
                 validator: (val) => val!.isEmpty ? "Please enter your full name" : null,
-                onChanged: (val) {
-                  setState(() {
-                    fullName = val;
-                  });
-                },
+                controller: _fullNameEditingController,
                 decoration: const InputDecoration(
                     labelText: 'Name',
                     labelStyle: TextStyle(
@@ -616,30 +612,10 @@ class _ThirdStepState extends State<ThirdStep> {
                     border: OutlineInputBorder()
                 ),
               ),
+
               const SizedBox(height: 20.0),
               TextFormField(
-                onChanged: (val) {
-                  setState(() {
-                    userName = val;
-                  });
-                },
-                decoration: const InputDecoration(
-                    labelText: 'Username',
-                    labelStyle: TextStyle(
-                        fontFamily: "Inter",
-                        fontSize: 14
-                    ),
-                    border: OutlineInputBorder()
-                ),
-              ),
-              const SizedBox(height: 20.0),
-              TextFormField(
-                validator: (val) => val!.isEmpty ? "Please enter your phone number" : null,
-                onChanged: (val) {
-                  setState(() {
-                    phoneNumber = val;
-                  });
-                },
+                controller: _phoneNumberEditingController,
                 decoration: const InputDecoration(
                     labelText: 'Phone Number',
                     labelStyle: TextStyle(
@@ -648,6 +624,10 @@ class _ThirdStepState extends State<ThirdStep> {
                     ),
                     border: OutlineInputBorder()
                 ),
+                keyboardType: TextInputType.number, // Use numeric keyboard
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly // Restrict input to digits (integers)
+                ],
               ),
               const SizedBox(height: 20.0),
               TextFormField(
@@ -658,11 +638,7 @@ class _ThirdStepState extends State<ThirdStep> {
                     return 'Please enter a valid email address';
                   }
                 },
-                onChanged: (val) {
-                  setState(() {
-                    signUpEmail = val;
-                  });
-                },
+                controller: _signUpEmailEditingController,
                 decoration: const InputDecoration(
                   labelText: 'Email',
                   labelStyle: TextStyle(
@@ -671,24 +647,31 @@ class _ThirdStepState extends State<ThirdStep> {
                   ),
                   border: OutlineInputBorder()
                 ),
+                keyboardType: TextInputType.emailAddress
               ),
               const SizedBox(height: 20.0),
               TextFormField(
                 validator: (val) =>  _validatePassword(val!),
-                onChanged: (val) {
-                  setState(() {
-                    signUpPassword = val;
-                  });
-                },
-                decoration: const InputDecoration(
+                controller: _signUpPasswordEditingController,
+                decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          showPassword = !showPassword;
+                        });
+                      },
+                      icon: const Icon(
+                          Icons.remove_red_eye_outlined
+                      )
+                  ),
                   labelText: 'Password',
-                  labelStyle: TextStyle(
+                  labelStyle: const TextStyle(
                       fontFamily: "Inter",
                       fontSize: 14
                   ),
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                 ),
-                obscureText: true,
+                obscureText: showPassword,
               ),
               const SizedBox(height: 20.0),
               TextFormField(
@@ -698,15 +681,25 @@ class _ThirdStepState extends State<ThirdStep> {
                     _confirmPassword = val;
                   });
                 },
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        showConfirmPassword = !showConfirmPassword;
+                      });
+                    },
+                    icon: const Icon(
+                      Icons.remove_red_eye_outlined
+                    )
+                  ),
                   labelText: 'Confirm Password',
-                  labelStyle: TextStyle(
+                  labelStyle: const TextStyle(
                       fontFamily: "Inter",
                       fontSize: 14
                   ),
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                 ),
-                obscureText: true,
+                obscureText: showConfirmPassword,
               ),
             ],
           ),
@@ -715,7 +708,6 @@ class _ThirdStepState extends State<ThirdStep> {
   }
 }
 
-
 bool isEmailValid(String email) {
   // Define a regular expression pattern for a valid email address
   final emailRegExp = RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');
@@ -723,3 +715,19 @@ bool isEmailValid(String email) {
   // Use the RegExp's `hasMatch` method to check if the email matches the pattern
   return emailRegExp.hasMatch(email);
 }
+
+class HintButton extends StatelessWidget {
+  final String hint;
+  final Widget child;
+
+  const HintButton({super.key, required this.hint, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: hint,
+      child: child,
+    );
+  }
+}
+
