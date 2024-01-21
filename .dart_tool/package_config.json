@@ -308,6 +308,42 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "google_identity_services_web",
+      "rootUri": "file:///home/boush/.pub-cache/hosted/pub.dev/google_identity_services_web-0.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "google_sign_in",
+      "rootUri": "file:///home/boush/.pub-cache/hosted/pub.dev/google_sign_in-6.1.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "google_sign_in_android",
+      "rootUri": "file:///home/boush/.pub-cache/hosted/pub.dev/google_sign_in_android-6.1.20",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "google_sign_in_ios",
+      "rootUri": "file:///home/boush/.pub-cache/hosted/pub.dev/google_sign_in_ios-5.6.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "google_sign_in_platform_interface",
+      "rootUri": "file:///home/boush/.pub-cache/hosted/pub.dev/google_sign_in_platform_interface-2.4.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "google_sign_in_web",
+      "rootUri": "file:///home/boush/.pub-cache/hosted/pub.dev/google_sign_in_web-0.12.2+1",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
       "name": "graphs",
       "rootUri": "file:///home/boush/.pub-cache/hosted/pub.dev/graphs-2.3.1",
       "packageUri": "lib/",
@@ -318,6 +354,12 @@
       "rootUri": "file:///home/boush/.pub-cache/hosted/pub.dev/hive-2.2.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "http",
+      "rootUri": "file:///home/boush/.pub-cache/hosted/pub.dev/http-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "http_multi_server",
@@ -614,7 +656,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2023-12-04T20:00:13.791726Z",
+  "generated": "2023-12-12T17:48:29.954500Z",
   "generator": "pub",
   "generatorVersion": "3.1.5"
 }

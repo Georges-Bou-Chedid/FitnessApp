@@ -19,16 +19,20 @@ MERGED from [com.google.firebase:firebase-common:20.4.2] /home/boush/.gradle/cac
 MERGED from [com.google.firebase:firebase-common:20.4.2] /home/boush/.gradle/caches/transforms-3/8e8f2f99ff6ad02cb30db25119ddf6b9/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:22:5-39:19
 MERGED from [androidx.window:window:1.0.0-beta04] /home/boush/.gradle/caches/transforms-3/003a22a5515e1f77f89701a46efbc2ec/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.window:window:1.0.0-beta04] /home/boush/.gradle/caches/transforms-3/003a22a5515e1f77f89701a46efbc2ec/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:24:5-31:19
-MERGED from [com.google.android.play:integrity:1.1.0] /home/boush/.gradle/caches/transforms-3/4b862cf174affde07edc7163743deec8/transformed/jetified-integrity-1.1.0/AndroidManifest.xml:5:5-6:19
-MERGED from [com.google.android.play:integrity:1.1.0] /home/boush/.gradle/caches/transforms-3/4b862cf174affde07edc7163743deec8/transformed/jetified-integrity-1.1.0/AndroidManifest.xml:5:5-6:19
+MERGED from [com.google.android.gms:play-services-auth:20.7.0] /home/boush/.gradle/caches/transforms-3/706825b76a3839688cde8989ecd39986/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.android.gms:play-services-auth:20.7.0] /home/boush/.gradle/caches/transforms-3/706825b76a3839688cde8989ecd39986/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:22:5-38:19
 MERGED from [com.google.firebase:firebase-appcheck-interop:17.1.0] /home/boush/.gradle/caches/transforms-3/58b99f804235440ac31974ce1f1a6963/transformed/jetified-firebase-appcheck-interop-17.1.0/AndroidManifest.xml:21:5-20
 MERGED from [com.google.firebase:firebase-appcheck-interop:17.1.0] /home/boush/.gradle/caches/transforms-3/58b99f804235440ac31974ce1f1a6963/transformed/jetified-firebase-appcheck-interop-17.1.0/AndroidManifest.xml:21:5-20
+MERGED from [com.google.android.gms:play-services-fido:20.0.1] /home/boush/.gradle/caches/transforms-3/995e984bdfa864a8f07f3f566394f992/transformed/jetified-play-services-fido-20.0.1/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.android.gms:play-services-fido:20.0.1] /home/boush/.gradle/caches/transforms-3/995e984bdfa864a8f07f3f566394f992/transformed/jetified-play-services-fido-20.0.1/AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.android.gms:play-services-base:18.1.0] /home/boush/.gradle/caches/transforms-3/f4c0500116144bc04cff0b0b27625b15/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:19:5-23:19
 MERGED from [com.google.android.gms:play-services-base:18.1.0] /home/boush/.gradle/caches/transforms-3/f4c0500116144bc04cff0b0b27625b15/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.play:integrity:1.1.0] /home/boush/.gradle/caches/transforms-3/4b862cf174affde07edc7163743deec8/transformed/jetified-integrity-1.1.0/AndroidManifest.xml:5:5-6:19
+MERGED from [com.google.android.play:integrity:1.1.0] /home/boush/.gradle/caches/transforms-3/4b862cf174affde07edc7163743deec8/transformed/jetified-integrity-1.1.0/AndroidManifest.xml:5:5-6:19
 MERGED from [com.google.android.gms:play-services-tasks:18.0.2] /home/boush/.gradle/caches/transforms-3/bfd28fc2b5a92ccad584767ef1a7f0c7/transformed/jetified-play-services-tasks-18.0.2/AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-tasks:18.0.2] /home/boush/.gradle/caches/transforms-3/bfd28fc2b5a92ccad584767ef1a7f0c7/transformed/jetified-play-services-tasks-18.0.2/AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-basement:18.1.0] /home/boush/.gradle/caches/transforms-3/5eaba1f028ac62aaabee71faac8d9308/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.google.android.gms:play-services-basement:18.1.0] /home/boush/.gradle/caches/transforms-3/5eaba1f028ac62aaabee71faac8d9308/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] /home/boush/.gradle/caches/transforms-3/2c79f1bef2248086e00abbcc39fc0574/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] /home/boush/.gradle/caches/transforms-3/2c79f1bef2248086e00abbcc39fc0574/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:20:5-24:19
 MERGED from [androidx.core:core:1.6.0] /home/boush/.gradle/caches/transforms-3/cf72013d765e0f69e97cd3b9cbb09800/transformed/core-1.6.0/AndroidManifest.xml:24:5-89
 MERGED from [androidx.core:core:1.6.0] /home/boush/.gradle/caches/transforms-3/cf72013d765e0f69e97cd3b9cbb09800/transformed/core-1.6.0/AndroidManifest.xml:24:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/boush/.gradle/caches/transforms-3/412ea1747794f8ba402872c982c507b3/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
@@ -47,6 +51,7 @@ MERGED from [:firebase_auth] /home/boush/Desktop/Flutter+Firebase/fitnessapp/bui
 MERGED from [:firebase_database] /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/firebase_database/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-17:12
 MERGED from [:firebase_core] /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-17:12
 MERGED from [:fluttertoast] /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/fluttertoast/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:google_sign_in_android] /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/google_sign_in_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.firebase:firebase-auth:22.2.0] /home/boush/.gradle/caches/transforms-3/39ff33c16da1c08fdadf4fbb11ce7b1e/transformed/jetified-firebase-auth-22.2.0/AndroidManifest.xml:17:1-75:12
 MERGED from [com.google.firebase:firebase-database:20.3.0] /home/boush/.gradle/caches/transforms-3/0ab205980fba81ecaf6e61a2531afe68/transformed/jetified-firebase-database-20.3.0/AndroidManifest.xml:15:1-38:12
 MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /home/boush/.gradle/caches/transforms-3/24624589e6fd9179fa53d08f69cabf09/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:2:1-10:12
@@ -56,17 +61,20 @@ MERGED from [com.google.android.recaptcha:recaptcha:18.1.2] /home/boush/.gradle/
 MERGED from [androidx.window:window-java:1.0.0-beta04] /home/boush/.gradle/caches/transforms-3/3c0e35d493ccd3f2bb8b07f96b013b9c/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] /home/boush/.gradle/caches/transforms-3/003a22a5515e1f77f89701a46efbc2ec/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:17:1-33:12
 MERGED from [androidx.multidex:multidex:2.0.1] /home/boush/.gradle/caches/transforms-3/e0461fe8a1e79b084c69a9c5ee495e02/transformed/multidex-2.0.1/AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] /home/boush/.gradle/caches/transforms-3/d44764364e163b8d60b067fe22ab2915/transformed/jetified-play-services-auth-api-phone-17.4.0/AndroidManifest.xml:2:1-7:12
-MERGED from [com.google.android.play:integrity:1.1.0] /home/boush/.gradle/caches/transforms-3/4b862cf174affde07edc7163743deec8/transformed/jetified-integrity-1.1.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-auth:20.7.0] /home/boush/.gradle/caches/transforms-3/706825b76a3839688cde8989ecd39986/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:17:1-40:12
 MERGED from [com.google.firebase:firebase-appcheck-interop:17.1.0] /home/boush/.gradle/caches/transforms-3/58b99f804235440ac31974ce1f1a6963/transformed/jetified-firebase-appcheck-interop-17.1.0/AndroidManifest.xml:15:1-23:12
 MERGED from [com.google.firebase:firebase-database-collection:18.0.1] /home/boush/.gradle/caches/transforms-3/712aabd21e690e376ba6198484dbb57a/transformed/jetified-firebase-database-collection-18.0.1/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] /home/boush/.gradle/caches/transforms-3/ea32337cc297f90d290d797ee1aaa7d0/transformed/jetified-play-services-auth-api-phone-18.0.1/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-auth-base:18.0.4] /home/boush/.gradle/caches/transforms-3/4c93760fbbf20bb567031f320433cb1f/transformed/jetified-play-services-auth-base-18.0.4/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-fido:20.0.1] /home/boush/.gradle/caches/transforms-3/995e984bdfa864a8f07f3f566394f992/transformed/jetified-play-services-fido-20.0.1/AndroidManifest.xml:2:1-10:12
 MERGED from [com.google.android.gms:play-services-base:18.1.0] /home/boush/.gradle/caches/transforms-3/f4c0500116144bc04cff0b0b27625b15/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:16:1-24:12
+MERGED from [com.google.android.play:integrity:1.1.0] /home/boush/.gradle/caches/transforms-3/4b862cf174affde07edc7163743deec8/transformed/jetified-integrity-1.1.0/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-tasks:18.0.2] /home/boush/.gradle/caches/transforms-3/bfd28fc2b5a92ccad584767ef1a7f0c7/transformed/jetified-play-services-tasks-18.0.2/AndroidManifest.xml:2:1-6:12
-MERGED from [com.google.android.gms:play-services-basement:18.1.0] /home/boush/.gradle/caches/transforms-3/5eaba1f028ac62aaabee71faac8d9308/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:16:1-26:12
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] /home/boush/.gradle/caches/transforms-3/2c79f1bef2248086e00abbcc39fc0574/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:16:1-26:12
 MERGED from [androidx.fragment:fragment:1.1.0] /home/boush/.gradle/caches/transforms-3/71ea4278965e781745d92d30a8289349/transformed/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.browser:browser:1.4.0] /home/boush/.gradle/caches/transforms-3/3df77d3f0e42ee5d73cdfadb8bcdc01c/transformed/browser-1.4.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.viewpager:viewpager:1.0.0] /home/boush/.gradle/caches/transforms-3/4784b4855fb8c719a7e70c51ab3b37cf/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.loader:loader:1.0.0] /home/boush/.gradle/caches/transforms-3/a458d9faa8fd984eea3189ac2268b4a3/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/boush/.gradle/caches/transforms-3/4784b4855fb8c719a7e70c51ab3b37cf/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.activity:activity:1.0.0] /home/boush/.gradle/caches/transforms-3/b7510fb325375addd6631e52161451e8/transformed/jetified-activity-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.customview:customview:1.0.0] /home/boush/.gradle/caches/transforms-3/23fcf1193049ddd5443fe7705e639cbd/transformed/customview-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core:1.6.0] /home/boush/.gradle/caches/transforms-3/cf72013d765e0f69e97cd3b9cbb09800/transformed/core-1.6.0/AndroidManifest.xml:17:1-26:12
@@ -111,6 +119,8 @@ MERGED from [:firebase_core] /home/boush/Desktop/Flutter+Firebase/fitnessapp/bui
 MERGED from [:firebase_core] /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:fluttertoast] /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/fluttertoast/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:fluttertoast] /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/fluttertoast/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:google_sign_in_android] /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/google_sign_in_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:google_sign_in_android] /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/google_sign_in_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.firebase:firebase-auth:22.2.0] /home/boush/.gradle/caches/transforms-3/39ff33c16da1c08fdadf4fbb11ce7b1e/transformed/jetified-firebase-auth-22.2.0/AndroidManifest.xml:21:5-23:64
 MERGED from [com.google.firebase:firebase-auth:22.2.0] /home/boush/.gradle/caches/transforms-3/39ff33c16da1c08fdadf4fbb11ce7b1e/transformed/jetified-firebase-auth-22.2.0/AndroidManifest.xml:21:5-23:64
 MERGED from [com.google.firebase:firebase-database:20.3.0] /home/boush/.gradle/caches/transforms-3/0ab205980fba81ecaf6e61a2531afe68/transformed/jetified-firebase-database-20.3.0/AndroidManifest.xml:18:5-44
@@ -129,28 +139,34 @@ MERGED from [androidx.window:window:1.0.0-beta04] /home/boush/.gradle/caches/tra
 MERGED from [androidx.window:window:1.0.0-beta04] /home/boush/.gradle/caches/transforms-3/003a22a5515e1f77f89701a46efbc2ec/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.multidex:multidex:2.0.1] /home/boush/.gradle/caches/transforms-3/e0461fe8a1e79b084c69a9c5ee495e02/transformed/multidex-2.0.1/AndroidManifest.xml:20:5-43
 MERGED from [androidx.multidex:multidex:2.0.1] /home/boush/.gradle/caches/transforms-3/e0461fe8a1e79b084c69a9c5ee495e02/transformed/multidex-2.0.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] /home/boush/.gradle/caches/transforms-3/d44764364e163b8d60b067fe22ab2915/transformed/jetified-play-services-auth-api-phone-17.4.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] /home/boush/.gradle/caches/transforms-3/d44764364e163b8d60b067fe22ab2915/transformed/jetified-play-services-auth-api-phone-17.4.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.play:integrity:1.1.0] /home/boush/.gradle/caches/transforms-3/4b862cf174affde07edc7163743deec8/transformed/jetified-integrity-1.1.0/AndroidManifest.xml:4:5-44
-MERGED from [com.google.android.play:integrity:1.1.0] /home/boush/.gradle/caches/transforms-3/4b862cf174affde07edc7163743deec8/transformed/jetified-integrity-1.1.0/AndroidManifest.xml:4:5-44
+MERGED from [com.google.android.gms:play-services-auth:20.7.0] /home/boush/.gradle/caches/transforms-3/706825b76a3839688cde8989ecd39986/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:20.7.0] /home/boush/.gradle/caches/transforms-3/706825b76a3839688cde8989ecd39986/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-appcheck-interop:17.1.0] /home/boush/.gradle/caches/transforms-3/58b99f804235440ac31974ce1f1a6963/transformed/jetified-firebase-appcheck-interop-17.1.0/AndroidManifest.xml:18:5-44
 MERGED from [com.google.firebase:firebase-appcheck-interop:17.1.0] /home/boush/.gradle/caches/transforms-3/58b99f804235440ac31974ce1f1a6963/transformed/jetified-firebase-appcheck-interop-17.1.0/AndroidManifest.xml:18:5-44
 MERGED from [com.google.firebase:firebase-database-collection:18.0.1] /home/boush/.gradle/caches/transforms-3/712aabd21e690e376ba6198484dbb57a/transformed/jetified-firebase-database-collection-18.0.1/AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.firebase:firebase-database-collection:18.0.1] /home/boush/.gradle/caches/transforms-3/712aabd21e690e376ba6198484dbb57a/transformed/jetified-firebase-database-collection-18.0.1/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] /home/boush/.gradle/caches/transforms-3/ea32337cc297f90d290d797ee1aaa7d0/transformed/jetified-play-services-auth-api-phone-18.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] /home/boush/.gradle/caches/transforms-3/ea32337cc297f90d290d797ee1aaa7d0/transformed/jetified-play-services-auth-api-phone-18.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:18.0.4] /home/boush/.gradle/caches/transforms-3/4c93760fbbf20bb567031f320433cb1f/transformed/jetified-play-services-auth-base-18.0.4/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:18.0.4] /home/boush/.gradle/caches/transforms-3/4c93760fbbf20bb567031f320433cb1f/transformed/jetified-play-services-auth-base-18.0.4/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-fido:20.0.1] /home/boush/.gradle/caches/transforms-3/995e984bdfa864a8f07f3f566394f992/transformed/jetified-play-services-fido-20.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-fido:20.0.1] /home/boush/.gradle/caches/transforms-3/995e984bdfa864a8f07f3f566394f992/transformed/jetified-play-services-fido-20.0.1/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-base:18.1.0] /home/boush/.gradle/caches/transforms-3/f4c0500116144bc04cff0b0b27625b15/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:18:5-43
 MERGED from [com.google.android.gms:play-services-base:18.1.0] /home/boush/.gradle/caches/transforms-3/f4c0500116144bc04cff0b0b27625b15/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.play:integrity:1.1.0] /home/boush/.gradle/caches/transforms-3/4b862cf174affde07edc7163743deec8/transformed/jetified-integrity-1.1.0/AndroidManifest.xml:4:5-44
+MERGED from [com.google.android.play:integrity:1.1.0] /home/boush/.gradle/caches/transforms-3/4b862cf174affde07edc7163743deec8/transformed/jetified-integrity-1.1.0/AndroidManifest.xml:4:5-44
 MERGED from [com.google.android.gms:play-services-tasks:18.0.2] /home/boush/.gradle/caches/transforms-3/bfd28fc2b5a92ccad584767ef1a7f0c7/transformed/jetified-play-services-tasks-18.0.2/AndroidManifest.xml:4:5-43
 MERGED from [com.google.android.gms:play-services-tasks:18.0.2] /home/boush/.gradle/caches/transforms-3/bfd28fc2b5a92ccad584767ef1a7f0c7/transformed/jetified-play-services-tasks-18.0.2/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-basement:18.1.0] /home/boush/.gradle/caches/transforms-3/5eaba1f028ac62aaabee71faac8d9308/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:18:5-43
-MERGED from [com.google.android.gms:play-services-basement:18.1.0] /home/boush/.gradle/caches/transforms-3/5eaba1f028ac62aaabee71faac8d9308/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] /home/boush/.gradle/caches/transforms-3/2c79f1bef2248086e00abbcc39fc0574/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] /home/boush/.gradle/caches/transforms-3/2c79f1bef2248086e00abbcc39fc0574/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:18:5-43
 MERGED from [androidx.fragment:fragment:1.1.0] /home/boush/.gradle/caches/transforms-3/71ea4278965e781745d92d30a8289349/transformed/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.1.0] /home/boush/.gradle/caches/transforms-3/71ea4278965e781745d92d30a8289349/transformed/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.browser:browser:1.4.0] /home/boush/.gradle/caches/transforms-3/3df77d3f0e42ee5d73cdfadb8bcdc01c/transformed/browser-1.4.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.browser:browser:1.4.0] /home/boush/.gradle/caches/transforms-3/3df77d3f0e42ee5d73cdfadb8bcdc01c/transformed/browser-1.4.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.viewpager:viewpager:1.0.0] /home/boush/.gradle/caches/transforms-3/4784b4855fb8c719a7e70c51ab3b37cf/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.viewpager:viewpager:1.0.0] /home/boush/.gradle/caches/transforms-3/4784b4855fb8c719a7e70c51ab3b37cf/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] /home/boush/.gradle/caches/transforms-3/a458d9faa8fd984eea3189ac2268b4a3/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] /home/boush/.gradle/caches/transforms-3/a458d9faa8fd984eea3189ac2268b4a3/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/boush/.gradle/caches/transforms-3/4784b4855fb8c719a7e70c51ab3b37cf/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/boush/.gradle/caches/transforms-3/4784b4855fb8c719a7e70c51ab3b37cf/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.activity:activity:1.0.0] /home/boush/.gradle/caches/transforms-3/b7510fb325375addd6631e52161451e8/transformed/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.activity:activity:1.0.0] /home/boush/.gradle/caches/transforms-3/b7510fb325375addd6631e52161451e8/transformed/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.customview:customview:1.0.0] /home/boush/.gradle/caches/transforms-3/23fcf1193049ddd5443fe7705e639cbd/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
@@ -193,6 +209,8 @@ INJECTED from /home/boush/Desktop/Flutter+Firebase/fitnessapp/android/app/src/de
 		INJECTED from /home/boush/Desktop/Flutter+Firebase/fitnessapp/android/app/src/debug/AndroidManifest.xml
 uses-permission#android.permission.INTERNET
 ADDED from /home/boush/Desktop/Flutter+Firebase/fitnessapp/android/app/src/debug/AndroidManifest.xml:6:5-66
+MERGED from [:google_sign_in_android] /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/google_sign_in_android/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-67
+MERGED from [:google_sign_in_android] /home/boush/Desktop/Flutter+Firebase/fitnessapp/build/google_sign_in_android/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-67
 MERGED from [com.google.firebase:firebase-auth:22.2.0] /home/boush/.gradle/caches/transforms-3/39ff33c16da1c08fdadf4fbb11ce7b1e/transformed/jetified-firebase-auth-22.2.0/AndroidManifest.xml:25:5-67
 MERGED from [com.google.firebase:firebase-auth:22.2.0] /home/boush/.gradle/caches/transforms-3/39ff33c16da1c08fdadf4fbb11ce7b1e/transformed/jetified-firebase-auth-22.2.0/AndroidManifest.xml:25:5-67
 MERGED from [com.google.firebase:firebase-database:20.3.0] /home/boush/.gradle/caches/transforms-3/0ab205980fba81ecaf6e61a2531afe68/transformed/jetified-firebase-database-20.3.0/AndroidManifest.xml:23:5-67
@@ -351,6 +369,26 @@ ADDED from [androidx.window:window:1.0.0-beta04] /home/boush/.gradle/caches/tran
 		ADDED from [androidx.window:window:1.0.0-beta04] /home/boush/.gradle/caches/transforms-3/003a22a5515e1f77f89701a46efbc2ec/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
 	android:name
 		ADDED from [androidx.window:window:1.0.0-beta04] /home/boush/.gradle/caches/transforms-3/003a22a5515e1f77f89701a46efbc2ec/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+ADDED from [com.google.android.gms:play-services-auth:20.7.0] /home/boush/.gradle/caches/transforms-3/706825b76a3839688cde8989ecd39986/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:23:9-27:75
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-auth:20.7.0] /home/boush/.gradle/caches/transforms-3/706825b76a3839688cde8989ecd39986/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:25:13-46
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:20.7.0] /home/boush/.gradle/caches/transforms-3/706825b76a3839688cde8989ecd39986/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:26:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-auth:20.7.0] /home/boush/.gradle/caches/transforms-3/706825b76a3839688cde8989ecd39986/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:27:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:20.7.0] /home/boush/.gradle/caches/transforms-3/706825b76a3839688cde8989ecd39986/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:24:13-93
+service#com.google.android.gms.auth.api.signin.RevocationBoundService
+ADDED from [com.google.android.gms:play-services-auth:20.7.0] /home/boush/.gradle/caches/transforms-3/706825b76a3839688cde8989ecd39986/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:33:9-37:51
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:20.7.0] /home/boush/.gradle/caches/transforms-3/706825b76a3839688cde8989ecd39986/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:35:13-36
+	android:visibleToInstantApps
+		ADDED from [com.google.android.gms:play-services-auth:20.7.0] /home/boush/.gradle/caches/transforms-3/706825b76a3839688cde8989ecd39986/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:37:13-48
+	android:permission
+		ADDED from [com.google.android.gms:play-services-auth:20.7.0] /home/boush/.gradle/caches/transforms-3/706825b76a3839688cde8989ecd39986/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:36:13-107
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:20.7.0] /home/boush/.gradle/caches/transforms-3/706825b76a3839688cde8989ecd39986/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:34:13-89
 activity#com.google.android.gms.common.api.GoogleApiActivity
 ADDED from [com.google.android.gms:play-services-base:18.1.0] /home/boush/.gradle/caches/transforms-3/f4c0500116144bc04cff0b0b27625b15/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:9-22:45
 	android:exported
@@ -360,8 +398,8 @@ ADDED from [com.google.android.gms:play-services-base:18.1.0] /home/boush/.gradl
 	android:name
 		ADDED from [com.google.android.gms:play-services-base:18.1.0] /home/boush/.gradle/caches/transforms-3/f4c0500116144bc04cff0b0b27625b15/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:19-85
 meta-data#com.google.android.gms.version
-ADDED from [com.google.android.gms:play-services-basement:18.1.0] /home/boush/.gradle/caches/transforms-3/5eaba1f028ac62aaabee71faac8d9308/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
+ADDED from [com.google.android.gms:play-services-basement:18.2.0] /home/boush/.gradle/caches/transforms-3/2c79f1bef2248086e00abbcc39fc0574/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:21:9-23:69
 	android:value
-		ADDED from [com.google.android.gms:play-services-basement:18.1.0] /home/boush/.gradle/caches/transforms-3/5eaba1f028ac62aaabee71faac8d9308/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
+		ADDED from [com.google.android.gms:play-services-basement:18.2.0] /home/boush/.gradle/caches/transforms-3/2c79f1bef2248086e00abbcc39fc0574/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:23:13-66
 	android:name
-		ADDED from [com.google.android.gms:play-services-basement:18.1.0] /home/boush/.gradle/caches/transforms-3/5eaba1f028ac62aaabee71faac8d9308/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
+		ADDED from [com.google.android.gms:play-services-basement:18.2.0] /home/boush/.gradle/caches/transforms-3/2c79f1bef2248086e00abbcc39fc0574/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:22:13-58

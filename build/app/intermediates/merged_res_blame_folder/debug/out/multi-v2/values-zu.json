@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.fitnessapp-mergeDebugResources-14:/values-zu/values-zu.xml",
+            "outputFile": "com.example.fitnessapp-mergeDebugResources-15:/values-zu/values-zu.xml",
             "map": [
                 {
                     "source": "/home/boush/.gradle/caches/transforms-3/f4c0500116144bc04cff0b0b27625b15/transformed/jetified-play-services-base-18.1.0/res/values-zu/values.xml",
@@ -18,23 +18,6 @@
                         "startOffsets": "55,166,342,477,581,749,878,1002,1244,1404,1514,1679,1810,1968,2125,2186,2255",
                         "endColumns": "110,175,134,103,167,128,123,109,159,109,164,130,157,156,60,68,84",
                         "endOffsets": "161,337,472,576,744,873,997,1107,1399,1509,1674,1805,1963,2120,2181,2250,2335"
-                    }
-                },
-                {
-                    "source": "/home/boush/.gradle/caches/transforms-3/5eaba1f028ac62aaabee71faac8d9308/transformed/jetified-play-services-basement-18.1.0/res/values-zu/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "195",
-                        "endColumns": "127",
-                        "endOffsets": "322"
-                    },
-                    "to": {
-                        "startLines": "10",
-                        "startColumns": "4",
-                        "startOffsets": "1112",
-                        "endColumns": "131",
-                        "endOffsets": "1239"
                     }
                 },
                 {
@@ -69,6 +52,23 @@
                         "startOffsets": "2784",
                         "endColumns": "100",
                         "endOffsets": "2880"
+                    }
+                },
+                {
+                    "source": "/home/boush/.gradle/caches/transforms-3/2c79f1bef2248086e00abbcc39fc0574/transformed/jetified-play-services-basement-18.2.0/res/values-zu/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "127",
+                        "endOffsets": "322"
+                    },
+                    "to": {
+                        "startLines": "10",
+                        "startColumns": "4",
+                        "startOffsets": "1112",
+                        "endColumns": "131",
+                        "endOffsets": "1239"
                     }
                 }
             ]

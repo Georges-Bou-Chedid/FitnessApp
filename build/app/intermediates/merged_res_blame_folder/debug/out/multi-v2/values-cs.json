@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.fitnessapp-mergeDebugResources-14:/values-cs/values-cs.xml",
+            "outputFile": "com.example.fitnessapp-mergeDebugResources-15:/values-cs/values-cs.xml",
             "map": [
                 {
                     "source": "/home/boush/.gradle/caches/transforms-3/3df77d3f0e42ee5d73cdfadb8bcdc01c/transformed/browser-1.4.0/res/values-cs/values-cs.xml",
@@ -38,23 +38,6 @@
                     }
                 },
                 {
-                    "source": "/home/boush/.gradle/caches/transforms-3/5eaba1f028ac62aaabee71faac8d9308/transformed/jetified-play-services-basement-18.1.0/res/values-cs/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "195",
-                        "endColumns": "138",
-                        "endOffsets": "333"
-                    },
-                    "to": {
-                        "startLines": "10",
-                        "startColumns": "4",
-                        "startOffsets": "1049",
-                        "endColumns": "142",
-                        "endOffsets": "1187"
-                    }
-                },
-                {
                     "source": "/home/boush/.gradle/caches/transforms-3/f4c0500116144bc04cff0b0b27625b15/transformed/jetified-play-services-base-18.1.0/res/values-cs/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
@@ -69,6 +52,23 @@
                         "startOffsets": "55,161,321,446,556,709,836,948,1192,1367,1478,1642,1770,1931,2086,2154,2221",
                         "endColumns": "105,159,124,109,152,126,111,100,174,110,163,127,160,154,67,66,85",
                         "endOffsets": "156,316,441,551,704,831,943,1044,1362,1473,1637,1765,1926,2081,2149,2216,2302"
+                    }
+                },
+                {
+                    "source": "/home/boush/.gradle/caches/transforms-3/2c79f1bef2248086e00abbcc39fc0574/transformed/jetified-play-services-basement-18.2.0/res/values-cs/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "138",
+                        "endOffsets": "333"
+                    },
+                    "to": {
+                        "startLines": "10",
+                        "startColumns": "4",
+                        "startOffsets": "1049",
+                        "endColumns": "142",
+                        "endOffsets": "1187"
                     }
                 }
             ]

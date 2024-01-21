@@ -359,6 +359,48 @@
             </list>
           </value>
         </entry>
+        <entry key="google_identity_services_web">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/google_identity_services_web-0.2.2/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="google_sign_in">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/google_sign_in-6.1.6/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="google_sign_in_android">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/google_sign_in_android-6.1.20/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="google_sign_in_ios">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/google_sign_in_ios-5.6.3/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="google_sign_in_platform_interface">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/google_sign_in_platform_interface-2.4.3/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="google_sign_in_web">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/google_sign_in_web-0.12.2+1/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="graphs">
           <value>
             <list>
@@ -370,6 +412,13 @@
           <value>
             <list>
               <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/hive-2.2.3/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="http">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/http-1.1.0/lib" />
             </list>
           </value>
         </entry>
@@ -760,8 +809,15 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/font_awesome_flutter-10.5.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/frontend_server_client-3.2.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/glob-2.1.2/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/google_identity_services_web-0.2.2/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/google_sign_in-6.1.6/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/google_sign_in_android-6.1.20/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/google_sign_in_ios-5.6.3/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/google_sign_in_platform_interface-2.4.3/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/google_sign_in_web-0.12.2+1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/graphs-2.3.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/hive-2.2.3/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/http-1.1.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/http_multi_server-3.2.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/http_parser-4.0.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/image-4.1.3/lib" />

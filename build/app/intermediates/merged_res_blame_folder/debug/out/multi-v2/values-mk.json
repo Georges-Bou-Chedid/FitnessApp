@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.fitnessapp-mergeDebugResources-14:/values-mk/values-mk.xml",
+            "outputFile": "com.example.fitnessapp-mergeDebugResources-15:/values-mk/values-mk.xml",
             "map": [
                 {
                     "source": "/home/boush/.gradle/caches/transforms-3/cf72013d765e0f69e97cd3b9cbb09800/transformed/core-1.6.0/res/values-mk/values-mk.xml",
@@ -18,23 +18,6 @@
                         "startOffsets": "2732",
                         "endColumns": "100",
                         "endOffsets": "2828"
-                    }
-                },
-                {
-                    "source": "/home/boush/.gradle/caches/transforms-3/5eaba1f028ac62aaabee71faac8d9308/transformed/jetified-play-services-basement-18.1.0/res/values-mk/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "195",
-                        "endColumns": "132",
-                        "endOffsets": "327"
-                    },
-                    "to": {
-                        "startLines": "10",
-                        "startColumns": "4",
-                        "startOffsets": "1074",
-                        "endColumns": "136",
-                        "endOffsets": "1206"
                     }
                 },
                 {
@@ -69,6 +52,23 @@
                         "startOffsets": "55,162,323,456,566,711,844,964,1211,1368,1475,1641,1774,1927,2086,2155,2219",
                         "endColumns": "106,160,132,109,144,132,119,109,156,106,165,132,152,158,68,63,78",
                         "endOffsets": "157,318,451,561,706,839,959,1069,1363,1470,1636,1769,1922,2081,2150,2214,2293"
+                    }
+                },
+                {
+                    "source": "/home/boush/.gradle/caches/transforms-3/2c79f1bef2248086e00abbcc39fc0574/transformed/jetified-play-services-basement-18.2.0/res/values-mk/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "132",
+                        "endOffsets": "327"
+                    },
+                    "to": {
+                        "startLines": "10",
+                        "startColumns": "4",
+                        "startOffsets": "1074",
+                        "endColumns": "136",
+                        "endOffsets": "1206"
                     }
                 }
             ]

@@ -1,8 +1,25 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.fitnessapp-mergeDebugResources-14:/values-sw/values-sw.xml",
+            "outputFile": "com.example.fitnessapp-mergeDebugResources-15:/values-sw/values-sw.xml",
             "map": [
+                {
+                    "source": "/home/boush/.gradle/caches/transforms-3/2c79f1bef2248086e00abbcc39fc0574/transformed/jetified-play-services-basement-18.2.0/res/values-sw/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "141",
+                        "endOffsets": "336"
+                    },
+                    "to": {
+                        "startLines": "10",
+                        "startColumns": "4",
+                        "startOffsets": "1070",
+                        "endColumns": "145",
+                        "endOffsets": "1211"
+                    }
+                },
                 {
                     "source": "/home/boush/.gradle/caches/transforms-3/3df77d3f0e42ee5d73cdfadb8bcdc01c/transformed/browser-1.4.0/res/values-sw/values-sw.xml",
                     "from": {
@@ -18,23 +35,6 @@
                         "startOffsets": "2316,2430,2531,2648",
                         "endColumns": "113,100,116,102",
                         "endOffsets": "2425,2526,2643,2746"
-                    }
-                },
-                {
-                    "source": "/home/boush/.gradle/caches/transforms-3/5eaba1f028ac62aaabee71faac8d9308/transformed/jetified-play-services-basement-18.1.0/res/values-sw/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "195",
-                        "endColumns": "141",
-                        "endOffsets": "336"
-                    },
-                    "to": {
-                        "startLines": "10",
-                        "startColumns": "4",
-                        "startOffsets": "1070",
-                        "endColumns": "145",
-                        "endOffsets": "1211"
                     }
                 },
                 {

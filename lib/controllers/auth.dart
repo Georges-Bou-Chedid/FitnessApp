@@ -1,8 +1,10 @@
 import "package:firebase_auth/firebase_auth.dart";
+import "package:google_sign_in/google_sign_in.dart";
 
 class AuthService {
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn googleSignIn = GoogleSignIn();
 
   // auth change user stream
   Stream<User?> get user {
@@ -48,6 +50,34 @@ class AuthService {
       return result.user;
     } catch(e) {
       print(e.toString());
+      return null;
+    }
+  }
+
+  //sign in using google
+  Future<User?> signInWithGoogle() async {
+    try {
+      // Trigger Google Sign In
+      final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
+
+      // If user canceled the sign-in, return null
+      if (googleSignInAccount == null) return null;
+
+      // Obtain GoogleSignInAuthentication and sign in to Firebase
+      final GoogleSignInAuthentication googleSignInAuthentication =
+      await googleSignInAccount.authentication;
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleSignInAuthentication.accessToken,
+        idToken: googleSignInAuthentication.idToken,
+      );
+
+      // Sign in to Firebase
+      final UserCredential authResult = await _auth.signInWithCredential(credential);
+      final User? user = authResult.user;
+
+      return user;
+    } catch (error) {
+      print('Google Sign In Error: $error');
       return null;
     }
   }
@@ -119,6 +149,7 @@ class AuthService {
   // sign out
   Future signOut() async {
     try {
+      await googleSignIn.signOut();
       return await _auth.signOut();
     } catch(e) {
       print(e.toString());

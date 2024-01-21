@@ -1,4 +1,5 @@
 import 'package:country_picker/country_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitnessapp/screens/authenticate/signup_screen.dart';
 import 'package:flutter/material.dart';
 import '../../controllers/auth.dart';
@@ -184,6 +185,17 @@ class LoginSignup extends State<LoginPage> {
                               color: Color(0xFFFFFFFF),
                             ),
                           ),
+                        ),
+                        IconButton(
+                          icon: Image.asset('assets/images/icons/google.png', width: 24, height: 24),
+                          onPressed: () async {
+                            User? user = await AuthService().signInWithGoogle();
+                            if (user != null) {
+                              print('Signed in with Google: ${user.displayName}');
+                            } else {
+                              print('Google Sign-In canceled.');
+                            }
+                          },
                         ),
                       ],
                     ),
